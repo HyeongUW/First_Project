@@ -9,23 +9,23 @@ It consists of a Landing page with top Box office and trending movies, a search 
 Clicking on a movie within either the landing page or the search page results will bring that title up in the detail page.
 
 
-<!--  fill these in with wireframe first then 
-      later replace with prototype web page images 
-      and finally with finished product images
+### Wireframes:
+Fill images below in with wireframe first then 
+later replace with prototype web page images 
+and finally with finished product images.
 
-Landing page:
+* Landing page:
 
-![landing-page](assets/images/wireframeA.png)
+        ![landing-page](assets/images/wireframeA.png)
 
-Search page:
+* Search page:
 
-![search-page](assets/images/wireframeB.png)
+        ![search-page](assets/images/wireframeB.png)
 
-Detail page:
+* Detail page:
 
-![detail-page](assets/images/wireframeC.png)
+        ![detail-page](assets/images/wireframeC.png)
 
--->
 
 ## Getting Started
 
@@ -40,7 +40,7 @@ Detail page:
 ### Executing program
 
 * open in browser 
-*   1. scroll thru listing and click on title poster to jump to detai page
+    1. scroll thru listing and click on title poster to jump to detai page
     2. click on nav link to search page
         1. enter search criteria and hit search button
         2. scroll thru search results and click title to jumpt to detail page
@@ -52,9 +52,9 @@ For further development details see [UseCases and Psuedo Code](UseCases-PsuedoCo
 
 ## Authors
 
-Samuel Meyer - sam.smeyer17@gmail.com
-Hyeong Suk Kim - whddkf2004@gmail.com
-Myles Carey - mylescarey2019@gmail.com 
+* Samuel Meyer - sam.smeyer17@gmail.com
+* Hyeong Suk Kim - whddkf2004@gmail.com
+* Myles Carey - mylescarey2019@gmail.com 
 
 ## Version History
  
