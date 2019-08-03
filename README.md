@@ -55,6 +55,7 @@ For further development details see [UseCases and Psuedo Code](UseCases-PsuedoCo
 * Samuel Meyer - sam.smeyer17@gmail.com
 * Hyeong Suk Kim - whddkf2004@gmail.com
 * Myles Carey - mylescarey2019@gmail.com 
+* Victor Chung - victorchung998@yahoo.com
 
 ## Version History
  
