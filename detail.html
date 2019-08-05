@@ -1,55 +1,99 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <title>Title</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!DOCTYPE html>
+<html lang="en-us">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  </head>
-  <body>
-    <div id="placehold"></div>
-    
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<head>
 
-    <script type="text/javascript">
-        var apiKey = "4eb3939343ef4ca0932079284f76225d";
-        var searchURL = "https://api.themoviedb.org/3/trending/all/day?api_key=" + apiKey;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-        var settings = {
-            "async": true,
-            "crossDomain": true,
-            "url": searchURL,
-            "method": "GET",
-            "headers": {},
-            "data": "{}"
-        }
+  <title>The Name of Our Website Comes Here!</title>
 
-        $.ajax(settings).done(function (response) {
-            console.log(response);
-            
-            // Returns trending movies
-            for(var i = 0; i < response.results.length; i++) {
-                var tempDiv = $("<div>");
-                var tempImage = $("<img>");
-                var imageURL = "https://image.tmdb.org/t/p/w500" + response.results[i].poster_path;
-                tempImage.attr("src", imageURL);
-                tempDiv.append(tempImage);
-                $("#placehold").append(tempDiv);
-            }
-            
-            
-            
+  <!-- Boostrap Stylesheet -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <!-- Our own CSS stylesheet -->
+  <link rel="stylesheet" href="assets/css/styles.css" media="screen">
 
-        });
-    </script>
-    
-  </body>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <a class="navbar-brand" href="landing.html" id="logo">The Name of Our Website Comes Here!</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
+            aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+            <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" href="contact.html">Contact</a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="portfolio.html">Portfolio</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="index.html">About</a>
+              </li>
+            </ul>
+          </div>
+          <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+      </nav>
+      <!-- End of navbar -->
+
+  <!-- Start of container -->
+  <div class="container">
+    <main class="row">
+      <div class="col-md-10">
+        <article class="block">
+          <h1 class="block-header">Portfolio</h1>
+          <hr />
+          <div class="row">
+            <div class="col-sm-6 col-md-12 col-lg-6">
+              <img class="img-fluid port-image" src="https://via.placeholder.com/350x350" alt="">
+            </div>
+            <div class="col-sm-6 col-md-12 col-lg-6">
+              <img class="img-fluid port-image" src="https://via.placeholder.com/350x350" alt="">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6 col-md-12 col-lg-6">
+              <img class="img-fluid port-image" src="https://via.placeholder.com/350x350" alt="">
+            </div>
+            <div class="col-sm-6 col-md-12 col-lg-6">
+              <img class="img-fluid port-image" src="https://via.placeholder.com/350x350" alt="">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6 col-md-12 col-lg-6">
+              <img class="img-fluid port-image" src="https://via.placeholder.com/350x350" alt="">
+            </div>
+          </div>
+        </article>
+      </div>
+    </main>
+  </div>
+  <!-- End of container -->
+
+  <!-- Start of footer -->
+  <footer class="footer">
+    <div class="two-toned-footer-color"></div>
+    <p class="text-muted text-muted-footer text-center">
+      &copy; Copyright 2018 Your Name
+    </p>
+  </footer>
+  <!-- End of footer -->
+
+  <!-- jQuery CDN -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <!-- Bootstrap CDN -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script></script>
+
+</body>
+
 </html>
