@@ -18,9 +18,29 @@
 </head>
 
 <body>
-
-    <header id = "masthead">
-
+  <!-- Scroll to the Top Button ------------------------------------------------------------------>
+  <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+  <script>
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {scrollFunction()};
+    
+    function scrollFunction() {
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        document.getElementById("myBtn").style.display = "block";
+      } else {
+        document.getElementById("myBtn").style.display = "none";
+      }
+    }
+    
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    }
+  </script>
+  <!---------------------------------------------------------------------------------------------->
+  
+  <header id = "masthead">
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
       <!-- Brand and toggle get grouped for better mobile display -->
@@ -83,8 +103,8 @@
   </main>
   <!-- End of container -->
 
-  <!-- Start of footer -->
 
+  <!-- Start of footer -->
   <footer>
     <div class="container">
       &copy; Copyright 2019 Project MovieStream team: Myles Carey,Samuel Meyer,Hyeong Suk Kim,Victor Chung
@@ -93,6 +113,7 @@
   </footer>
   <!-- End of footer -->
 
+  
   <!-- jQuery CDN -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 

@@ -2,7 +2,6 @@
 <html lang="en-us">
 
 <head>
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -14,17 +13,37 @@
 
   <!-- Our own CSS stylesheet -->
   <link rel="stylesheet" href="assets/css/styles.css" media="screen">
-
 </head>
 
 <body>
+  <!-- Scroll to the Top Button ------------------------------------------------------------------>
+  <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+  <script>
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {scrollFunction()};
+    
+    function scrollFunction() {
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        document.getElementById("myBtn").style.display = "block";
+      } else {
+        document.getElementById("myBtn").style.display = "none";
+      }
+    }
+    
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    }
+  </script>
+  <!---------------------------------------------------------------------------------------------->
 
+  <!-- Header and Nav Bar ------------------------------------------------------------------>
   <header id = "masthead">
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
       <!-- Brand and toggle get grouped for better mobile display -->
             <a class="navbar-brand" href="index.html" id="logo">The Name of Our Website Comes Here!</a>
-
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
         aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -49,9 +68,10 @@
   </nav>
   <!-- End of navbar -->
 
-</header>
+  </header>
+  <!-------------------------------------------------------------------------------->
 
-  <!-- Start of container -->
+  <!-- Start of container for posters of trending movies ---------------------------->
   <main class="container">
     <section class="row">
       <div class="col-md-12">
@@ -66,18 +86,7 @@
       </div>
     </section>
   </main>
-  <!-- End of container -->
-
-  <!-- Start of footer -->
-
- <!-- <footer class="footer">-->
-  <!--  <div class="two-toned-footer-color"></div>-->
- <!--   <p class="text-muted text-muted-footer text-center">-->
- <!--     &copy; Copyright 2019 Project MovieStream team: Myles Carey, Samuel Meyer, Hyeong Suk Kim, Victor Chung-->
-    </p>
-  <!--</footer>-->
-
-  <!-- End of footer -->
+  <!-------------------------------------------------------------------------------->
 
   <!-- jQuery CDN -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -85,61 +94,21 @@
   <!-- Bootstrap CDN -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
-  <script type="text/javascript">
-    var apiKey = "4eb3939343ef4ca0932079284f76225d";
-    var searchURL = "https://api.themoviedb.org/3/trending/all/day?api_key=" + apiKey;
 
-    var settings = {
-      "async": true,
-      "crossDomain": true,
-      "url": searchURL,
-      "method": "GET",
-      "headers": {},
-      "data": "{}"
-    }
-
-    $.ajax(settings).done(function (response) {
-        console.log(response);
-        
-        // Returns trending movies
-        for(var i = 0; i < response.results.length; i++) {
-          var tempDiv = $("<div>");
-          tempDiv.addClass("trending-div");
-
-          var tempImage = $("<img>");
-          var imageURL = "https://image.tmdb.org/t/p/w500" + response.results[i].poster_path;
-          tempImage.attr("src", imageURL);
-          tempImage.addClass("trending-poster");
-          
-          
-          var tempTitle = $("<h3>");
-          
-          // Some of the returned data does not have "original_title" data, some
-          // of them had "original_name" instead.
-          if(response.results[i].original_title !== undefined) {
-            tempTitle.text(response.results[i].original_title);
-          } else {
-            tempTitle.text(response.results[i].original_name);
-          }
-          
-          
-          tempDiv.append(tempImage).append(tempTitle);
-          
-          $("#trending-placehold").append(tempDiv);
-        }
-        
-        
-        
-
-    });
-  </script>  
-
+  <!-- javascript part that should be exported to app.js ----------------------------------->
+  <script src="./assets/javascript/app.js"></script>
+  <!---------------------------------------------------------------------------------------->
+  
+  
+  <!-- Start of footer --------------------------------------------------------------------------------->
   <footer>
     <div class="container">
-      &copy; Copyright 2019 Project MovieStream team: Myles Carey,Samuel Meyer,Hyeong Suk Kim,Victor Chung
+      &copy; Copyright 2019 Project MovieStream team: Myles Carey, Samuel Meyer, Hyeong Suk Kim, Victor Chung
     </div>
   </footer>
-
+  <!---------------------------------------------------------------------------------------------------->
+  
+  
 </body>
 
 </html>
