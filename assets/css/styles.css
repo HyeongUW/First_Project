@@ -7,6 +7,7 @@ body {
   background-image: url("../imgs/ignasi_pattern_s.png");
 }
 
+
 .container{
 width: 100%;
 max-width: 960px;
@@ -28,6 +29,7 @@ background: #ffffff;
 border-bottom: 2px solid #cccccc;
 
 }
+
 html {
   /* Positioning */
   position: relative;
@@ -35,8 +37,6 @@ html {
   /* Box-model */
   min-height: 100%;
 }
-
-
 
 /* add space for fixed nav */
 main {
@@ -53,6 +53,7 @@ main {
 
 .block-header {
   /* Typography */
+
   margin-top: 50px;
   color: #4aaaa5;
   font-family: Georgia, Times, "Times New Roman", serif;
@@ -114,6 +115,7 @@ main {
 
 
 /* BEGIN FOOTER */
+
 footer {
   /* Positioning */
   position: fixed;
@@ -133,6 +135,7 @@ footer {
   width: 100%;
 /*  height: 60px; */
 
+
   /* Visual */
   background-color: #666;
 }
@@ -145,6 +148,7 @@ footer {
   color: #fff;
 }
 
+
 /*.two-toned-footer-color {
   /* Box-model */
  /* height: 6px; */
@@ -153,6 +157,7 @@ footer {
   /* Visual */
 /*  background-color: #4aaaa5;
 }*/
+
 /* END FOOTER */
 /* --- END STYLES FOR ALL PAGES --- */
 
@@ -202,13 +207,17 @@ footer {
   padding: 15px 30px;
   font-size: 16px;
   font-weight: lighter;
+
   background-color: light orange;
+
 
   /* Typography */
   color: #fff;
 
   /* Visual */
+
    background-color: #4aaaa5; 
+
   border: 0;
 }
 
