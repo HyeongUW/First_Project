@@ -1,4 +1,7 @@
 /* --- STYLES FOR ALL PAGES --- */
+* {
+  box-sizing: border-box;
+}
 body {
   /* Typography */
   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
