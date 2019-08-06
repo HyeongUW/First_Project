@@ -30,9 +30,30 @@ border-bottom: 2px solid #cccccc;
 
 }
 
+/* .navbar > .container  {
+  display: block !important;
+} */
+
+.row {
+  width: 100%;
+}
+
+#nav-btn {
+  float: right;
+}
+
+#camerareelimg {
+  float: left;
+}
+
+#logodiv {
+  text-align: center;
+}
+
+
 html {
   /* Positioning */
-  position: relative;
+  /* position: relative; */
 
   /* Box-model */
   min-height: 100%;
@@ -40,12 +61,12 @@ html {
 
 /* add space for fixed nav */
 main {
-  margin: 80px 0;
+/*  margin: 80px 0;*/
 }
 
 /* create styles for use for all white main boxes */
 .block {
-  background-color: #fff;
+  background-color:#c5a928;
 
   padding: 30px;
   margin-bottom: 30px;
