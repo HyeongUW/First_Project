@@ -39,7 +39,7 @@
             <a class="nav-link" href="trending.html">Trending</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="about.html">About</a>
+            <a type="button" class="nav-link" data-toggle="modal" data-target="#exampleModalScrollable">About</a>
           </li>
         </ul>
       </div>
@@ -68,12 +68,58 @@
   </main>
   <!-- End of container -->
 
+  <!-- Button trigger modal -->
+
+<!-- Modal -->
+<div class="modal fade" id="about_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalScrollableTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <main class="container">
+          <section class="row">
+            <div class="col-md-10">
+              <article class="block">
+                <h1 class="block-header">About This Website</h1>
+                <hr />
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                  dolore
+                  magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                  commodo
+                  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                  pariatur.
+                  Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+                  laborum.</p>
+                <br />
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                  dolore
+                  magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                  commodo
+                  consequat.
+                </p>
+              </article>
+            </div>
+          </section>
+        </main>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
   <!-- Start of footer -->
 
- <!-- <footer class="footer">-->
+  <!-- <footer class="footer">-->
   <!--  <div class="two-toned-footer-color"></div>-->
- <!--   <p class="text-muted text-muted-footer text-center">-->
- <!--     &copy; Copyright 2019 Project MovieStream team: Myles Carey, Samuel Meyer, Hyeong Suk Kim, Victor Chung-->
+  <!--   <p class="text-muted text-muted-footer text-center">-->
+  <!--     &copy; Copyright 2019 Project MovieStream team: Myles Carey, Samuel Meyer, Hyeong Suk Kim, Victor Chung-->
     </p>
   <!--</footer>-->
 
