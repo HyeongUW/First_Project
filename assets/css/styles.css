@@ -15,6 +15,8 @@ margin: 0 auto;
 clear:both;
 background-color: lightgray;
 text-align: center;
+padding-left: 28px;
+padding-right: 0px;
 
 }
 /* header*/
@@ -27,7 +29,8 @@ overflow: auto;
 color: #ffffff;
 background: #ffffff;
 border-bottom: 2px solid #cccccc;
-
+font-family: 'Tangerine', serif;
+        font-size: 28px;
 }
 
 /* .navbar > .container  {
@@ -42,11 +45,13 @@ border-bottom: 2px solid #cccccc;
   float: right;
 }
 
-#camerareelimg {
+#camerareeling {
   float: left;
 }
 
 #logodiv {
+  font-family: 'Tangerine', serif;
+        font-size: 48px;
   text-align: center;
 }
 
@@ -75,23 +80,24 @@ main {
 .block-header {
   /* Typography */
 
-  margin-top: 50px;
-  color: #4aaaa5;
-  font-family: Georgia, Times, "Times New Roman", serif;
-  font-weight: bold;
+  margin-top: 90px;
+  color: red;
+  font-family: 'Tangerine', serif;
+        font-size: 38px;
 }
 
 /* NAV START */
 #logo {
-  font-family: Georgia, Times, "Times New Roman", serif;
+  font-family: 'Tangerine', serif;
+        font-size: 288px;
 
   /* Typography */
-  font-size: 24px;
+  font-size: 45px;
   font-weight: bold;
-  color: #fff;
+  color: black;
 
   /* Visual */
-  background: #4aaaa5;
+ 
 }
 
 /* override bootstrap hover color and border */
@@ -161,13 +167,6 @@ footer {
   background-color: #666;
 }
 
-.text-muted-footer {
-  /* Box-model */
-  margin-top: 15px;
-
-  /* Typography */
-  color: #fff;
-}
 
 
 /*.two-toned-footer-color {
@@ -184,16 +183,6 @@ footer {
 
 /* --- PAGE-SPECIFIC STYLES --- */
 /* ABOUT-ME PAGE */
-.about-me-header {
-  /* Positioning */
-  margin-bottom: 33px;
-  font-family: Georgia, Times, "Times New Roman", serif;
-
-  /* Typography */
-  font-size: 32px;
-  font-weight: bold;
-  color: #4aaaa5;
-}
 
 #about-image {
   /* Positioning */
