@@ -45,107 +45,154 @@ $.ajax(settings).done(function (response) {
 
 
 $(document).ready(function() {
-    // ----------------------------------------------------------
-    // global variables:
-    // ----------------------------------------------------------
-    
-    // test variable for call to utelly
-    var title = "jurasic+park";
-
-
-    // ----------------------------------------------------------
-    // global functions:
-    // ----------------------------------------------------------
   
+  // ----------------------------------------------------------
+  // global variables:
+  // ----------------------------------------------------------
 
-    // ----------------------------------------------------------
-    // objects and classes:
-    // ----------------------------------------------------------
+  // test variable for call to utelly
+  // var testMovieTitle = "jurassic+park";
+  // var testMovieCountry = "us";
 
-    // ----------------------------------------------------------
-    // object for detail page:
-    // ----------------------------------------------------------
-    var detailPage = {
-        // local variables:
-    
-        // methods:
-    
-        // redirect to detail page
-        redirectTo: function() {
-        console.log("in detailPage.redirectTo");
-        window.location ='detail.html';
-        // will need various session data logic/methods
-        // to pass data from movie click events to detail page
-        },
-    
-        // get streaming info from Utelly API
-        getUtelly: function(title) {
-        console.log("in detailPage.getUtelly");
-        console.log("search title: ", title);
-    
-        const url ="https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com/lookup?term=" + title;
-        // console.log("url: ", url);
 
-        // build call to the API - uses ES6 fetch method
-        const options = {
-        method: 'GET',
-        headers: {
-            "X-RapidAPI-Host": "utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com",
-            "X-RapidAPI-Key": "80549481bdmsha65d8ad2b7edcfap1d5cc3jsncf554c0fbd38"
-            },
-        };
+  // ----------------------------------------------------------
+  // global functions:
+  // ----------------------------------------------------------
+
+
+  // ----------------------------------------------------------
+  // objects and classes:
+  // ----------------------------------------------------------
+
+  // ----------------------------------------------------------
+  // object for local storage:
+  // ----------------------------------------------------------
+  var manageSessionStorage = {
+    // local variables:
+
+    // methods:
+
+    // method to clear property from local storage
+    clearSessionStorage: function(property) {
+      console.log("in manageSessionStorage.clearSessionStorage");
+      sessionStorage.removeItem(property);
+    },
+
+    // method to get property from local storage
+    getSessionStorage: function(property) {
+      console.log("in manageSessionStorage.getSessionStorage");
+      var propVal = sessionStorage.getItem(property);
+      return propVal;
+    },
+
+    // method to set property in local storage
+    setSessionStorage: function(property,propVal) {
+      console.log("in manageSessionStorage.setSessionStorage");
+      sessionStorage.setItem(property,propVal);
+    },
+  }
+
+  // ----------------------------------------------------------
+  // object for detail page:
+  // ----------------------------------------------------------
+  var detailPage = {
+    // local variables:
+    movieTitle: "",
     
-        // API call 
-        fetch(url, options)
-            .then(response => response.json())
-            .then(data => console.log(data))
-            .catch(e => console.error(e));
-        }
-    
-        // other methods go below
-    
-    };
+    // methods:
+
+    // redirect to detail page
+    redirectTo: function() {
+      console.log("in detailPage.redirectTo");
+      // switch the browser to the detail page
+      window.location ='detail.html';
+
+      // get movie title from session storage
+      this.movieTitle = manageSessionStorage.getSessionStorage("movieTitle");
+      console.log("movie title is: ", this.movieTitle);
+    },
+
+
+    // populate the detail page content
+    populateDetailPage: function() {
+      console.log("in detailPage.populateDetailPage");
+
+      // need call to API for detailed information
+
+      // need to load the page up with the detailed information
+
+      // need to call method getUtelly to get Utelly API info
+
+      // need to load page up with the Utelly info
+      detailPage.getUtelly(testMovieTitle,testMovieCountry);
+
+      }, // end of method populateDetailPage
+
+
+    // get streaming info from Utelly API
+    // parameter: movie title
+    // returns: string info on streaming available
+    getUtelly: function(title,country) {
+      console.log("in detailPage.getUtelly");
+      console.log("search title,country ", title,country);
+
+      // this is API is being held back so that we can figure out how to secure it first
+      // original code is saved aside for reintroduction
+    }, // end of method getUtelly
+
+    // // other methods go below
+
+
+  } // end of detailPage object
+                      
+  // ----------------------------------------------------------
+  // START OF PROGRAM FLOW:
+  // ----------------------------------------------------------
+  console.log("Main program flow start");
+
+  // // test local storage methods
+  // manageSessionStorage.clearSessionStorage("movieTitle");
+  // console.log("movieTitle is: ",manageSessionStorage.getSessionStorage("movieTitle"));
+  // manageSessionStorage.setSessionStorage("movieTitle",testMovieTitle);
+  // console.log("movieTitle is: ",manageSessionStorage.getSessionStorage("movieTitle"));
+  // testMovieTitle = manageSessionStorage.getSessionStorage("movieTitle");
+  // console.log("testMovieTitle is: ", testMovieTitle);
   
-
-    // ----------------------------------------------------------
-    // START OF PROGRAM FLOW:
-    // ----------------------------------------------------------
-    console.log("Main program flow start");
-
-    // example of detailPage object getUtelly method call
-    // console.log("calling utelly for: ", title);
-    // detailPage.getUtelly(title);
+  
+  // // example of detailPage.populateDetailPage call
+  // detailPage.populateDetailPage();
 
 
-    // ----------------------------------------------------------
-    // events:
-    // ----------------------------------------------------------
 
-    $("#submit-btn").on("click", function(event) {
-        // Search Input
-        // console.log($("#search-input").val());
-        
-        var tokenizedTitle = $("#search-input").val().split(' ');
-        var title = '';
-        for(var i = 0; i < tokenizedTitle.length; i++) {
-            title += tokenizedTitle[i] + "+";
 
-        }
-        console.log(title);
-        //var queryURL = "https://www.omdbapi.com/?t=" + title + "&y=&plot=short&apikey=6e5ba5d2";
-        var queryURL = "https://www.omdbapi.com/?t=guardians+of+the+galaxy+vol.2&y=&plot=short&apikey=6e5ba5d2";
-        
-        $.ajax({
-            url: queryURL,
-            method: "GET"
-        }).then(function(response) {
-            console.log("Response Object: ", response);
-            console.log(response.Actors.split(", ")[0]);
-            console.log(response.Runtime);
-            console.log(response.Released);
-        });
+  // ----------------------------------------------------------
+  // events:
+  // ----------------------------------------------------------
 
-    });
+  $("#submit-btn").on("click", function(event) {
+      // Search Input
+      // console.log($("#search-input").val());
+      
+      var tokenizedTitle = $("#search-input").val().split(' ');
+      var title = '';
+      for(var i = 0; i < tokenizedTitle.length; i++) {
+          title += tokenizedTitle[i] + "+";
+
+      }
+      console.log(title);
+      //var queryURL = "https://www.omdbapi.com/?t=" + title + "&y=&plot=short&apikey=6e5ba5d2";
+      var queryURL = "https://www.omdbapi.com/?t=guardians+of+the+galaxy+vol.2&y=&plot=short&apikey=6e5ba5d2";
+      
+      $.ajax({
+          url: queryURL,
+          method: "GET"
+      }).then(function(response) {
+          console.log("Response Object: ", response);
+          console.log(response.Actors.split(", ")[0]);
+          console.log(response.Runtime);
+          console.log(response.Released);
+      });
+  });
 
     
-});
+}); // end of document ready
