@@ -1,3 +1,6 @@
+$(document).ready(function() {
+
+
 /* Top 20 trending movies (Linked with index.html) ------------------------------------------- */
 var apiKey = "4eb3939343ef4ca0932079284f76225d";
 var searchURL = "https://api.themoviedb.org/3/trending/all/day?api_key=" + apiKey;
@@ -44,7 +47,7 @@ $.ajax(settings).done(function (response) {
 /* ------------------------------------------------------------------------------------- */
 
 
-$(document).ready(function() {
+
   
   // ----------------------------------------------------------
   // global variables:
@@ -52,7 +55,7 @@ $(document).ready(function() {
 
   // test variable for call to utelly
   // var testMovieTitle = "jurassic+park";
-  // var testMovieCountry = "us";
+  var testMovieCountry = "us";
 
 
   // ----------------------------------------------------------
@@ -107,9 +110,9 @@ $(document).ready(function() {
       // switch the browser to the detail page
       window.location ='detail.html';
 
-      // get movie title from session storage
-      this.movieTitle = manageSessionStorage.getSessionStorage("movieTitle");
-      console.log("movie title is: ", this.movieTitle);
+      // // get movie title from session storage
+      // this.movieTitle = manageSessionStorage.getSessionStorage("movieTitle");
+      // console.log("movie title is: ", this.movieTitle);
     },
 
 
@@ -124,9 +127,21 @@ $(document).ready(function() {
       // need to call method getUtelly to get Utelly API info
 
       // need to load page up with the Utelly info
-      detailPage.getUtelly(testMovieTitle,testMovieCountry);
+      detailPage.getUtelly(this.movieTitle,testMovieCountry);
 
       }, // end of method populateDetailPage
+
+
+    // // get streaming info from Utelly API
+    // // parameter: movie title
+    // // returns: string info on streaming available
+    // getUtelly: function(title,country) {
+    //   console.log("in detailPage.getUtelly");
+    //   console.log("search title,country ", title,country);
+
+    //   // this is API is being held back so that we can figure out how to secure it first
+    //   // original code is saved aside for reintroduction
+    // }, // end of method getUtelly
 
 
     // get streaming info from Utelly API
@@ -136,8 +151,52 @@ $(document).ready(function() {
       console.log("in detailPage.getUtelly");
       console.log("search title,country ", title,country);
 
-      // this is API is being held back so that we can figure out how to secure it first
-      // original code is saved aside for reintroduction
+      const url ="https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com/lookup?term=" + title
+                  + "&country=" + country;
+
+      // console.log("url: ", url);
+
+      // build call to the API
+      const options = {
+      method: 'GET',
+      headers: {
+          "X-RapidAPI-Host": "utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com",
+          "X-RapidAPI-Key": "80549481bdmsha65d8ad2b7edcfap1d5cc3jsncf554c0fbd38"
+          },
+      };
+      
+      // ajax call to utelly API
+      // 1.  loop through the results
+      //     1.1 see if result matches target title exactly
+      //     1.2 loop through the locations on each match
+      //     1.3 surface the location and location url on the detail page
+      $.ajax(url, options).then(function(response) { 
+          console.log("in ajax call for utelly");
+          
+          // console.log(response.results);
+          // console.log("results-length: ", response.results.length);
+          // loop thru the results to find matches to the target movie
+          response.results.forEach(element => {
+            // console.log("result is: ",element);
+            // console.log("results-name ",element.name);
+            // check to see if this result matches target movie
+            // console.log("target title: ", title.toLowerCase().replace('+',' '));
+            // console.log("results name: ", element.name.toLowerCase());
+            if (element.name.toLowerCase() === title.toLowerCase().replace('+',' ')) {
+              console.log("match on title: ", title.toLowerCase().replace('+',' '));
+              // loop thru locations to see where title can be streamed
+              element.locations.forEach(element => {
+                // console.log("this location is: ", element.display_name);
+                // console.log("this location url is: ", element.url);
+                // right here need to put the location and location url on the detail page 
+                // think of un-ordered list 
+                $("#stream-id").text(element.display_name);
+                $("#stream-url").text(element.url);
+
+              }); // end of locations forEach
+            }; // end of title check loop
+          }); // end of results forEach
+      }); // end of the ajax call
     }, // end of method getUtelly
 
     // // other methods go below
@@ -148,7 +207,7 @@ $(document).ready(function() {
   // ----------------------------------------------------------
   // START OF PROGRAM FLOW:
   // ----------------------------------------------------------
-  console.log("Main program flow start");
+  console.log("In Landing Page");
 
   // // test local storage methods
   // manageSessionStorage.clearSessionStorage("movieTitle");
@@ -168,6 +227,28 @@ $(document).ready(function() {
   // ----------------------------------------------------------
   // events:
   // ----------------------------------------------------------
+
+  // redirect button event 
+  $("#redirect-btn").on("click",function() {
+    console.log("in global.redirect-btn click event");
+    var testMovieTitle = "jurassic+park";
+
+    // test local storage methods
+    manageSessionStorage.clearSessionStorage("movieTitle");
+    console.log("movieTitle is: ",manageSessionStorage.getSessionStorage("movieTitle"));
+    manageSessionStorage.setSessionStorage("movieTitle",testMovieTitle);
+    console.log("movieTitle is: ",manageSessionStorage.getSessionStorage("movieTitle"));
+    // testMovieTitle = manageSessionStorage.getSessionStorage("movieTitle");
+    // console.log("testMovieTitle is: ", testMovieTitle);
+    
+    
+    // // example of detailPage.populateDetailPage call
+    detailPage.redirectTo();
+    
+  // clear the variables
+
+  });
+
 
   $("#submit-btn").on("click", function(event) {
       // Search Input
