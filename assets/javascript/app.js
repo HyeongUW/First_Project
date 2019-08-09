@@ -1,3 +1,49 @@
+/* Top 20 trending movies (Linked with index.html) ------------------------------------------- */
+var apiKey = "4eb3939343ef4ca0932079284f76225d";
+var searchURL = "https://api.themoviedb.org/3/trending/all/day?api_key=" + apiKey;
+
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": searchURL,
+    "method": "GET",
+    "headers": {},
+    "data": "{}"
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+    
+    // Returns trending movies
+    for(var i = 0; i < response.results.length; i++) {
+        var tempDiv = $("<div>");
+        tempDiv.addClass("trending-div");
+
+        var tempImage = $("<img>");
+        var imageURL = "https://image.tmdb.org/t/p/w500" + response.results[i].poster_path;
+        tempImage.attr("src", imageURL);
+        tempImage.addClass("trending-poster");
+        
+        
+        var tempTitle = $("<h3>");
+        
+        // Some of the returned data does not have "original_title" data, some
+        // of them had "original_name" instead.
+        if(response.results[i].original_title !== undefined) {
+        tempTitle.text(response.results[i].original_title);
+        } else {
+        tempTitle.text(response.results[i].original_name);
+        }
+        
+        
+        tempDiv.append(tempImage).append(tempTitle);
+        
+        $("#trending-placehold").append(tempDiv);
+    }
+});
+/* ------------------------------------------------------------------------------------- */
+
+
 $(document).ready(function() {
   
   // ----------------------------------------------------------
