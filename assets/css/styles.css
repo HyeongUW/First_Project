@@ -15,8 +15,8 @@ margin: 0 auto;
 clear:both;
 background-color: lightgray;
 text-align: center;
-padding-left: 28px;
-padding-right: 0px;
+/*padding-left: 28px;*/
+/*padding-right: 0px;*/
 
 }
 /* header*/
@@ -33,16 +33,16 @@ font-family: 'Tangerine', serif;
         font-size: 28px;
 }
 
-/* .navbar > .container  {
-  display: block !important;
-} */
-
 .row {
   width: 100%;
+  margin: auto;
+ /* margin-right: 0px;*/
+/*  margin-left: 53px;*/
 }
 
 #nav-btn {
   float: right;
+  color: rgba(0,0,0,.5);
 }
 
 #camerareeling {
@@ -64,10 +64,7 @@ html {
   min-height: 100%;
 }
 
-/* add space for fixed nav */
-main {
-/*  margin: 80px 0;*/
-}
+
 
 /* create styles for use for all white main boxes */
 .block {
@@ -143,11 +140,11 @@ main {
 
 /* BEGIN FOOTER */
 
-footer {
+#copyright {
   /* Positioning */
   position: fixed;
   bottom: 0;
-  color: black;
+  color: white;
   text-align: center;
   padding: 0;
   clear: both;
@@ -167,23 +164,6 @@ footer {
   background-color: #666;
 }
 
-
-
-/*.two-toned-footer-color {
-  /* Box-model */
- /* height: 6px; */
-/*  padding-top: 3px;
-
-  /* Visual */
-/*  background-color: #4aaaa5;
-}*/
-
-/* END FOOTER */
-/* --- END STYLES FOR ALL PAGES --- */
-
-/* --- PAGE-SPECIFIC STYLES --- */
-/* ABOUT-ME PAGE */
-
 #about-image {
   /* Positioning */
   float: left;
@@ -192,50 +172,28 @@ footer {
   width: 200px;
   margin: 0 20px 10px 0;
 }
-/* END ABOUT-ME PAGE */
 
-
-/* PORTFOLIO PAGE */
-.port-image {
-  margin: 20px auto;
-}
-/* END PORTFOLIO PAGE */
-
-
-/* CONTACT FORM PAGE  */
 .form-control {
   /* give input boxes right angles */
   border-radius: 0;
-
+  font-size: 2rem;
   /* keep from horizontally resizing text area */
   min-width: 100%;
   max-width: 100%;
 }
 
 .submit-btn {
-  /* Box-model */
-  padding: 15px 30px;
-  font-size: 16px;
+  
+  font-size: 24px;
   font-weight: lighter;
-
-  background-color: light orange;
-
-
-  /* Typography */
-  color: #fff;
-
-  /* Visual */
-
-   background-color: #4aaaa5; 
-
-  border: 0;
+  background-color: #4aaaa5; 
+  padding: 4px;
 }
 
 .submit-btn:hover {
   opacity: .7;
 }
 
-/* END CONTACT FORM PAGE */
 
 .trending-poster {
   /* float: left; */
@@ -285,4 +243,8 @@ footer {
   opacity:1;
 }
 
+.displayFlex{
+  display: flex;
+  justify-content: center;
+}
 /* ---------------------------------------------------------------------- */
