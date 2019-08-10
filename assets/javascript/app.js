@@ -173,9 +173,7 @@ $(document).ready(function() {
     console.log("saved movie id: ", manageSessionStorage.getSessionStorage("movieId"));
     console.log("saved movie title: ", manageSessionStorage.getSessionStorage("movieTitle"));
     // redirect to the detail page
-    
-    
-    // redirectToDetailPage();
+    redirectToDetailPage();
   });
 
 
