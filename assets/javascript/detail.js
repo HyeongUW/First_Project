@@ -5,48 +5,6 @@ $(document).ready(function() {
   // global variables:
   // ----------------------------------------------------------
 
-  // test variable for call to utelly
-  // var testMovieTitle = "jurassic+park";
-  var testMovieCountry = "us";
-
-//   // ----------------------------------------------------------
-//   // youtube API 
-//   // ----------------------------------------------------------
-//   var player;
-
-//   function onYouTubeIframeAPIReady() {
-//       player = new YT.Player('video-placeholder', {
-//           width: 600,
-//           height: 400,
-//           videoId: 'foyufD52aog',
-//           // playerVars: {
-//           //     color: 'white',
-//           //     playlist: 'taJ60kskkns,FG0fTKAqZ5g'
-//           // },
-//           events: {
-//               onReady: initialize
-//           }
-//       });
-//   }
-
-//   function initialize(){
-
-//     // Update the controls on load
-//     updateTimerDisplay();
-//     updateProgressBar();
-
-//     // Clear any old interval.
-//     clearInterval(time_update_interval);
-
-//     // Start interval to update elapsed time display and
-//     // the elapsed part of the progress bar every second.
-//     time_update_interval = setInterval(function () {
-//         updateTimerDisplay();
-//         updateProgressBar();
-//     }, 1000)
-
-// }
-
   // ----------------------------------------------------------
   // objects and classes:
   // ----------------------------------------------------------
@@ -86,6 +44,7 @@ $(document).ready(function() {
     // local variables:
     movieTitle: "",
     movieTitleId: "",
+    country: "us",
     utellyHost: "",
     utellyKey: "",
     
@@ -97,6 +56,8 @@ $(document).ready(function() {
       // get movie title from session storage
       this.movieTitle = manageSessionStorage.getSessionStorage("movieTitle");
       console.log("movie title is: ", this.movieTitle);
+      this.movieId = manageSessionStorage.getSessionStorage("movieId");
+      console.log("movie id is: ", this.movieId);
 
    
       this.utellyHost = manageSessionStorage.getSessionStorage("host");
@@ -104,16 +65,26 @@ $(document).ready(function() {
       this.utellyKey = manageSessionStorage.getSessionStorage("key");
       console.log("rapid api key is: ", this.utellyKey);
 
-      // need call to API for detailed information
+      // call to API for detailed information
       detailPage.getTmdbMovieDetails(this.movieTitleId);
+
+      // call to API for credit information
+      detailPage.getTmdbMovieCredits(this.movieTitleId);
+
+      // need to load page up with the Utelly info
+      detailPage.getUtelly(this.movieTitle,this.country);
+
+      // call to API for video information
       detailPage.getTmdbMovieVideo(this.movieTitleId);
+
+      // example of data overlay
+      $("#movie-title>h3").text(this.movieTitle);
 
       // need to load the page up with the detailed information
 
       // need to call method getUtelly to get Utelly API info
 
-      // need to load page up with the Utelly info
-      // detailPage.getUtelly(this.movieTitle,testMovieCountry);
+     
 
       }, // end of method populateDetailPage
 
@@ -126,7 +97,8 @@ $(document).ready(function() {
       console.log("detail titleId", titleId);
 
       var apiKey = "4eb3939343ef4ca0932079284f76225d";
-      var searchURL = "https://api.themoviedb.org/3/movie/" + titleId + "?api_key=" + apiKey;
+      var searchURL = "https://api.themoviedb.org/3/movie/" + titleId + "?api_key=" + apiKey
+                    + "&language=en-US";
 
       var settings = {
           "async": true,
@@ -149,10 +121,11 @@ $(document).ready(function() {
         console.log("runtime: ", response.runtime);
         console.log("vote_average: ", response.vote_average);
         console.log("title: ", response.original_title);
+        console.log("homepage: ", response.homepage);
         response.genres.forEach(element => {
           console.log("genre: ", element.name)
         });
-        console.log("homepage: ", response.honmepage);
+
       });  
     },
 
@@ -163,7 +136,8 @@ $(document).ready(function() {
       console.log("detail titleId", titleId);
 
       var apiKey = "4eb3939343ef4ca0932079284f76225d";
-      var searchURL = "https://api.themoviedb.org/3/movie/" + titleId + "/videos?api_key=" + apiKey;
+      var searchURL = "https://api.themoviedb.org/3/movie/" + titleId + "/videos?api_key=" + apiKey
+                    + "&language=en-US";
 
       var settings = {
           "async": true,
@@ -182,10 +156,46 @@ $(document).ready(function() {
               console.log("site: ",element.site);
               console.log("type: ",element.type);
               console.log("key: ",element.key);
+              // embed the trailer
+              youTubeSrc = "https://www.youtube.com/embed/" + element.key + "?autoplay=1&mute=1&controls=0&showinfo=0&autohide=1"
+              console.log("src :", youTubeSrc);
+              $("#video-frame").attr('src',youTubeSrc);
+
+            //   <div id="video-back">
+            //   <iframe frameborder="0" height="100%" width="100%"
+            //   src="https://www.youtube.com/embed/foyufD52aog?autoplay=1&mute=1&controls=0&showinfo=0&autohide=1">
+            //   </iframe>
+            // </div>
             }
-            
           });
-          
+      });  
+    },
+
+    // get movie credits info from TMDB API
+    // parameter: movie title
+    getTmdbMovieCredits: function(titleId) {
+      console.log("in detailPage.getTmdbMovieCredits");
+      console.log("detail titleId", titleId);
+
+      var apiKey = "4eb3939343ef4ca0932079284f76225d";
+      var searchURL = "https://api.themoviedb.org/3/movie/" + titleId + "/credits?api_key=" + apiKey 
+                     + "&language=en-US";
+
+      var settings = {
+          "async": true,
+          "crossDomain": true,
+          "url": searchURL,
+          "method": "GET",
+          "headers": {},
+          "data": "{}"
+      }
+
+      $.ajax(settings).done(function (response) {
+          console.log(response);
+          response.cast.forEach(element => {
+              console.log("cast character: ",element.character);
+              console.log("cast name: ",element.name);
+          });
       });  
     },
 
@@ -196,12 +206,15 @@ $(document).ready(function() {
     getUtelly: function(title,country) {
       console.log("in detailPage.getUtelly");
       console.log("search title,country ", title,country);
+      var urlMovieTitle = title.split(' ').join('+');
 
-      const url ="https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com/lookup?term=" + title
+      const url ="https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com/lookup?term=" + urlMovieTitle
                   + "&country=" + country;
 
-      console.log("rapid api host is: ", detailPage.utellyHost);
-      console.log("rapid api key is: ",detailPage.utellyKey);
+      console.log("url :", url);
+      
+      // console.log("rapid api host is: ", detailPage.utellyHost);
+      // console.log("rapid api key is: ",detailPage.utellyKey);
       
       // build call to the API
       const options = {
@@ -212,6 +225,8 @@ $(document).ready(function() {
           },
       };
       
+
+
       // ajax call to utelly API
       // 1.  loop through the results
       //     1.1 see if result matches target title exactly
@@ -220,15 +235,15 @@ $(document).ready(function() {
       $.ajax(url, options).then(function(response) { 
           console.log("in ajax call for utelly");
           
-          // console.log(response.results);
-          // console.log("results-length: ", response.results.length);
+          console.log(response.results);
+          console.log("results-length: ", response.results.length);
           // loop thru the results to find matches to the target movie
           response.results.forEach(element => {
-            // console.log("result is: ",element);
-            // console.log("results-name ",element.name);
+            console.log("result is: ",element);
+            console.log("results-name ",element.name);
             // check to see if this result matches target movie
-            // console.log("target title: ", title.toLowerCase().replace('+',' '));
-            // console.log("results name: ", element.name.toLowerCase());
+            console.log("target title: ", title.toLowerCase().replace('+',' '));
+            console.log("results name: ", element.name.toLowerCase());
             if (element.name.toLowerCase() === title.toLowerCase().replace('+',' ')) {
               console.log("match on title: ", title.toLowerCase().replace('+',' '));
               // loop thru locations to see where title can be streamed
@@ -249,6 +264,9 @@ $(document).ready(function() {
     // other methods go below
 
   } // end of detailPage object
+
+
+
 
     //  // 2. This code loads the IFrame Player API code asynchronously.
     //  var tag = document.createElement('script');
@@ -292,14 +310,17 @@ $(document).ready(function() {
     //   }
 
 
+
+
   // ----------------------------------------------------------
   // START OF PROGRAM FLOW:
   // ----------------------------------------------------------
   console.log("In Detail Page");
 
-
-  // $("#video-back").prop('muted',false);
-  detailPage.movieTitleId = 420817;
+  detailPage.movieTitle = manageSessionStorage.getSessionStorage("movieTitle");
+  detailPage.movieTitleId = manageSessionStorage.getSessionStorage("movieId")
+  // detailPage.movieTitleId = 420817;
+  // detailPage.movieTitle = 'Aladdin'
   detailPage.populateDetailPage();
       
 }); // end of document ready
