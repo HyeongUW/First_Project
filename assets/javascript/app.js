@@ -175,7 +175,7 @@ $(document).ready(function() {
     // redirect to the detail page
     
     
-    // redirectToDetailPage();
+    redirectToDetailPage();
   });
 
 
