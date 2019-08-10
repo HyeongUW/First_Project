@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <!-- Our own CSS stylesheet -->
   <link rel="stylesheet" href="assets/css/styles.css" media="screen">
-
+  <link rel="stylesheet" href="assets/css/detail-style.css" media="screen">
 
 </head>
 
@@ -80,17 +80,23 @@
   
   </header>
 
+  <!-- <div id="player"></div> -->
+
+  <div id="video-back">
+    <iframe frameborder="0" height="100%" width="100%"
+    src="https://www.youtube.com/embed/foyufD52aog?autoplay=1&mute=1&controls=0&showinfo=0&autohide=1">
+    </iframe>
+  </div>
 
 
   <!-- Start of container -->
-  <main class="container">
+  <!-- <main class="container">
       <section class="row">
         <div class="col-md-12">
           <article class="block">
             <h1 class="block-header" id="clicked-movie-title">Movie Title</h1>
             <hr />
             
-            <!-- Placehold for trending movie posters and titles -->
             <div id="trending-placehold"></div>  
             <div class="col-md-12">
                 <article class="block">
@@ -119,7 +125,7 @@
           </article>
         </div>
       </section>
-    </main>
+    </main> -->
   <!-- End of container -->
   <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
@@ -185,6 +191,7 @@
 
     <!-- Main program body in javascript -->
     <script src="assets/javascript/detail.js"></script>
+  
 
 </body>
 

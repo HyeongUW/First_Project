@@ -128,7 +128,7 @@ $(document).ready(function() {
   // get firebase snapshot on initial load
   database.ref("/stream").once("value", function (snap) {
     console.log("in global.database ref /stream");
-    console.log(snap.val());
+    // console.log(snap.val());
     // get utelly API info
     utellyHost = snap.val().host;
     utellyKey = snap.val().key;

@@ -9,6 +9,43 @@ $(document).ready(function() {
   // var testMovieTitle = "jurassic+park";
   var testMovieCountry = "us";
 
+//   // ----------------------------------------------------------
+//   // youtube API 
+//   // ----------------------------------------------------------
+//   var player;
+
+//   function onYouTubeIframeAPIReady() {
+//       player = new YT.Player('video-placeholder', {
+//           width: 600,
+//           height: 400,
+//           videoId: 'foyufD52aog',
+//           // playerVars: {
+//           //     color: 'white',
+//           //     playlist: 'taJ60kskkns,FG0fTKAqZ5g'
+//           // },
+//           events: {
+//               onReady: initialize
+//           }
+//       });
+//   }
+
+//   function initialize(){
+
+//     // Update the controls on load
+//     updateTimerDisplay();
+//     updateProgressBar();
+
+//     // Clear any old interval.
+//     clearInterval(time_update_interval);
+
+//     // Start interval to update elapsed time display and
+//     // the elapsed part of the progress bar every second.
+//     time_update_interval = setInterval(function () {
+//         updateTimerDisplay();
+//         updateProgressBar();
+//     }, 1000)
+
+// }
 
   // ----------------------------------------------------------
   // objects and classes:
@@ -48,6 +85,7 @@ $(document).ready(function() {
   var detailPage = {
     // local variables:
     movieTitle: "",
+    movieTitleId: "",
     utellyHost: "",
     utellyKey: "",
     
@@ -67,15 +105,89 @@ $(document).ready(function() {
       console.log("rapid api key is: ", this.utellyKey);
 
       // need call to API for detailed information
+      detailPage.getTmdbMovieDetails(this.movieTitleId);
+      detailPage.getTmdbMovieVideo(this.movieTitleId);
 
       // need to load the page up with the detailed information
 
       // need to call method getUtelly to get Utelly API info
 
       // need to load page up with the Utelly info
-      detailPage.getUtelly(this.movieTitle,testMovieCountry);
+      // detailPage.getUtelly(this.movieTitle,testMovieCountry);
 
       }, // end of method populateDetailPage
+
+
+
+    // get movie info from TMDB API
+    // parameter: movie title
+    getTmdbMovieDetails: function(titleId) {
+      console.log("in detailPage.getTmdbMovieDetails");
+      console.log("detail titleId", titleId);
+
+      var apiKey = "4eb3939343ef4ca0932079284f76225d";
+      var searchURL = "https://api.themoviedb.org/3/movie/" + titleId + "?api_key=" + apiKey;
+
+      var settings = {
+          "async": true,
+          "crossDomain": true,
+          "url": searchURL,
+          "method": "GET",
+          "headers": {},
+          "data": "{}"
+      }
+
+      $.ajax(settings).done(function (response) {
+        // Details for the movie
+        
+        console.log(response);
+        // properties that should be mined for detail page
+        // title
+        console.log("title: ", response.original_title);
+        console.log("overview: ", response.overview);
+        console.log("release_date: ", response.release_date);
+        console.log("runtime: ", response.runtime);
+        console.log("vote_average: ", response.vote_average);
+        console.log("title: ", response.original_title);
+        response.genres.forEach(element => {
+          console.log("genre: ", element.name)
+        });
+        console.log("homepage: ", response.honmepage);
+      });  
+    },
+
+    // get movie video info from TMDB API
+    // parameter: movie title
+    getTmdbMovieVideo: function(titleId) {
+      console.log("in detailPage.getTmdbMovieVideo");
+      console.log("detail titleId", titleId);
+
+      var apiKey = "4eb3939343ef4ca0932079284f76225d";
+      var searchURL = "https://api.themoviedb.org/3/movie/" + titleId + "/videos?api_key=" + apiKey;
+
+      var settings = {
+          "async": true,
+          "crossDomain": true,
+          "url": searchURL,
+          "method": "GET",
+          "headers": {},
+          "data": "{}"
+      }
+
+      $.ajax(settings).done(function (response) {
+          console.log(response);
+          response.results.forEach(element => {
+            if(element.type === "Trailer" && element.site === "YouTube") {
+              console.log("trailer: ",element.name);
+              console.log("site: ",element.site);
+              console.log("type: ",element.type);
+              console.log("key: ",element.key);
+            }
+            
+          });
+          
+      });  
+    },
 
 
     // get streaming info from Utelly API
@@ -138,12 +250,56 @@ $(document).ready(function() {
 
   } // end of detailPage object
 
-                      
+    //  // 2. This code loads the IFrame Player API code asynchronously.
+    //  var tag = document.createElement('script');
+
+    //  tag.src = "https://www.youtube.com/iframe_api";
+    //  var firstScriptTag = document.getElementsByTagName('script')[0];
+    //  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    //  // 3. This function creates an <iframe> (and YouTube player)
+    //  //    after the API code downloads.
+    //  var player;
+    //  function onYouTubeIframeAPIReady() {
+    //    player = new YT.Player('player', {
+    //      height: '390',
+    //      width: '640',
+    //      videoId: 'foyufD52aog',
+    //      events: {
+    //        'onReady': onPlayerReady,
+    //        'onStateChange': onPlayerStateChange
+    //      }
+    //    });
+    //  }
+
+    //  // 4. The API will call this function when the video player is ready.
+    //  function onPlayerReady(event) {
+    //    event.target.playVideo();
+    //  }      
+     
+    //      // 5. The API calls this function when the player's state changes.
+    //   //    The function indicates that when playing a video (state=1),
+    //   //    the player should play for six seconds and then stop.
+    //   var done = false;
+    //   function onPlayerStateChange(event) {
+    //     if (event.data == YT.PlayerState.PLAYING && !done) {
+    //       setTimeout(stopVideo, 6000);
+    //       done = true;
+    //     }
+    //   }
+    //   function stopVideo() {
+    //     player.stopVideo();
+    //   }
+
+
   // ----------------------------------------------------------
   // START OF PROGRAM FLOW:
   // ----------------------------------------------------------
   console.log("In Detail Page");
- 
+
+
+  // $("#video-back").prop('muted',false);
+  detailPage.movieTitleId = 420817;
   detailPage.populateDetailPage();
       
 }); // end of document ready
