@@ -259,7 +259,13 @@ nav {
 }
 
 .nav-link {
-  opacity: 2px;
   color:white;
-  }
+}
+
+.nav-link:hover{
+  border: 1px solid white;
+  border-radius: 5px;
+  padding: 0;
+  color:white !important;
+}
 /* ---------------------------------------------------------------------- */
