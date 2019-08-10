@@ -61,9 +61,9 @@ $(document).ready(function() {
 
    
       this.utellyHost = manageSessionStorage.getSessionStorage("host");
-      console.log("rapid api host is: ", this.utellyHost);
+      //console.log("rapid api host is: ", this.utellyHost);
       this.utellyKey = manageSessionStorage.getSessionStorage("key");
-      console.log("rapid api key is: ", this.utellyKey);
+      //console.log("rapid api key is: ", this.utellyKey);
 
       // call to API for detailed information
       detailPage.getTmdbMovieDetails(this.movieTitleId);
