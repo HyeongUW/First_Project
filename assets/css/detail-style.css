@@ -1,0 +1,19 @@
+/* attempt to get youtube video as background */
+
+body {
+  width: 1080px;
+  height: 100%;
+}
+
+#video-back {
+  position: fixed;
+  z-index: -99;
+  width: 100%;
+  height: 100%;
+}
+
+#movie-title {
+  position: relative;
+  bottom: 100px;
+  left: 100px;
+}

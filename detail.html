@@ -13,10 +13,18 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <!-- Our own CSS stylesheet -->
   <link rel="stylesheet" href="assets/css/styles.css" media="screen">
+  <link rel="stylesheet" href="assets/css/detail-style.css" media="screen">
+
+  <!-- Bootstrap CDN -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script></script>
+
+  <!-- JQuery -->
+  <script src="https://code.jquery.com/jquery.js"></script>
 
 </head>
 
 <body>
+
   <!-- Scroll to the Top Button ------------------------------------------------------------------>
   <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
   <script>
@@ -53,6 +61,9 @@
         <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
           <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
             <li class="nav-item">
+                <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="search.html">Search</a>
             </li>
             <li class="nav-item">
@@ -76,22 +87,33 @@
   
   </header>
 
+  <!-- <div id="player"></div> -->
+
+  <div id="video-back">
+    <iframe id="video-frame" frameborder="0" height="100%" width="100%" src="">
+    <!-- src="https://www.youtube.com/embed/foyufD52aog?autoplay=1&mute=1&controls=0&showinfo=0&autohide=1" -->
+    </iframe>
+    <div id="movie-title">
+      <h3>Title goes here</h3>
+    </div>
+  </div>
 
 
   <!-- Start of container -->
-  <main class="container">
+  <!-- <main class="container">
       <section class="row">
         <div class="col-md-12">
           <article class="block">
             <h1 class="block-header" id="clicked-movie-title">Movie Title</h1>
             <hr />
             
-            <!-- Placehold for trending movie posters and titles -->
             <div id="trending-placehold"></div>  
             <div class="col-md-12">
                 <article class="block">
                   <h1 class="block-header">Work In Progress</h1>
                   <hr />
+                  <p id="stream-id"></p>
+                  <p id="stream-url"></p>
                   <img src="assets/imgs/natebeach.jpeg" alt="" id="about-image" />
                   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
                     dolore
@@ -113,7 +135,7 @@
           </article>
         </div>
       </section>
-    </main>
+    </main> -->
   <!-- End of container -->
   <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered" role="document">
@@ -171,11 +193,12 @@
   </footer>
   <!-- End of footer -->
 
-  <!-- jQuery CDN -->
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-  <!-- Bootstrap CDN -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script></script>
+
+
+    <!-- Main program body in javascript -->
+    <script src="assets/javascript/detail.js"></script>
+  
 
 </body>
 
