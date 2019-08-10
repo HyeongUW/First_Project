@@ -15,9 +15,6 @@
   <link rel="stylesheet" href="assets/css/styles.css" media="screen">
   <link rel="stylesheet" href="assets/css/detail-style.css" media="screen">
 
-  <!-- Bootstrap CDN -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script></script>
-
   <!-- JQuery -->
   <script src="https://code.jquery.com/jquery.js"></script>
 
@@ -47,7 +44,7 @@
   </script>
   <!---------------------------------------------------------------------------------------------->
 
-  <header id = "masthead">
+  <!-- <header id = "masthead"> -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -85,19 +82,30 @@
     </nav>
     <!-- End of navbar -->
   
-  </header>
+  <!-- </header> -->
 
   <!-- <div id="player"></div> -->
+      
+    <section class="row">
+      <div id="video-back" style="padding-top:56.25%; position: relative;">
+        <iframe id="video-frame" frameborder="0" allowfullscreen src="">
+        <!-- src="https://www.youtube.com/embed/foyufD52aog?autoplay=1&mute=1&controls=0&showinfo=0&autohide=1" -->
+        </iframe>
+        <div style="float: left;" id="movie-title">
+          <h3>Title goes here</h3>
+        </div>
+      </div>
+    </section>
 
-  <div id="video-back">
-    <iframe id="video-frame" frameborder="0" height="100%" width="100%" src="">
-    <!-- src="https://www.youtube.com/embed/foyufD52aog?autoplay=1&mute=1&controls=0&showinfo=0&autohide=1" -->
-    </iframe>
-    <div id="movie-title">
-      <h3>Title goes here</h3>
-    </div>
-  </div>
-
+    <section class="row" style="color: white;"
+      <div id="movie-info">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit vitae ex error, corrupti ab ipsum! Magni quaerat molestiae eius cumque temporibus, ullam quae saepe odit omnis ad laudantium iure aliquam.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, amet aut temporibus tempore possimus laudantium odio, impedit eum officia reiciendis ab repellendus ea quibusdam fugiat neque ex libero voluptatum exercitationem.</p>
+      </div>
+    </section>
+    
+  
+    
 
   <!-- Start of container -->
   <!-- <main class="container">
