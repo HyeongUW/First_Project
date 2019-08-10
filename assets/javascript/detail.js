@@ -79,13 +79,7 @@ $(document).ready(function() {
 
       // example of data overlay
       $("#movie-title>h3").text(this.movieTitle);
-
-      // need to load the page up with the detailed information
-
-      // need to call method getUtelly to get Utelly API info
-
      
-
       }, // end of method populateDetailPage
 
 
