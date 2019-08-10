@@ -3,6 +3,7 @@
 
 <head>
 
+  
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -18,7 +19,6 @@
 </head>
 
 <body>
-
 <!-- Scroll to the Top Button ------------------------------------------------------------------>
 <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
 <script>
@@ -40,14 +40,21 @@
   }
 </script>
 <!---------------------------------------------------------------------------------------------->
-    <header id = "masthead">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
-              <a class="navbar-brand" href="index.html" id="logo">The Name of Our Website Comes Here!</a>
-  
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
+<header id = "masthead">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
+    <div class="row" id="nav-row">
+      <div class="col-4">
+    </div>
+
+      <div class="col-4" id="logodiv">
+        <!-- Brand and toggle get grouped for better mobile display -->
+ 
+        <a class="navbar-brand" href="index.html" id="logo">A Web Site</a>
+        
+      </div>
+      <div class="col-4">
+        <button id="nav-btn" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
           aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -55,19 +62,22 @@
         <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
           <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
             <li class="nav-item">
-
               <a class="nav-link" href="search.html">Search</a>
             </li>
-            <li class="nav-item">
+              <li class="nav-item">
               <a class="nav-link" href="about.html">About</a>
             </li>
           </ul>
-       </div>
-      </div>
-    </div>
-  </nav>
- </header>
+        </div>
 
+      </div>
+      <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+  </nav>
+  <!-- End of navbar -->
+
+  </header>
 
   <!-- Start of container -->
   <main class="container">
@@ -75,73 +85,37 @@
       <div class="col-md-12">
         <form class="block form-horizontal">
           <h1 class="block-header">Search</h1>
+          <hr />
+
           <div class="form-group">
-
-            <!-- <label for="name of movie" class="col-sm-2 control-label">Name of movie title</label> -->
+            <!-- <label for="name" class="col-sm-2 control-label">Name</label> -->
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="name" placeholder="Name of movie title">
-
+              <input type="text" class="form-control" id="search-term" placeholder="Search with Movie Titles...">
             </div>
           </div>
+
           <button class="submit-btn">Submit</button>
+
         </form>
       </div>
     </section>
   </main>
   <!-- End of container -->
-  <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <main class="container">
-            <section class="row">
-              <div class="col-md-12">
-                <article class="block" style="padding-bottom: 80px; margin-top: 20px; padding-top: 5px;">
-                  <h1 class="block-header" style="margin: 0;">About Us</h1>
-                  <hr />
-                  <div class="photo-info" style="float: left">
-                    <img src="assets/imgs/natebeach.jpeg" alt="" id="about-image"/>
-                    <h5 class="author-name" style="text-align: left;">Myles Carey</h5>
-                    <p style="text-align: left;">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eos perferendis at dolore voluptate ea expedita. Earum odio reprehenderit voluptate rerum! Temporibus accusantium voluptatem veritatis necessitatibus voluptate, a non ab nihil.</p>
-                  </div>
-                  <div class="photo-info" style="clear: both;">
-                    <img src="assets/imgs/natebeach.jpeg" alt="" id="about-image"/>
-                    <h5 class="author-name" style="text-align: left;">Hyeong Suk Kim</h5>
-                    <p style="text-align: left;">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laboriosam dolor aperiam facilis, a earum optio officia sapiente ab cum corporis eum beatae, deleniti nam esse at necessitatibus vitae ipsa soluta.</p>
-                  </div>
-                  <div class="photo-info" style="clear: both">
-                    <img src="assets/imgs/natebeach.jpeg" alt="" id="about-image"/>
-                    <h5 class="author-name" style="text-align: left;">Victor Chung</h5>
-                    <p style="text-align: left;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad laudantium voluptas repellendus libero rerum exercitationem iste, expedita iusto nihil minus corporis quidem. Sint doloribus ad, distinctio at placeat veritatis quasi.</p>
-                  </div>
-                  <div class="photo-info" style="clear: both">
-                    <img src="assets/imgs/natebeach.jpeg" alt="" id="about-image"/>
-                    <h5 class="author-name" style="text-align: left;">Sam Meyer</h5>
-                    <p style="text-align: left;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt ab ipsum at neque labore ullam officiis. Officiis iure ipsa consectetur ipsum, perspiciatis nobis error voluptatibus, quos illum, ab voluptas consequatur.</p>
-                  </div>
-                </article>
-              </div>
-            </section>
-          </main>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
 
-
+  
   <!-- Placehold for the retrieved search result -->
   <main class="container">
     <div id="result-placehold"></div>
   </main>
  
+  <!-- Start of footer -->
+
+  <footer>
+    <div id = "copyright">
+      &copy; Copyright 2019 Project MovieStream team: Myles Carey,Samuel Meyer,Hyeong Suk Kim,Victor Chung
+    </div>
+  </footer>
+  <!-- End of footer -->
 
   <!-- jQuery CDN -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -149,18 +123,10 @@
   <!-- Bootstrap CDN -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script></script>
 
-
-  <footer>
-    <div id = "copyright">
-      &copy; Copyright 2019 Project MovieStream team: Myles Carey,Samuel Meyer,Hyeong Suk Kim,Victor Chung
-    </div>
-  </footer>
-
-
   <!-- javascript part that should be exported to app.js ----------------------------------->
+  
   <script src="./assets/javascript/search.js"></script>
   <!---------------------------------------------------------------------------------------->
-
 
 </body>
 
