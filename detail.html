@@ -14,28 +14,55 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
   <!-- Our own CSS stylesheet -->
   <link rel="stylesheet" href="assets/css/styles.css" media="screen">
+  <link rel="stylesheet" href="assets/css/detail-style.css" media="screen">
+
+  <!-- Bootstrap CDN -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script></script>
+
+  <!-- JQuery -->
+  <script src="https://code.jquery.com/jquery.js"></script>
 
 </head>
 
 <body>
 
-  <header id = "masthead">
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="row" id="nav-row">
-      <div class="col-4">
-     </div>
 
-      <div class="col-4" id="logodiv">
+  <!-- Scroll to the Top Button ------------------------------------------------------------------>
+  <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+  <script>
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {scrollFunction()};
+    
+    function scrollFunction() {
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        document.getElementById("myBtn").style.display = "block";
+      } else {
+        document.getElementById("myBtn").style.display = "none";
+      }
+    }
+    
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    }
+  </script>
+  <!---------------------------------------------------------------------------------------------->
+
+  <header id = "masthead">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
-         <a class="navbar-brand" href="index.html" id="logo">A Web Site</a>
-      </div>
-      <div class="col-4">
-        <button id="nav-btn" class="navbar-toggler" type="button" data-toggle="collapse"       data-target="#navbarTogglerDemo01"
+              <a class="navbar-brand" href="index.html" id="logo">The Name of Our Website Comes Here!</a>
+  
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
+
           aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+
             
             
           <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
@@ -80,9 +107,11 @@
             </div>
           </div>
         </article>
+
       </div>
-    </main>
+    </div>
   </div>
+
   <!-- End of container -->
 
   <!-- jQuery CDN -->
@@ -90,6 +119,7 @@
 
   <!-- Bootstrap CDN -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script></script>
+
   <!-- Start of footer -->
 
   <footer>
@@ -98,6 +128,16 @@
     </div>
   </footer>
   <!-- End of footer -->
+
+
+
+
+
+    <!-- Main program body in javascript -->
+    <script src="assets/javascript/detail.js"></script>
+  
+
+
 </body>
 
 </html>

@@ -1,4 +1,7 @@
 /* --- STYLES FOR ALL PAGES --- */
+* {
+  box-sizing: border-box;
+}
 body {
   /* Typography */
   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
@@ -181,10 +184,13 @@ nav {
   /* keep from horizontally resizing text area */
   min-width: 100%;
   max-width: 100%;
+  
+  /* Change the place of submit button next to the search-box */
+  float: left;
+  margin-top: 17px;
 }
 
 .submit-btn {
- 
   font-size: 24px;
   font-weight: lighter;
   background-color: #6699e6; 
@@ -246,6 +252,7 @@ nav {
   opacity:1;
 }
 
+
 /*the center portion - the article section  */
 .displayFlex{
   display: flex;
@@ -269,3 +276,25 @@ nav {
   color:white !important;
 }
 /* ---------------------------------------------------------------------- */
+/* Maybe we do not need this part  August 10, Merging Request*/
+#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background-color: #7FDBFF;
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 4px;
+}
+
+#myBtn:hover {
+  background-color: #001f3f;
+}
+/* ---------------------------------------------------------- */
+
