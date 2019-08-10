@@ -72,7 +72,7 @@ $(document).ready(function() {
       detailPage.getTmdbMovieCredits(this.movieTitleId);
 
       // need to load page up with the Utelly info
-      detailPage.getUtelly(this.movieTitle,this.country);
+      // detailPage.getUtelly(this.movieTitle,this.country);
 
       // call to API for video information
       detailPage.getTmdbMovieVideo(this.movieTitleId);
