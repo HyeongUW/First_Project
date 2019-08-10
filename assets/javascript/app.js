@@ -24,7 +24,7 @@ $(document).ready(function() {
           var tempImage = $("<img>");
           var imageURL = "https://image.tmdb.org/t/p/w500" + response.results[i].poster_path;
           tempImage.attr("src", imageURL);
-          tempImage.attr('data-movie-id',response.results[i].id);
+          tempImage.attr('data-movie-id', response.results[i].id);
           tempImage.addClass("trending-poster");
           
           
@@ -33,11 +33,11 @@ $(document).ready(function() {
           // Some of the returned data does not have "original_title" data, some
           // of them had "original_name" instead.
           if(response.results[i].original_title !== undefined) {
-          tempTitle.text(response.results[i].original_title);
-          tempImage.attr('data-movie-title',response.results[i].original_title);
+            tempTitle.text(response.results[i].original_title);
+            tempImage.attr('data-movie-title',response.results[i].original_title);
           } else {
-          tempTitle.text(response.results[i].original_name);
-          tempImage.attr('data-movie-title',response.results[i].original_name);
+            tempTitle.text(response.results[i].original_name);
+            tempImage.attr('data-movie-title',response.results[i].original_name);
           }
           
           
@@ -120,7 +120,7 @@ $(document).ready(function() {
     setSessionStorage: function(property,propVal) {
       console.log("in manageSessionStorage.setSessionStorage");
       sessionStorage.setItem(property,propVal);
-    },
+    }
   }
 
                       
@@ -211,7 +211,7 @@ $(document).ready(function() {
   // START OF PROGRAM FLOW:
   // ----------------------------------------------------------
   console.log("In Landing Page");
-  
+  manageSessionStorage.clearSessionStorage("search-term");
   
     
 }); // end of document ready
