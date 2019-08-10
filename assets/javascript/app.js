@@ -141,27 +141,27 @@ $(document).ready(function() {
 
 
   // redirect button event 
-  $("#redirect-btn").on("click",function() {
-    console.log("in global.redirect-btn click event");
-    var movieTitle = "Aladdin";
-    var movieId = 420817;
+//  $("#redirect-btn").on("click",function() {
+//    console.log("in global.redirect-btn click event");
+//    var movieTitle = "Aladdin";
+//    var movieId = 420817;
 
     // test local storage methods
-    manageSessionStorage.clearSessionStorage("movieTitle");
-    console.log("movieTitle is: ",manageSessionStorage.getSessionStorage("movieTitle"));
-    manageSessionStorage.setSessionStorage("movieTitle",movieTitle);
-    console.log("movieTitle is: ",manageSessionStorage.getSessionStorage("movieTitle"));
-    manageSessionStorage.clearSessionStorage("movieId");
-    console.log("movieId is: ",manageSessionStorage.getSessionStorage("movieId"));
-    manageSessionStorage.setSessionStorage("movieId",movieId);
-    console.log("movieId is: ",manageSessionStorage.getSessionStorage("movieId"));
+//    manageSessionStorage.clearSessionStorage("movieTitle");
+//    console.log("movieTitle is: ",manageSessionStorage.getSessionStorage("movieTitle"));
+//    manageSessionStorage.setSessionStorage("movieTitle",movieTitle);
+//    console.log("movieTitle is: ",manageSessionStorage.getSessionStorage("movieTitle"));
+//    manageSessionStorage.clearSessionStorage("movieId");
+//    console.log("movieId is: ",manageSessionStorage.getSessionStorage("movieId"));
+//    manageSessionStorage.setSessionStorage("movieId",movieId);
+//    console.log("movieId is: ",manageSessionStorage.getSessionStorage("movieId"));
 
     // example of detailPage.populateDetailPage call
-    redirectToDetailPage();
+//    redirectToDetailPage();
     
   // clear the variables
 
-  });
+//  });
 
   // go to detail page on trending movie click
   $(document).on("click",".trending-div>img", function() {
