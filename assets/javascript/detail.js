@@ -76,9 +76,6 @@ $(document).ready(function() {
 
       // call to API for video information
       detailPage.getTmdbMovieVideo(this.movieTitleId);
-
-      // example of data overlay
-      $("#movie-title>h3").text(this.movieTitle);
      
       }, // end of method populateDetailPage
 
