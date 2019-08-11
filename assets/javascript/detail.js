@@ -192,8 +192,7 @@ $(document).ready(function() {
       });  
     },
 
-    // test comment - delete when done
-
+    
     // get streaming info from Utelly API
     // parameter: movie title
     // returns: string info on streaming available
