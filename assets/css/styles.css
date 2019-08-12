@@ -34,10 +34,10 @@ text-align: center;
 /* header*/
 #masthead{
 position: fixed;
-z-index: 99;
+/* z-index: 99; */
 width: 100%;
 margin: 0 0 30px;
-overflow: auto;
+/* overflow: auto; */
 color:white;
 background: #1a1919;
 /* border-bottom: 2px solid #cccccc; */
