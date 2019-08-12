@@ -28,68 +28,8 @@ $(document).ready(function() {
         }
         
         $.ajax(settings).done(function (response) {
-            
-            console.log(response);
-            
-             // Goes over the entire retrieved data
-            for(var i = 0; i < response.total_results; i++) {
+            populateSearchResult(response);            
 
-                var tempDiv = $("<div>");
-                tempDiv.addClass("search-result-div");
-        
-                
-                // Make a div for image and put the image tag in it
-                //var tempImgDiv = $("<div>");
-                var tempImgDiv = $("<div class='poster-div'>");
-                var tempImage = $("<img id='search-result-image'>");
-                var imageURL;
-                if(response.results[i].poster_path === null) {
-                    imageURL = "./assets/images/no-image-available-icon-6.jpg"
-                } else {
-                    imageURL = "https://image.tmdb.org/t/p/w500" + response.results[i].poster_path;    
-                }
-                tempImage.attr("src", imageURL);
-                tempImage.attr('data-movie-id', response.results[i].id);
-                tempImage.addClass("search-result-poster");
-                tempImgDiv.append(tempImage);
-
-
-                // Retrieving title, release date, average vote, and vote count
-                var tempDataDiv = $("<div id='search-result-data'>");
-                var tempTitle = $("<h3>");
-                
-                // Some of the returned data does not have "original_title" data, some
-                // of them had "original_name" instead.
-                if(response.results[i].original_title !== undefined) {
-                    tempTitle.text(response.results[i].original_title);
-                    tempImage.attr('data-movie-title', response.results[i].original_title);
-                } else {
-                    tempTitle.text(response.results[i].original_name);
-                    tempImage.attr('data-movie-title', response.results[i].original_name);
-                }
-                tempTitle.addClass("search-result-title");
-
-                var tempRelease = $("<h3>");
-                tempRelease.text(response.results[i].release_date);
-                
-                
-                var tempVoteAvg = $("<h3>");
-                tempVoteAvg.text(response.results[i].vote_average);
-                
-                var tempVoteCount = $("<h3>");
-                tempVoteCount.text(response.results[i].vote_count);
-
-                
-                tempDataDiv.append(tempTitle).append(tempRelease).append(tempVoteAvg).append(tempVoteCount);
-
-                
-                
-                tempDiv.append(tempImgDiv).append(tempDataDiv);
-                
-                
-                $("#result-placehold").append(tempDiv);
-
-            } 
             
         });
     }
@@ -122,75 +62,14 @@ $(document).ready(function() {
         }
         
         $.ajax(settings).done(function (response) {
-            
-            console.log(response);
-            
-             // Goes over the entire retrieved data
-            for(var i = 0; i < response.total_results; i++) {
-
-                var tempDiv = $("<div>");
-                tempDiv.addClass("search-result-div");
-        
-                
-                // Make a div for image and put the image tag in it
-                //var tempImgDiv = $("<div>");
-                var tempImgDiv = $("<div class='poster-div'>");
-                var tempImage = $("<img id='search-result-image'>");
-                var imageURL;
-                if(response.results[i].poster_path === null) {
-                    imageURL = "./assets/images/no-image-available-icon-6.jpg"
-                } else {
-                    imageURL = "https://image.tmdb.org/t/p/w500" + response.results[i].poster_path;    
-                }
-                tempImage.attr("src", imageURL);
-                tempImage.attr('data-movie-id', response.results[i].id);
-                tempImage.addClass("search-result-poster");
-                tempImgDiv.append(tempImage);
-
-
-                // Retrieving title, release date, average vote, and vote count
-                var tempDataDiv = $("<div id='search-result-data'>");
-                var tempTitle = $("<h3>");
-                
-                // Some of the returned data does not have "original_title" data, some
-                // of them had "original_name" instead.
-                if(response.results[i].original_title !== undefined) {
-                    tempTitle.text(response.results[i].original_title);
-                    tempImage.attr('data-movie-title', response.results[i].original_title);
-                } else {
-                    tempTitle.text(response.results[i].original_name);
-                    tempImage.attr('data-movie-title', response.results[i].original_name);
-                }
-                tempTitle.addClass("search-result-title");
-
-                var tempRelease = $("<h3>");
-                tempRelease.text(response.results[i].release_date);
-                
-                
-                var tempVoteAvg = $("<h3>");
-                tempVoteAvg.text(response.results[i].vote_average);
-                
-                var tempVoteCount = $("<h3>");
-                tempVoteCount.text(response.results[i].vote_count);
-
-                
-                tempDataDiv.append(tempTitle).append(tempRelease).append(tempVoteAvg).append(tempVoteCount);
-
-                
-                
-                tempDiv.append(tempImgDiv).append(tempDataDiv);
-                
-                
-                $("#result-placehold").append(tempDiv);
-
-            } 
+            populateSearchResult(response);
             
         });    
     });
     
 });
 
-$(document).on("click", ".poster-div>img", function() {
+$(document).on("click", ".search-result-title, .poster-div>img", function() {
     //console.log("in trending-div.img click event");
     //console.log("you pressed " + $(this).data("movie-id"));
     //console.log("you pressed " + $(this).data("movie-title"));
@@ -205,6 +84,7 @@ $(document).on("click", ".poster-div>img", function() {
 
     redirectToDetailPage();
 });
+
 
 var manageSessionStorage = {
     // local variables:
@@ -237,3 +117,80 @@ function redirectToDetailPage() {
     window.location ='detail.html';
 };
 
+function populateSearchResult(response) {
+            
+            
+    console.log(response);
+            
+    // Goes over the entire retrieved data
+   for(var i = 0; i < response.total_results; i++) {
+
+       // Creating a div for each of the search results
+       var tempDiv = $('<div style="text-align: left;">'); 
+       tempDiv.addClass("search-result-div");
+
+       
+       // Make a div for image and put the image tag in it
+       var tempImgDiv = $("<div class='poster-div'>");
+       var tempImage = $("<img id='search-result-image'>");
+       var imageURL;
+       if(response.results[i].poster_path === null) {
+           imageURL = "./assets/images/no-image-available-icon-6.jpg"
+       } else {
+           imageURL = "https://image.tmdb.org/t/p/w500" + response.results[i].poster_path;    
+       }
+       tempImage.attr("src", imageURL);
+       tempImage.attr('data-movie-id', response.results[i].id);
+       tempImage.addClass("search-result-poster");
+       tempImgDiv.append(tempImage);
+
+
+       // Retrieving title, release date, average vote, and vote count
+       var tempDataDiv = $("<div id='search-result-data'>");
+       var tempTitle = $("<h1>");
+       tempTitle.attr('data-movie-id', response.results[i].id);
+       
+       // Some of the returned data does not have "original_title" data, some
+       // of them had "original_name" instead.
+       if(response.results[i].original_title !== undefined) {
+           tempTitle.text(response.results[i].original_title);
+           tempTitle.attr('data-movie-title', response.results[i].original_title);
+           tempImage.attr('data-movie-title', response.results[i].original_title);
+       } else {
+           tempTitle.text(response.results[i].original_name);
+           tempTitle.attr('data-movie-title', response.results[i].original_title);
+           tempImage.attr('data-movie-title', response.results[i].original_name);
+       }
+       tempTitle.addClass("search-result-title");
+
+       var tempRelease = $("<h3>");
+       //tempRelease.text("Release Date: " + response.results[i].release_date);
+       tempRelease.text("(" + response.results[i].release_date + ")");
+       
+       
+       var starIcon = $("<img class='star-icon' style='float: left';>");
+       starIcon.attr('src', './assets/images/icons8-star-96.png');
+       
+       
+
+       var tempVoteAvg = $("<h3 style='float: left';>");
+       tempVoteAvg.text(response.results[i].vote_average);
+
+       var userIcon = $("<img class='star-icon' style='float: left';>");
+       userIcon.attr('src', './assets/images/icons8-people-96.png');
+
+       
+       var tempVoteCount = $("<h3>");
+       tempVoteCount.text(response.results[i].vote_count);
+
+       
+       tempDataDiv.append(tempTitle).append(tempRelease).append(starIcon).append(tempVoteAvg).append(userIcon).append(tempVoteCount);
+
+       
+       
+       tempDiv.append(tempImgDiv).append(tempDataDiv);
+       
+       
+       $("#result-placehold").append(tempDiv);
+   }     
+};

@@ -187,7 +187,9 @@ nav {
   
   /* Change the place of submit button next to the search-box */
   float: left;
-  margin-top: 17px;
+  margin-top: 5px;
+  margin-left: 30px;
+  height: 48px;
 }
 
 .submit-btn {
@@ -195,6 +197,8 @@ nav {
   font-weight: lighter;
   background-color: #6699e6; 
   padding: 4px;
+  margin-top: -12px;
+  margin-bottom: 18px;
 }
 
 .submit-btn:hover {
@@ -307,12 +311,26 @@ nav {
 #search-result-image {
   width: 220px;
   height: 260px;
-  margin-right: 200px;
+  margin-right: 40px;
+  margin-left: 210px;
+  border-radius:12px;
+  
+}
+
+.search-result-title {
+  width: 600px;
+}
+#search-result-image:hover { 
+  filter:blur(2px) brightness(60%);
   
 }
 
 #search-result-data {
   color: white;
-  width: 350px;
-  margin-top: 60px;
+  width: 415px;
+  margin-top: 50px;
+}
+
+.star-icon {
+  width: 30px;
 }
