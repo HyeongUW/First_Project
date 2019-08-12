@@ -4,6 +4,7 @@ $(document).ready(function() {
   // ----------------------------------------------------------
   // global variables:
   // ----------------------------------------------------------
+    youTubeVideoId = '';
 
   // ----------------------------------------------------------
   // objects and classes:
@@ -150,16 +151,14 @@ $(document).ready(function() {
               console.log("site: ",element.site);
               console.log("type: ",element.type);
               console.log("key: ",element.key);
+              youTubeVideoId = element.key;
+              console.log("youTubeVideoId: ",youTubeVideoId);
+              
               // embed the trailer
-              youTubeSrc = "https://www.youtube.com/embed/" + element.key + "?autoplay=1&mute=1&controls=0&showinfo=0&autohide=1"
-              console.log("src :", youTubeSrc);
-              $("#video-frame").attr('src',youTubeSrc);
+              // youTubeSrc = "https://www.youtube.com/embed/" + element.key + "?autoplay=1&mute=1&controls=0&showinfo=0&autohide=1"
+              // console.log("src :", youTubeSrc);
+              // $("#video-frame").attr('src',youTubeSrc);
 
-            //   <div id="video-back">
-            //   <iframe frameborder="0" height="100%" width="100%"
-            //   src="https://www.youtube.com/embed/foyufD52aog?autoplay=1&mute=1&controls=0&showinfo=0&autohide=1">
-            //   </iframe>
-            // </div>
             }
           });
       });  
@@ -193,7 +192,7 @@ $(document).ready(function() {
       });  
     },
 
-
+    
     // get streaming info from Utelly API
     // parameter: movie title
     // returns: string info on streaming available
@@ -260,52 +259,6 @@ $(document).ready(function() {
   } // end of detailPage object
 
 
-
-
-    //  // 2. This code loads the IFrame Player API code asynchronously.
-    //  var tag = document.createElement('script');
-
-    //  tag.src = "https://www.youtube.com/iframe_api";
-    //  var firstScriptTag = document.getElementsByTagName('script')[0];
-    //  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-    //  // 3. This function creates an <iframe> (and YouTube player)
-    //  //    after the API code downloads.
-    //  var player;
-    //  function onYouTubeIframeAPIReady() {
-    //    player = new YT.Player('player', {
-    //      height: '390',
-    //      width: '640',
-    //      videoId: 'foyufD52aog',
-    //      events: {
-    //        'onReady': onPlayerReady,
-    //        'onStateChange': onPlayerStateChange
-    //      }
-    //    });
-    //  }
-
-    //  // 4. The API will call this function when the video player is ready.
-    //  function onPlayerReady(event) {
-    //    event.target.playVideo();
-    //  }      
-     
-    //      // 5. The API calls this function when the player's state changes.
-    //   //    The function indicates that when playing a video (state=1),
-    //   //    the player should play for six seconds and then stop.
-    //   var done = false;
-    //   function onPlayerStateChange(event) {
-    //     if (event.data == YT.PlayerState.PLAYING && !done) {
-    //       setTimeout(stopVideo, 6000);
-    //       done = true;
-    //     }
-    //   }
-    //   function stopVideo() {
-    //     player.stopVideo();
-    //   }
-
-
-
-
   // ----------------------------------------------------------
   // START OF PROGRAM FLOW:
   // ----------------------------------------------------------
@@ -316,5 +269,65 @@ $(document).ready(function() {
   // detailPage.movieTitleId = 420817;
   // detailPage.movieTitle = 'Aladdin'
   detailPage.populateDetailPage();
-      
+
 }); // end of document ready
+
+  //-----------------------------------------------------------------------------------------
+  // 2. This code loads the IFrame Player API code asynchronously.
+  var tag = document.createElement('script');
+
+  tag.src = "https://www.youtube.com/iframe_api";
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  
+  // 3. This function creates an <iframe> (and YouTube player)
+  //    after the API code downloads.
+  var player;
+  function onYouTubeIframeAPIReady() {
+    player = new YT.Player('player', {
+      height: '100%', //'390',
+      width: '100%', //'640',
+      videoId: '', //youTubeVideoId, //'foyufD52aog',
+      events: {
+        'onReady': onPlayerReady,
+        'onStateChange': onPlayerStateChange //,
+        //'onError': onError
+      }
+    });
+  }
+  
+    // 4. The API will call this function when the video player is ready.
+    function onPlayerReady(event) {
+
+      event.target.loadVideoById(youTubeVideoId);
+      event.target.setVolume(20);
+      event.target.playVideo();
+      // event.target.playVideoAt(0);
+      // event.loadPlaylist(youTubeVideoId);
+      // event.setLoop(true);
+ 
+      // event.target.mute();
+
+     
+    }
+  
+    // 5. The API calls this function when the player's state changes.
+    //    The function indicates that when vide ended (state=0),
+    //    the player should start the video again
+    var done = false;
+    function onPlayerStateChange(event) {
+      if (event.data == YT.PlayerState.ENDED) {
+        event.target.playVideo();
+      }
+    }
+
+    // function onError(event) {
+    //   console.log("onError: ",event.data);
+    //   event.target.playVideo()
+    // }
+  //------------------------------------------------------------------------------------------ 
+
+
+
+      
+
