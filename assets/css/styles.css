@@ -312,7 +312,7 @@ nav {
   width: 220px;
   height: 260px;
   margin-right: 40px;
-  margin-left: 210px;
+  margin-left: 170px;
   border-radius:12px;
   
 }
@@ -331,6 +331,11 @@ nav {
   margin-top: 50px;
 }
 
+#search-result-data h3, .star-icon{
+  margin-left: 10px; 
+}
+
 .star-icon {
   width: 30px;
+  
 }

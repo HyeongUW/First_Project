@@ -119,7 +119,7 @@ function populateSearchResult(searchTerm, numOfPages) {
     // page number should be defined here before the searchURL
     
     for(var i = 1; i <= numOfPages; i++) {
-        //console.log("Call #" + i);
+        console.log("Call #" + i);
         var searchURL = "https://api.themoviedb.org/3/search/multi?api_key=" + apiKey + "&language=en-US&query=" + searchTerm + "&page=" + i + "&include_adult=false&region=us";
     
     
