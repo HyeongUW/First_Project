@@ -206,30 +206,30 @@ $(document).on("click", ".poster-div>img", function() {
     redirectToDetailPage();
 });
 
-var manageSessionStorage = {
-    // local variables:
+// var manageSessionStorage = {
+//     // local variables:
 
-    // methods:
+//     // methods:
 
-    // method to clear property from local storage
-    clearSessionStorage: function(property) {
-        console.log("in manageSessionStorage.clearSessionStorage");
-        sessionStorage.removeItem(property);
-    },
+//     // method to clear property from local storage
+//     clearSessionStorage: function(property) {
+//         console.log("in manageSessionStorage.clearSessionStorage");
+//         sessionStorage.removeItem(property);
+//     },
 
-    // method to get property from local storage
-    getSessionStorage: function(property) {
-        console.log("in manageSessionStorage.getSessionStorage");
-        var propVal = sessionStorage.getItem(property);
-        return propVal;
-    },
+//     // method to get property from local storage
+//     getSessionStorage: function(property) {
+//         console.log("in manageSessionStorage.getSessionStorage");
+//         var propVal = sessionStorage.getItem(property);
+//         return propVal;
+//     },
 
-    // method to set property in local storage
-    setSessionStorage: function(property,propVal) {
-        console.log("in manageSessionStorage.setSessionStorage");
-        sessionStorage.setItem(property,propVal);
-    }
-}
+//     // method to set property in local storage
+//     setSessionStorage: function(property,propVal) {
+//         console.log("in manageSessionStorage.setSessionStorage");
+//         sessionStorage.setItem(property,propVal);
+//     }
+// }
 
 function redirectToDetailPage() {
     console.log("in global.redirectToDetailPage");

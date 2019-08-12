@@ -3,6 +3,7 @@
 body {
   /* width: 1080px; */
   height: 100%;
+  background-color: black;
 }
 
 /* #video-back {
@@ -39,4 +40,30 @@ body {
 
 .row {
   display: block;
+}
+
+.test-box {
+  display: block;
+  color: lightsteelblue;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 8px;
+  line-height: 1.3em; 
+  background-color: black;
+  border: 1px solid lightslategray;
+  border-radius: .25rem;
+  margin-bottom: 8px;
+  overflow: scroll;
+}
+
+#dtl-overview {
+  height: 150px;
+  overflow: scroll;
+}
+
+.checkbox {
+  width: 25%;
+}
+.watch-list-item {
+  width: 75%;
+  float: right;
 }

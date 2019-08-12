@@ -98,30 +98,30 @@ $(document).ready(function() {
   // ----------------------------------------------------------
   // object for local storage:
   // ----------------------------------------------------------
-  var manageSessionStorage = {
-    // local variables:
+  // var manageSessionStorage = {
+  //   // local variables:
 
-    // methods:
+  //   // methods:
 
-    // method to clear property from local storage
-    clearSessionStorage: function(property) {
-      console.log("in manageSessionStorage.clearSessionStorage");
-      sessionStorage.removeItem(property);
-    },
+  //   // method to clear property from local storage
+  //   clearSessionStorage: function(property) {
+  //     console.log("in manageSessionStorage.clearSessionStorage");
+  //     sessionStorage.removeItem(property);
+  //   },
 
-    // method to get property from local storage
-    getSessionStorage: function(property) {
-      console.log("in manageSessionStorage.getSessionStorage");
-      var propVal = sessionStorage.getItem(property);
-      return propVal;
-    },
+  //   // method to get property from local storage
+  //   getSessionStorage: function(property) {
+  //     console.log("in manageSessionStorage.getSessionStorage");
+  //     var propVal = sessionStorage.getItem(property);
+  //     return propVal;
+  //   },
 
-    // method to set property in local storage
-    setSessionStorage: function(property,propVal) {
-      console.log("in manageSessionStorage.setSessionStorage");
-      sessionStorage.setItem(property,propVal);
-    }
-  }
+  //   // method to set property in local storage
+  //   setSessionStorage: function(property,propVal) {
+  //     console.log("in manageSessionStorage.setSessionStorage");
+  //     sessionStorage.setItem(property,propVal);
+  //   }
+  // }
 
                       
   // ----------------------------------------------------------
@@ -173,15 +173,31 @@ $(document).ready(function() {
     console.log("saved movie id: ", manageSessionStorage.getSessionStorage("movieId"));
     console.log("saved movie title: ", manageSessionStorage.getSessionStorage("movieTitle"));
     // redirect to the detail page
-    
-    
     redirectToDetailPage();
   });
 
+  // watch list button event - show modal
+  $("#watch-list-btn").on("click",function() {
+    console.log("in global.watch-list-btn click event")
+   // show watch list
+    $('#my-modal').modal('show');
+  });
 
+  //  watch list modal content - movie title click
+  // should cause redirect to the detail page
+  $(document).on("click", ".watch-list-item", function() {
+    console.log("in global.watch-list-item click event");
+    console.log("you pressed " + $(this).data("movie-id"));
+    console.log("you pressed " + $(this).data("movie-title"));
+    manageSessionStorage.setSessionStorage("movieId",$(this).data("movie-id"));
+    manageSessionStorage.setSessionStorage("movieTitle",$(this).data("movie-title"));
+    console.log("saved movie id: ", manageSessionStorage.getSessionStorage("movieId"));
+    console.log("saved movie title: ", manageSessionStorage.getSessionStorage("movieTitle"));
+    // redirect to the detail page
+    redirectToDetailPage();
+  });
 
-
-
+  // no longer used - remove this (most likely)
   // $("#submit-btn").on("click", function(event) {
   //     // Search Input
   //     // console.log($("#search-input").val());
@@ -213,5 +229,28 @@ $(document).ready(function() {
   console.log("In Landing Page");
   manageSessionStorage.clearSessionStorage("search-term");
   
+
+  // no longer used - remove this (most likely)
+  //  // redirect button event 
+  //  $("#watch-list").on("click",function() {
+  //   console.log("in global.watch-list click event");
+  //   // var testMovieTitle = "jurassic+park";
+
+  //   // test local storage methods
+  //   manageSessionStorage.clearSessionStorage("movieTitle");
+  //   console.log("movieTitle is: ",manageSessionStorage.getSessionStorage("movieTitle"));
+  //   manageSessionStorage.setSessionStorage("movieTitle",testMovieTitle);
+  //   console.log("movieTitle is: ",manageSessionStorage.getSessionStorage("movieTitle"));
+  //   // testMovieTitle = manageSessionStorage.getSessionStorage("movieTitle");
+  //   // console.log("testMovieTitle is: ", testMovieTitle);
+    
+    
+  //   // // example of detailPage.populateDetailPage call
+  //   detailPage.redirectTo();
+    
+  // // clear the variables
+
+  // });
+
     
 }); // end of document ready

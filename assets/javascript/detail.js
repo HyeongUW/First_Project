@@ -13,30 +13,30 @@ $(document).ready(function() {
   // ----------------------------------------------------------
   // object for local storage:
   // ----------------------------------------------------------
-  var manageSessionStorage = {
-    // local variables:
+  // var manageSessionStorage = {
+  //   // local variables:
 
-    // methods:
+  //   // methods:
 
-    // method to clear property from local storage
-    clearSessionStorage: function(property) {
-      console.log("in manageSessionStorage.clearSessionStorage");
-      sessionStorage.removeItem(property);
-    },
+  //   // method to clear property from local storage
+  //   clearSessionStorage: function(property) {
+  //     console.log("in manageSessionStorage.clearSessionStorage");
+  //     sessionStorage.removeItem(property);
+  //   },
 
-    // method to get property from local storage
-    getSessionStorage: function(property) {
-      console.log("in manageSessionStorage.getSessionStorage");
-      var propVal = sessionStorage.getItem(property);
-      return propVal;
-    },
+  //   // method to get property from local storage
+  //   getSessionStorage: function(property) {
+  //     console.log("in manageSessionStorage.getSessionStorage");
+  //     var propVal = sessionStorage.getItem(property);
+  //     return propVal;
+  //   },
 
-    // method to set property in local storage
-    setSessionStorage: function(property,propVal) {
-      console.log("in manageSessionStorage.setSessionStorage");
-      sessionStorage.setItem(property,propVal);
-    },
-  }
+  //   // method to set property in local storage
+  //   setSessionStorage: function(property,propVal) {
+  //     console.log("in manageSessionStorage.setSessionStorage");
+  //     sessionStorage.setItem(property,propVal);
+  //   },
+  // }
 
   // ----------------------------------------------------------
   // object for detail page:
@@ -69,14 +69,22 @@ $(document).ready(function() {
       // call to API for detailed information
       detailPage.getTmdbMovieDetails(this.movieTitleId);
 
+      // call to API for movie rating (pg, pg-13, etc.)
+      detailPage.getOmdbMovieRating(this.movieTitle);
+
       // call to API for credit information
       detailPage.getTmdbMovieCredits(this.movieTitleId);
 
-      // need to load page up with the Utelly info
+      // commment utelly call out during unit testing 
+      // but keep commented during general testing
+      // due to the limited call allowance of 1000 calls per month:
       // detailPage.getUtelly(this.movieTitle,this.country);
 
       // call to API for video information
       detailPage.getTmdbMovieVideo(this.movieTitleId);
+
+      // call to API for related movie information
+      detailPage.getTmdbRelatedMovies(this.movieTitleId);
 
       // example of data overlay
       $("#movie-title>h3").text(this.movieTitle);
@@ -192,7 +200,73 @@ $(document).ready(function() {
       });  
     },
 
-    
+
+    // get related movie info from TMDB API
+    // parameter: movie id
+    getTmdbRelatedMovies: function(titleId) {
+      console.log("in detailPage.getTmdbRelatedMovies");
+      console.log("detail titleId", titleId);
+
+      // look up the API endpoint details and code as appropriate below:
+
+      var apiKey = "4eb3939343ef4ca0932079284f76225d";
+      var searchURL = "https://api.themoviedb.org/3/movie/" + titleId + "/similar?api_key=" + apiKey 
+                     + "&language=en-US";
+
+      var settings = {
+          "async": true,
+          "crossDomain": true,
+          "url": searchURL,
+          "method": "GET",
+          "headers": {},
+          "data": "{}"
+      }
+
+      $.ajax(settings).done(function (response) {
+          console.log(response);
+          response.results.forEach(element => {
+              console.log("related movie id: ",element.id);
+              console.log("related movie original title: ",element.original_title);
+              console.log("related movie title: ", element.title);
+              console.log("related movie overview: ",element.overview);
+          });
+      });  
+    },
+
+
+    // get related movie rating (pg, pg-13, etc.) from OMDB API
+    // parameter: movie id
+    getOmdbMovieRating: function(title) {
+      console.log("in detailPage.getOmdbMovieRating");
+      console.log("detail title", title);
+
+      // look up the API endpoint details and code as appropriate below:
+      
+      // var apiKey = "4eb3939343ef4ca0932079284f76225d";
+      // var searchURL = "https://api.themoviedb.org/3/movie/" + titleId + "/credits?api_key=" + apiKey 
+      //                + "&language=en-US";
+
+      // var settings = {
+      //     "async": true,
+      //     "crossDomain": true,
+      //     "url": searchURL,
+      //     "method": "GET",
+      //     "headers": {},
+      //     "data": "{}"
+      // }
+
+      // $.ajax(settings).done(function (response) {
+      //     console.log(response);
+      //     response.cast.forEach(element => {
+      //         console.log("cast character: ",element.character);
+      //         console.log("cast name: ",element.name);
+      //     });
+      // });  
+    },
+
+
+
+
     // get streaming info from Utelly API
     // parameter: movie title
     // returns: string info on streaming available
@@ -300,7 +374,7 @@ $(document).ready(function() {
     function onPlayerReady(event) {
 
       event.target.loadVideoById(youTubeVideoId);
-      event.target.setVolume(20);
+      event.target.setVolume(0);
       event.target.playVideo();
       // event.target.playVideoAt(0);
       // event.loadPlaylist(youTubeVideoId);
