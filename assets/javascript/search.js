@@ -245,5 +245,5 @@ function redirectToDetailPage() {
     // switch the browser to the detail page
     window.location ='detail.html';
 };
-
+}
 
