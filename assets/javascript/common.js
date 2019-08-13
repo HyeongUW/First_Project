@@ -73,8 +73,8 @@
     // on watch list modal form title click
     watchListMovieTitleArray: [],
     watchListMovieIdArray: [],
-    watchListMovieReleaseYear: [],
-    watchListMovieRunningTime: [],
+    watchListMovieYearArray: [],
+    watchListMovieTimeArray: [],
 
     // methods:
 
@@ -110,10 +110,10 @@
         console.log("no saved watchlist on local storage");
       }
       else { // save the parallel arrays 
-        this.watchListMovieTitleArray =  manageLocalStorage.setLocalStorage("watchListTitle").split(',');
-        this.watchListMovieIdArray =  manageLocalStorage.setLocalStorage("watchListId").split(',');
-        this.watchListMovieYearArray =  manageLocalStorage.setLocalStorage("watchListYear").split(',');
-        this.watchListMovieTimeArray =  manageLocalStorage.setLocalStorage("watchListTime").split(',');
+        this.watchListMovieTitleArray =  manageLocalStorage.getLocalStorage("watchListTitle").split(',');
+        this.watchListMovieIdArray =  manageLocalStorage.getLocalStorage("watchListId").split(',');
+        this.watchListMovieYearArray =  manageLocalStorage.getLocalStorage("watchListYear").split(',');
+        this.watchListMovieTimeArray =  manageLocalStorage.getLocalStorage("watchListTime").split(',');
       }
     },
 
@@ -141,14 +141,43 @@
     // method to remove item to the watch list and save it
     removeFromWatchList: function(title) {
       console.log("in manageWatchList.removeFromWatchList");
-      // WORK TO DO HERE...
       // work within this object's watch list arrays
       // find the title index position
+      var targetIndex = this.watchListMovieTitleArray.indexOf(title);
       // remove that index position element from all four parallel arrays
+      this.watchListMovieTitleArray.splice(targetIndex,1);
+      this.watchListMovieIdArray.splice(targetIndex,1);
+      this.watchListMovieYearArray.splice(targetIndex,1);
+      this.watchListMovieTimeArray.splice(targetIndex,1);
       // clear watch list from local storage and re-save it
       manageWatchList.clearWatchListFromLocalStorage();
       manageWatchList.setWatchListInLocalStorage();
     },
+
+    // build watch list in the DOM
+
+
+    // needs to look like this for each entry
+    buildWatchListInTheDom() {
+      console.log("in manageWatchList.buildWatchListInTheDom");
+      
+    // append the watch-list-container structure to the modal-body
+      // <div class="modal-body">
+        // <div class="watch-list-item-container">
+        //   <input class="watch-list-checkbox" type="checkbox" name="delete" value="aladdin">
+        //   <div class="watch-list-title" data-movie-title="aladdin" data-movie-year="2018"
+        //       data-movie-runtime="103 min" data-movie-id="123456" >Aladdin</div>
+        //   <div class="watch-list-year">2018</div>
+        //   <div class="watch-list-time">103 min</div>
+        // </div>
+
+        // iterate over the title array (and 3 other parallel arrays)
+        for (i = 0; i < this.watchListMovieTitleArray.length; i++) {
+          console.log("Index is: " + i + " title is: " + this.watchListMovieTitleArray[i]);
+          
+        }
+    },
+
 
     // method to determine toggle for detail page watch list badge
     // i.e. if title is in watch list the badge should be:
@@ -167,3 +196,6 @@
     // call the appropriate methods to achieve the change in the watch list
 
   }
+
+
+

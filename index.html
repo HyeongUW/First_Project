@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
   <!-- Our own CSS stylesheet -->
   <link rel="stylesheet" href="assets/css/styles.css" media="screen">
+  <link rel="stylesheet" href="assets/css/watchlist.css" media="screen">
 
     <!-- Firebase References -->
     <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-app.js"></script>
@@ -115,18 +116,99 @@
           </button>
         </div>
         <div class="modal-body">
-          <div>
-            <input type="checkbox" name="delete" value="aladdin">
-            <div class="watch-list-item" data-movie-id="123456" data-movie-title="aladdin">Aladdin</div>
+          <div class="watch-list-item-container">
+            <input class="watch-list-checkbox" type="checkbox" name="delete" value="aladdin">
+            <div class="watch-list-title" data-movie-title="aladdin" data-movie-year="2018"
+                 data-movie-runtime="103 min" data-movie-id="123456" >Aladdin</div>
+            <div class="watch-list-year">2018</div>
+            <div class="watch-list-time">103 min</div>
           </div>
-          <div>
+          <div class="watch-list-item-container">
+            <input class="watch-list-checkbox" type="checkbox" name="delete" value="aladdin">
+            <div class="watch-list-title" data-movie-title="test" data-movie-year="2018"
+                 data-movie-runtime="103 min" data-movie-id="123456" >Test a long movie title</div>
+            <div class="watch-list-year">2015</div>
+            <div class="watch-list-time">145 min</div>
+          </div>
+          <div class="watch-list-item-container">
+            <input class="watch-list-checkbox" type="checkbox" name="delete" value="aladdin">
+            <div class="watch-list-title" data-movie-title="The Lion King" data-movie-year="2018"
+                 data-movie-runtime="110 min" data-movie-id="420818" >The Lion King</div>
+            <div class="watch-list-year">2017</div>
+            <div class="watch-list-time">110 min</div>
+          </div>
+          <div class="watch-list-item-container">
+            <input class="watch-list-checkbox" type="checkbox" name="delete" value="aladdin">
+            <div class="watch-list-title" data-movie-title="Argo" data-movie-year="2018"
+                 data-movie-runtime="103 min" data-movie-id="123456" >Argo</div>
+            <div class="watch-list-year">2018</div>
+            <div class="watch-list-time">103 min</div>
+          </div>
+          <div class="watch-list-item-container">
+            <input class="watch-list-checkbox" type="checkbox" name="delete" value="aladdin">
+            <div class="watch-list-title" data-movie-title="aladdin" data-movie-year="2018"
+                 data-movie-runtime="103 min" data-movie-id="123456" >Jaws</div>
+            <div class="watch-list-year">1976</div>
+            <div class="watch-list-time">145 min</div>
+          </div>
+          <div class="watch-list-item-container">
+            <input class="watch-list-checkbox" type="checkbox" name="delete" value="aladdin">
+            <div class="watch-list-title" data-movie-title="aladdin" data-movie-year="2018"
+                 data-movie-runtime="110 min" data-movie-id="420818" >Top Gun</div>
+            <div class="watch-list-year">1985</div>
+            <div class="watch-list-time">110 min</div>
+          </div>
+          <div class="watch-list-item-container">
+            <input class="watch-list-checkbox" type="checkbox" name="delete" value="aladdin">
+            <div class="watch-list-title" data-movie-title="aladdin" data-movie-year="2018"
+                 data-movie-runtime="110 min" data-movie-id="420818" >Test Movie 1</div>
+            <div class="watch-list-year">1985</div>
+            <div class="watch-list-time">110 min</div>
+          </div>
+          <div class="watch-list-item-container">
+            <input class="watch-list-checkbox" type="checkbox" name="delete" value="aladdin">
+            <div class="watch-list-title" data-movie-title="aladdin" data-movie-year="2018"
+                 data-movie-runtime="110 min" data-movie-id="420818" >Test Movie 1</div>
+            <div class="watch-list-year">1985</div>
+            <div class="watch-list-time">110 min</div>
+          </div>
+          <div class="watch-list-item-container">
+            <input class="watch-list-checkbox" type="checkbox" name="delete" value="aladdin">
+            <div class="watch-list-title" data-movie-title="aladdin" data-movie-year="2018"
+                 data-movie-runtime="110 min" data-movie-id="420818" >Test Movie 2</div>
+            <div class="watch-list-year">1985</div>
+            <div class="watch-list-time">110 min</div>
+          </div>
+          <div class="watch-list-item-container">
+            <input class="watch-list-checkbox" type="checkbox" name="delete" value="aladdin">
+            <div class="watch-list-title" data-movie-title="aladdin" data-movie-year="2018"
+                 data-movie-runtime="110 min" data-movie-id="420818" >Test Movie 3</div>
+            <div class="watch-list-year">1985</div>
+            <div class="watch-list-time">110 min</div>
+          </div>
+          <div class="watch-list-item-container">
+            <input class="watch-list-checkbox" type="checkbox" name="delete" value="aladdin">
+            <div class="watch-list-title" data-movie-title="aladdin" data-movie-year="2018"
+                 data-movie-runtime="110 min" data-movie-id="420818" >Test Movie 4</div>
+            <div class="watch-list-year">1985</div>
+            <div class="watch-list-time">110 min</div>
+          </div>
+          <div class="watch-list-item-container">
+            <input class="watch-list-checkbox" type="checkbox" name="delete" value="aladdin">
+            <div class="watch-list-title" data-movie-title="aladdin" data-movie-year="2018"
+                 data-movie-runtime="110 min" data-movie-id="420818" >Test Movie 5</div>
+            <div class="watch-list-year">1985</div>
+            <div class="watch-list-time">110 min</div>
+          </div>
+          <!-- <div>
             <input type="checkbox" name="delete" value="The Lion King">
             <div class="watch-list-item" data-movie-id="420818" data-movie-title="The Lion King">The Lion King</div>
           </div>
           <div>
             <input type="checkbox" name="delete" value="argo">
             <div class="watch-list-item" data-movie-id="444555" data-movie-title="argo">Argo</div>
-          </div>
+          </div> -->
+                    
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary">Delete</button>          
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -171,8 +253,10 @@
 
 
   <!-- Main program body in javascript -->
+  <script src="assets/javascript/common.js"></script>
   <script src="assets/javascript/app.js"></script>
-  <script src="./assets/javascript/common.js"></script>
+
+
 
 </body>
 

@@ -218,9 +218,9 @@ function populateSearchResult(searchTerm, numOfPages) {
             
 
         });    
-    });
+    };
     
-});
+
 
 $(document).on("click", ".poster-div>img", function() {
     //console.log("in trending-div.img click event");
@@ -246,4 +246,4 @@ function redirectToDetailPage() {
     window.location ='detail.html';
 };
 
-
+}

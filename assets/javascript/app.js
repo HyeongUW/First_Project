@@ -223,12 +223,66 @@ $(document).ready(function() {
   //     });
   // });
 
+
   // ----------------------------------------------------------
   // START OF PROGRAM FLOW:
   // ----------------------------------------------------------
   console.log("In Landing Page");
   manageSessionStorage.clearSessionStorage("search-term");
-  
+
+  // watch list testing
+ 
+  // seed 3 example watch list movies
+  // manageWatchList.watchListMovieTitleArray.push('The Lion King');
+  // manageWatchList.watchListMovieIdArray.push('420818');
+  // manageWatchList.watchListMovieYearArray.push("2018");
+  // manageWatchList.watchListMovieTimeArray.push("103 min");
+
+  // manageWatchList.watchListMovieTitleArray.push('Argo');
+  // manageWatchList.watchListMovieIdArray.push('999999');
+  // manageWatchList.watchListMovieYearArray.push("2015");
+  // manageWatchList.watchListMovieTimeArray.push("135 min"); 
+
+  // manageWatchList.watchListMovieTitleArray.push('Jaws');
+  // manageWatchList.watchListMovieIdArray.push('777555');
+  // manageWatchList.watchListMovieYearArray.push("1976");
+  // manageWatchList.watchListMovieTimeArray.push("125 min");
+  // manageWatchList.clearWatchListFromLocalStorage();
+  // manageWatchList.setWatchListInLocalStorage();
+
+  // manageWatchList.getWatchListFromLocalStorage();
+
+  // console.log("watch list titles: ", manageWatchList.watchListMovieTitleArray);
+  // console.log("watch list id: ", manageWatchList.watchListMovieIdArray);
+  // console.log("watch list year: ", manageWatchList.watchListMovieYearArray);
+  // console.log("watch list time: ", manageWatchList.watchListMovieTimeArray);
+
+  // manageWatchList.addToWatchList("Dazed and Confused","333111","1992","115 min");
+
+ 
+
+  // manageWatchList.getWatchListFromLocalStorage();
+
+  // console.log("watch list titles: ", manageWatchList.watchListMovieTitleArray);
+  // console.log("watch list id: ", manageWatchList.watchListMovieIdArray);
+  // console.log("watch list year: ", manageWatchList.watchListMovieYearArray);
+  // console.log("watch list time: ", manageWatchList.watchListMovieTimeArray);
+
+  // manageWatchList.removeFromWatchList('Jaws');
+
+  manageWatchList.addToWatchList("Aladdin","444222","2017","103 min");
+  manageWatchList.addToWatchList("The Lion King","420818","2018","109 min");
+  manageWatchList.addToWatchList("Jaws","444222","1976","129 min");
+  manageWatchList.addToWatchList("Argo","111888","2014","133 min");
+  manageWatchList.addToWatchList("Dazed and Confused","555333","1992","121 min");
+
+  manageWatchList.getWatchListFromLocalStorage();
+  console.log("watch list titles: ", manageWatchList.watchListMovieTitleArray);
+  console.log("watch list id: ", manageWatchList.watchListMovieIdArray);
+  console.log("watch list year: ", manageWatchList.watchListMovieYearArray);
+  console.log("watch list time: ", manageWatchList.watchListMovieTimeArray);
+
+  manageWatchList.buildWatchListInTheDom();
 
   // no longer used - remove this (most likely)
   //  // redirect button event 
