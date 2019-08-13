@@ -10,13 +10,26 @@
   <title>The Name of Our Website Comes Here!</title>
 
   <!-- Boostrap Stylesheet -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"> -->
+
+  <!-- Local -->
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+
   <!-- Our own CSS stylesheet -->
   <link rel="stylesheet" href="assets/css/styles.css" media="screen">
   <link rel="stylesheet" href="assets/css/detail-style.css" media="screen">
 
   <!-- JQuery -->
-  <script src="https://code.jquery.com/jquery.js"></script>
+  <!-- <script src="https://code.jquery.com/jquery.js"></script> -->
+
+  <!-- Local -->
+  <!--Latest JQuery download -->
+  <script src="assets/javascript/jquery-3.4.1.js"></script>
+  <!-- Popper -->
+  <script src="assets/javascript/popper.min.js"></script>
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="assets/javascript/bootstrap.min.js"></script>
 
 </head>
 
@@ -84,15 +97,11 @@
 
   <!-- </header> -->
 
-  <!-- <div id="player"></div> -->
-
   <section class="row">
-    <div id="video-back" style="padding-top:56.25%; position: relative;">
-      <iframe id="video-frame" frameborder="0" allowfullscreen src="">
-        <!-- src="https://www.youtube.com/embed/foyufD52aog?autoplay=1&mute=1&controls=0&showinfo=0&autohide=1" -->
-      </iframe>
-    </div>
+    <div style="padding-top:56.25%; position: relative;">
+      <div id="player"></div>
   </section>
+
 
   <div class="container" style="color: white;" id="movie-info">
     <div class="row">
@@ -105,6 +114,7 @@
           <h3>Runtime Here!</h3>
         </div>
       </div>
+
     </div>
     <div id="overview" class="col-4" style="float: right;">
       <h2 id="overview-title">Overview</h2>
@@ -197,6 +207,7 @@
         </div>
       </div>
 
+
     </div>
       
   </div>
@@ -204,7 +215,8 @@
 
 
 
-  <!-- Start of container -->
+
+   <!--Start of container -->
   <!-- <main class="container">
       <section class="row">
         <div class="col-md-12">
@@ -306,10 +318,10 @@
   <!-- End of footer -->
 
 
-
-
-  <!-- Main program body in javascript -->
-  <script src="assets/javascript/detail.js"></script>
+    <!-- Main program body in javascript -->
+    <script src="assets/javascript/detail.js"></script>
+    <script src="assets/javascript/common.js"></script>
+  
 
 
 </body>
