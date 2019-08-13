@@ -5,6 +5,7 @@ $(document).ready(function() {
   // global variables:
   // ----------------------------------------------------------
     youTubeVideoId = '';
+    isTrailerPlaying = false;
 
   // ----------------------------------------------------------
   // objects and classes:
@@ -118,12 +119,22 @@ $(document).ready(function() {
         // properties that should be mined for detail page
         // title
         console.log("title: ", response.original_title);
-        console.log("overview: ", response.overview);
+        console.log("name: ", response.original_name);
         console.log("release_date: ", response.release_date);
+        $("#title-text").text(detailPage.movieTitle + ' (' + response.release_date + ')');
+
+        console.log("overview: ", response.overview);
+        $("#overview-text").text(response.overview);
+
         console.log("runtime: ", response.runtime);
+        $("#runtime-text").text(response.runtime  + ' min.');    
+
         console.log("vote_average: ", response.vote_average);
-        console.log("title: ", response.original_title);
+        $("#ratings-text").text(response.vote_average);   
+
         console.log("homepage: ", response.homepage);
+        $("#homepage").attr('href',response.homepage);
+
         response.genres.forEach(element => {
           console.log("genre: ", element.name)
         });
@@ -207,9 +218,9 @@ $(document).ready(function() {
       console.log("detail titleId", titleId);
 
       // look up the API endpoint details and code as appropriate below:
-
+      // try similiar and recommendations
       var apiKey = "4eb3939343ef4ca0932079284f76225d";
-      var searchURL = "https://api.themoviedb.org/3/movie/" + titleId + "/similar?api_key=" + apiKey 
+      var searchURL = "https://api.themoviedb.org/3/movie/" + titleId + "/recommendations?api_key=" + apiKey 
                      + "&language=en-US";
 
       var settings = {
@@ -327,6 +338,12 @@ $(document).ready(function() {
       }); // end of the ajax call
     }, // end of method getUtelly
 
+
+
+
+
+
+    
     // other methods go below
 
   } // end of detailPage object
@@ -373,8 +390,9 @@ $(document).ready(function() {
     function onPlayerReady(event) {
 
       event.target.loadVideoById(youTubeVideoId);
-      event.target.setVolume(20);
+      event.target.setVolume(10);
       event.target.playVideo();
+      isTrailerPlaying = true;
       // event.target.playVideoAt(0);
       // event.loadPlaylist(youTubeVideoId);
       // event.setLoop(true);
@@ -391,6 +409,7 @@ $(document).ready(function() {
     function onPlayerStateChange(event) {
       if (event.data == YT.PlayerState.ENDED) {
         event.target.playVideo();
+        isTrailerPlaying = true;
       }
     }
 
@@ -402,5 +421,46 @@ $(document).ready(function() {
 
 
 
-      
+    // toggle trailer on/off when users scrolls down/up
+    window.onscroll = function() {trailerToggle()};
 
+    function trailerToggle() {
+      // console.log("in global.trailerToggle");
+      // console.log(("isTrailerPlaying: ", isTrailerPlaying));
+      // console.log("scrollTop: ", document.body.scrollTop);
+      // console.log("elementTop: ", document.documentElement.scrollTop);
+      if (document.documentElement.scrollTop > 200) {
+          if (isTrailerPlaying) {
+            //pause trailer
+            isTrailerPlaying = false;
+            player.pauseVideo();
+          };
+      } 
+      else if (document.documentElement.scrollTop <= 200) {
+              if (!isTrailerPlaying) {
+                //un-pause trailer
+                isTrailerPlaying = true;
+                player.playVideo();
+              }
+      }
+    }
+
+
+  // pause trailer if user click external movie homepage link
+  // should cause redirect to the detail page
+  $(document).on("click", "#homepage", function() {
+    console.log("in global.homepage click event");
+    isTrailerPlaying = false;
+    player.pauseVideo();
+  });
+
+  // start trailer up again if user return to web page
+  const windowHasFocus = function () {
+    window.addEventListener("focus", function(event) 
+    { 
+       isTrailerPlaying = true;
+       player.playVideo();
+    }, false);
+
+  }  
+    

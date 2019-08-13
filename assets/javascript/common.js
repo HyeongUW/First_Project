@@ -165,7 +165,7 @@
       // <div class="modal-body">
         // <div class="watch-list-item-container">
         //   <input class="watch-list-checkbox" type="checkbox" name="delete" value="aladdin">
-        //   <div class="watch-list-title" data-movie-title="aladdin" data-movie-year="2018"
+        //   <div class="watch-list-item" data-movie-title="aladdin" data-movie-year="2018"
         //       data-movie-runtime="103 min" data-movie-id="123456" >Aladdin</div>
         //   <div class="watch-list-year">2018</div>
         //   <div class="watch-list-time">103 min</div>
