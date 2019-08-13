@@ -6,6 +6,8 @@ $(document).ready(function() {
   // ----------------------------------------------------------
     youTubeVideoId = '';
     isTrailerPlaying = false;
+    genres = [];
+    streaming = [];
 
   // ----------------------------------------------------------
   // objects and classes:
@@ -67,25 +69,27 @@ $(document).ready(function() {
       this.utellyKey = manageSessionStorage.getSessionStorage("key");
       //console.log("rapid api key is: ", this.utellyKey);
 
-      // call to API for detailed information
-      detailPage.getTmdbMovieDetails(this.movieTitleId);
-
-      // call to API for movie rating (pg, pg-13, etc.)
-      detailPage.getOmdbMovieRating(this.movieTitle);
-
-      // call to API for credit information
-      detailPage.getTmdbMovieCredits(this.movieTitleId);
-
       // commment utelly call out during unit testing 
       // but keep commented during general testing
       // due to the limited call allowance of 1000 calls per month:
       // detailPage.getUtelly(this.movieTitle,this.country);
 
-      // call to API for video information
+
+      // // call to API for detailed information
+      detailPage.getTmdbMovieDetails(this.movieTitleId);
+
+      // // call to API for movie rating (pg, pg-13, etc.)
+      detailPage.getOmdbMovieRating(this.movieTitle);
+
+      // call to API for credit information
+      detailPage.getTmdbMovieCredits(this.movieTitleId);
+
+
+      // // call to API for video information
       detailPage.getTmdbMovieVideo(this.movieTitleId);
 
 
-      // call to API for related movie information
+      // // call to API for related movie information
       detailPage.getTmdbRelatedMovies(this.movieTitleId);
 
      
@@ -121,7 +125,7 @@ $(document).ready(function() {
         console.log("title: ", response.original_title);
         console.log("name: ", response.original_name);
         console.log("release_date: ", response.release_date);
-        $("#title-text").text(detailPage.movieTitle + ' (' + response.release_date + ')');
+        $("#title-text").text(detailPage.movieTitle + ' (' + response.release_date.substring(0,4) + ')');
 
         console.log("overview: ", response.overview);
         $("#overview-text").text(response.overview);
@@ -130,15 +134,22 @@ $(document).ready(function() {
         $("#runtime-text").text(response.runtime  + ' min.');    
 
         console.log("vote_average: ", response.vote_average);
-        $("#ratings-text").text(response.vote_average);   
+        $("#ratings-text").text("Ratings: " + response.vote_average);   
 
         console.log("homepage: ", response.homepage);
-        $("#homepage").attr('href',response.homepage);
-
+        if (response.runtime != null) {
+          $("#homepage").attr('href',response.homepage);
+        }
+        else {
+          $("#homepage").text('');
+        };
+      
+        detailPage.genres = [];
         response.genres.forEach(element => {
           console.log("genre: ", element.name)
+          genres.push(element.name);
         });
-
+        $("#genre").text("Genres: " + genres.join(', '));
       });  
     },
 
@@ -201,11 +212,15 @@ $(document).ready(function() {
           "data": "{}"
       }
 
+      var castUl = $("#cast-list");
+
       $.ajax(settings).done(function (response) {
           console.log(response);
           response.cast.forEach(element => {
               console.log("cast character: ",element.character);
               console.log("cast name: ",element.name);
+              var newLi = $('<li>' + element.character + '  - (' + element.name + ')' + '</li>');
+              castUl.append(newLi);
           });
       });  
     },
@@ -250,28 +265,18 @@ $(document).ready(function() {
       console.log("in detailPage.getOmdbMovieRating");
       console.log("detail title", title);
 
-      // look up the API endpoint details and code as appropriate below:
-      
-      // var apiKey = "4eb3939343ef4ca0932079284f76225d";
-      // var searchURL = "https://api.themoviedb.org/3/movie/" + titleId + "/credits?api_key=" + apiKey 
-      //                + "&language=en-US";
+      // construct our URL
+      var queryURL = "https://www.omdbapi.com/?t=" + title + "&apikey=trilogy";
 
-      // var settings = {
-      //     "async": true,
-      //     "crossDomain": true,
-      //     "url": searchURL,
-      //     "method": "GET",
-      //     "headers": {},
-      //     "data": "{}"
-      // }
-
-      // $.ajax(settings).done(function (response) {
-      //     console.log(response);
-      //     response.cast.forEach(element => {
-      //         console.log("cast character: ",element.character);
-      //         console.log("cast name: ",element.name);
-      //     });
-      // });  
+      // make API call
+      $.ajax({
+        url: queryURL,
+        method: "GET"
+      }).then(function(response) {
+        console.log(response);
+        console.log("rated: ", response.Rated);
+        $("#rated").text("Rated: " + response.Rated);
+      });
     },
 
 
@@ -302,7 +307,7 @@ $(document).ready(function() {
           },
       };
       
-
+      this.streaming = [];
 
       // ajax call to utelly API
       // 1.  loop through the results
@@ -329,13 +334,20 @@ $(document).ready(function() {
                 // console.log("this location url is: ", element.url);
                 // right here need to put the location and location url on the detail page 
                 // think of un-ordered list 
-                $("#stream-id").text(element.display_name);
-                $("#stream-url").text(element.url);
+                  console.log("streaming-: ", element.display_name);
+                  streaming.push(element.display_name);
+                // $("#stream-url").text(element.url);
 
               }); // end of locations forEach
             }; // end of title check loop
           }); // end of results forEach
       }); // end of the ajax call
+
+      console.log("the streaming sites are: ", this.streaming);
+      console.log("the streaming sites are formatted: ", this.streaming.join(', '));
+      
+      $("#temp-streaming").text('Streaming: ' + this.streaming.join(', '));
+
     }, // end of method getUtelly
 
 
@@ -454,13 +466,14 @@ $(document).ready(function() {
     player.pauseVideo();
   });
 
-  // start trailer up again if user return to web page
-  const windowHasFocus = function () {
-    window.addEventListener("focus", function(event) 
-    { 
-       isTrailerPlaying = true;
-       player.playVideo();
-    }, false);
+  // // not working - need more research
+  // // start trailer up again if user return to web page
+  // const windowHasFocus = function () {
+  //   window.addEventListener("focus", function(event) 
+  //   { 
+  //      isTrailerPlaying = true;
+  //      player.playVideo();
+  //   }, false);
 
-  }  
+  // }  
     
