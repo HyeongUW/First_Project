@@ -106,20 +106,20 @@ function pageNumberReturner(searchTerm) {
         var numOfPages = response.total_pages;
 
 
-        populateSearchResult(searchTerm, numOfPages);
+        populateSearchResult(searchTerm, numOfPages, response);
 
     });
 
 }
 
-function populateSearchResult(searchTerm, numOfPages) {
+function populateSearchResult(searchTerm, numOfPages, response) {
     //var numOfPages = pageNumberReturner(searchTerm);
     //console.log("Page Number (populateSearchResult): ", numOfPages);
 
     // page number should be defined here before the searchURL
     
     for(var i = 1; i <= numOfPages; i++) {
-        console.log("Call #" + i);
+        //console.log("Call #" + i);
         var searchURL = "https://api.themoviedb.org/3/search/multi?api_key=" + apiKey + "&language=en-US&query=" + searchTerm + "&page=" + i + "&include_adult=false&region=us";
     
     
@@ -181,7 +181,12 @@ function populateSearchResult(searchTerm, numOfPages) {
         
                 var tempRelease = $("<h3>");
                 //tempRelease.text("Release Date: " + response.results[i].release_date);
-                tempRelease.text("(" + response.results[i].release_date + ")");
+                if(response.results[i].release_date === undefined) {
+                    tempRelease.text("");
+                } else {
+                    tempRelease.text("(" + response.results[i].release_date + ")");
+                }
+                //tempRelease.text("(" + response.results[i].release_date + ")");
                 
                 
                 var starIcon = $("<img class='star-icon' style='float: left';>");

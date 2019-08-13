@@ -15,9 +15,6 @@
   <link rel="stylesheet" href="assets/css/styles.css" media="screen">
   <link rel="stylesheet" href="assets/css/detail-style.css" media="screen">
 
-  <!-- Bootstrap CDN -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script></script>
-
   <!-- JQuery -->
   <script src="https://code.jquery.com/jquery.js"></script>
 
@@ -29,8 +26,7 @@
   <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
   <script>
     // When the user scrolls down 20px from the top of the document, show the button
-    window.onscroll = function() {scrollFunction()};
-    
+    window.onscroll = function () { scrollFunction() };
     function scrollFunction() {
       if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
         document.getElementById("myBtn").style.display = "block";
@@ -38,7 +34,6 @@
         document.getElementById("myBtn").style.display = "none";
       }
     }
-    
     // When the user clicks on the button, scroll to the top of the document
     function topFunction() {
       document.body.scrollTop = 0;
@@ -47,56 +42,164 @@
   </script>
   <!---------------------------------------------------------------------------------------------->
 
-  <header id = "masthead">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
-              <a class="navbar-brand" href="index.html" id="logo">The Name of Our Website Comes Here!</a>
-  
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
-          aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-            <li class="nav-item">
-                <a class="nav-link" href="index.html">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="search.html">Search</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="trending.html">Trending</a>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="detail.html">Details</a>
-            </li>
-            <li class="nav-item active">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalScrollable">
-                    About
-                </button>
-            </li>
-          </ul>
-        </div>
-        <!-- /.navbar-collapse -->
+  <!-- <header id = "masthead"> -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <a class="navbar-brand" href="index.html" id="logo">The Name of Our Website Comes Here!</a>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
+        aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+        <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="search.html">Search</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="trending.html">Trending</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="detail.html">Details</a>
+          </li>
+          <li class="nav-item active">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalScrollable">
+              About
+            </button>
+          </li>
+        </ul>
       </div>
-      <!-- /.container -->
-    </nav>
-    <!-- End of navbar -->
-  
-  </header>
+      <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+  </nav>
+  <!-- End of navbar -->
+
+  <!-- </header> -->
 
   <!-- <div id="player"></div> -->
 
-  <div id="video-back">
-    <iframe id="video-frame" frameborder="0" height="100%" width="100%" src="">
-    <!-- src="https://www.youtube.com/embed/foyufD52aog?autoplay=1&mute=1&controls=0&showinfo=0&autohide=1" -->
-    </iframe>
-    <div id="movie-title">
-      <h3>Title goes here</h3>
+  <section class="row">
+    <div id="video-back" style="padding-top:56.25%; position: relative;">
+      <iframe id="video-frame" frameborder="0" allowfullscreen src="">
+        <!-- src="https://www.youtube.com/embed/foyufD52aog?autoplay=1&mute=1&controls=0&showinfo=0&autohide=1" -->
+      </iframe>
     </div>
+  </section>
+
+  <div class="container" style="color: white;" id="movie-info">
+    <div class="row">
+      <div class="row col-12">
+        <div id="title" class="col-5" style="text-align: left; float: left;">
+          <h2 style="float: left" id="title-text">Blade Runner(
+            <h2 style="float: left;" id="release-date">1990</h2> )</h2>
+        </div>
+        <div id="runtime" style="float: left">
+          <h3>Runtime Here!</h3>
+        </div>
+      </div>
+    </div>
+    <div id="overview" class="col-4" style="float: right;">
+      <h2 id="overview-title">Overview</h2>
+      <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque quam libero accusantium, quia fugiat qui fuga ad delectus laboriosam sequi numquam maxime obcaecati, quisquam harum cumque magnam in? Illo, saepe.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit iste ab ratione sapiente, deserunt sunt repellendus a nostrum maiores cumque vel, quae soluta! Autem in non, ipsum architecto ipsam ducimus. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sit id aliquid labore doloribus. Quod minus dignissimos alias ipsum nemo totam impedit consequatur, quaerat cum quia architecto neque voluptatibus delectus vero. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt, molestiae animi ipsum at repellat corporis non. Eveniet quis itaque dolore esse debitis cumque eum. Laudantium illum nobis distinctio recusandae modi.</p>
+    </div>
+    <div class="row">
+      <div class="row">
+        <div class="streaming-site-logos col-3" style="clear: left; text-align: left; background: none">
+          <img src="assets/imgs/linkedin.png" id="streaming-site" style="width: 60px; height: 60px;">
+          <img src="assets/imgs/stackover2.png" alt="..." id="streaming-site" style="width: 60px; height: 60px">
+          <img src="assets/imgs/github.png" alt="..." id="streaming-site" style="width: 60px; height: 60px">
+        </div>
+        <div class="homepage-link col-3" style="float: left; text-align: left; background: none">
+          <img src="..." alt="...">
+          <h2>Homepage Link</h2>
+        </div>
+      </div>
+      <div id="cast-crew">
+        <h2>cast & crew</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore ullam, praesentium, impedit recusandae quis officia quibusdam ab neque dolorem dolores eius eos deleniti doloribus nesciunt, aperiam distinctio sit asperiores voluptas.</p>
+      </div>
+      <div class="row">
+        <div id="rated">
+          <h3>rated: </h3>
+        </div>
+        <div id="ratings">
+          <h3>Ratings</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div id="genre">
+          <h3>Genre: </h3>
+        </div>
+      </div>
+      <div class="row">
+        <div id="carouselExampleIndicators" class="carousel slide col-8" data-ride="carousel" style="float: left;">
+          <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="6"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="7"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="8"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="9"></li>
+          </ol>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="assets/images/movieNreel.jpg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="assets/images/movieNreel.jpg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="assets/images/movieNreel.jpg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="assets/images/movieNreel.jpg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="assets/images/movieNreel.jpg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="assets/images/movieNreel.jpg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="assets/images/movieNreel.jpg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="assets/images/movieNreel.jpg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="assets/images/movieNreel.jpg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="assets/images/movieNreel.jpg" class="d-block w-100" alt="...">
+            </div>
+          </div>
+          <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+      
   </div>
+
+
 
 
   <!-- Start of container -->
@@ -137,7 +240,8 @@
       </section>
     </main> -->
   <!-- End of container -->
-  <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+  <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -157,18 +261,24 @@
                   <img src="assets/imgs/natebeach.jpeg" alt="" id="about-image" />
                   <img src="assets/imgs/natebeach.jpeg" alt="" id="about-image" />
                   <img src="assets/imgs/natebeach.jpeg" alt="" id="about-image" />
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                    labore et
                     dolore
-                    magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                    magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                    ex ea
                     commodo
-                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                    nulla
                     pariatur.
-                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
+                    est
                     laborum.</p>
                   <br />
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                    labore et
                     dolore
-                    magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                    magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                    ex ea
                     commodo
                     consequat.
                   </p>
@@ -196,9 +306,9 @@
 
 
 
-    <!-- Main program body in javascript -->
-    <script src="assets/javascript/detail.js"></script>
-  
+  <!-- Main program body in javascript -->
+  <script src="assets/javascript/detail.js"></script>
+
 
 </body>
 
