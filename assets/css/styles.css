@@ -61,7 +61,8 @@ font-size: 28px;
   color: white;
 }
 #logodiv {
-  font-family: 'Tangerine', serif;
+  /* font-family: 'Tangerine', serif; */
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
         font-size: 48px;
   text-align: center;
   color: white;
@@ -87,13 +88,16 @@ html {
   background-color: #1d1c1b;
   border-top: solid #1d1c1b 90px;
   color: red;
-  font-family: 'Tangerine', serif;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  /* font-family: 'Tangerine', serif; */
         font-size: 38px;
+  margin-top: 70px;      
 }
 
 /* NAV START */
 #logo {
-  font-family: 'Tangerine', serif;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  /* font-family: 'Tangerine', serif; */
         font-size: 288px;
         color: white;
 
