@@ -1,6 +1,9 @@
 /* attempt to get youtube video as background */
-
+*{
+  font-family:  'Carter One', cursive;
+}
 body {
+
   /* width: 1080px; */
   height: 100%;
   background-color: black;
