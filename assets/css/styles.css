@@ -1,5 +1,6 @@
 /* --- STYLES FOR ALL PAGES --- */
 * {
+  font-family:  'Carter One', cursive;
   box-sizing: border-box;
 }
 body {
