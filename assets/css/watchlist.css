@@ -4,7 +4,9 @@
   height: 40px;
 }
 
-
+#watch-list-btn {
+  font-size: 18px;
+}
 
 .watch-list-checkbox {
   width: 5%;
@@ -19,6 +21,10 @@
   float: left;
 
 
+}
+
+.watch-list-item:hover  {
+  cursor: pointer;
 }
 
 .watch-list-year {

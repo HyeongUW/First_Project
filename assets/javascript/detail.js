@@ -709,7 +709,7 @@ $(document).ready(function() {
     function onPlayerReady(event) {
 
       event.target.loadVideoById(youTubeVideoId);
-      event.target.setVolume(20);
+      event.target.setVolume(40);
       event.target.playVideo();
       isTrailerPlaying = true;
       // event.target.playVideoAt(0);
