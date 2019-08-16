@@ -39,14 +39,15 @@ body {
 }
 
 .autoplay {
-  display: inline-block;
+  float: left;
+  width: 100%;
+  height: 200px;
 }
 
 #poster {
   width: auto;
-  height: 200px;
-  display: inline-block;
-
+  height: 100px;
+  clear: left;
 }
 
 .test-box {
