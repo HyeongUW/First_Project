@@ -1,6 +1,7 @@
 /* attempt to get youtube video as background */
 *{
   font-family:  'Carter One', cursive;
+  color: white;
 }
 body {
 
@@ -59,7 +60,7 @@ body {
 #streaming-site {
   width: auto;
   height: 60px;
-  
+
 }
 
 #movie-title {
