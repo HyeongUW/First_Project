@@ -38,7 +38,7 @@ $(document).ready(function() {
 
     });
     
-});
+}); // end of document ready  - moved my myles to end of this document
 
 $(document).on("click", ".search-result-title, .poster-div>img", function() {
     //console.log("in trending-div.img click event");
@@ -82,11 +82,12 @@ var manageSessionStorage = {
     }
 }
 
-function redirectToDetailPage() {
-    console.log("in global.redirectToDetailPage");
-    // switch the browser to the detail page
-    window.location = 'detail.html';
-}; 
+// probably can remove after testing this - it was moved to common.js
+// function redirectToDetailPage() {
+//     console.log("in global.redirectToDetailPage");
+//     // switch the browser to the detail page
+//     window.location = 'detail.html';
+// }; 
 
 function pageNumberReturner(searchTerm) {
     var searchURL = "https://api.themoviedb.org/3/search/multi?api_key=" + apiKey + "&language=en-US&query=" + searchTerm + "&page=1&include_adult=false&region=us"
@@ -246,4 +247,3 @@ function redirectToDetailPage() {
     window.location ='detail.html';
 };
 }
-

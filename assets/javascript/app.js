@@ -96,35 +96,6 @@ $(document).ready(function() {
   // ----------------------------------------------------------
 
   // ----------------------------------------------------------
-  // object for local storage:
-  // ----------------------------------------------------------
-  // var manageSessionStorage = {
-  //   // local variables:
-
-  //   // methods:
-
-  //   // method to clear property from local storage
-  //   clearSessionStorage: function(property) {
-  //     console.log("in manageSessionStorage.clearSessionStorage");
-  //     sessionStorage.removeItem(property);
-  //   },
-
-  //   // method to get property from local storage
-  //   getSessionStorage: function(property) {
-  //     console.log("in manageSessionStorage.getSessionStorage");
-  //     var propVal = sessionStorage.getItem(property);
-  //     return propVal;
-  //   },
-
-  //   // method to set property in local storage
-  //   setSessionStorage: function(property,propVal) {
-  //     console.log("in manageSessionStorage.setSessionStorage");
-  //     sessionStorage.setItem(property,propVal);
-  //   }
-  // }
-
-                      
-  // ----------------------------------------------------------
   // events and listeners
   // ----------------------------------------------------------
 
@@ -135,122 +106,94 @@ $(document).ready(function() {
     // get utelly API info
     utellyHost = snap.val().host;
     utellyKey = snap.val().key;
-    manageSessionStorage.setSessionStorage("host",utellyHost);
-    manageSessionStorage.setSessionStorage("key",utellyKey);
+    manageLocalStorage.setLocalStorage("host",utellyHost);
+    manageLocalStorage.setLocalStorage("key",utellyKey);
   });
 
-
-  // redirect button event 
-//  $("#redirect-btn").on("click",function() {
-//    console.log("in global.redirect-btn click event");
-//    var movieTitle = "Aladdin";
-//    var movieId = 420817;
-
-    // test local storage methods
-//    manageSessionStorage.clearSessionStorage("movieTitle");
-//    console.log("movieTitle is: ",manageSessionStorage.getSessionStorage("movieTitle"));
-//    manageSessionStorage.setSessionStorage("movieTitle",movieTitle);
-//    console.log("movieTitle is: ",manageSessionStorage.getSessionStorage("movieTitle"));
-//    manageSessionStorage.clearSessionStorage("movieId");
-//    console.log("movieId is: ",manageSessionStorage.getSessionStorage("movieId"));
-//    manageSessionStorage.setSessionStorage("movieId",movieId);
-//    console.log("movieId is: ",manageSessionStorage.getSessionStorage("movieId"));
-
-    // example of detailPage.populateDetailPage call
-//    redirectToDetailPage();
-    
-  // clear the variables
-
-//  });
 
   // go to detail page on trending movie click
   $(document).on("click",".trending-div>img", function() {
-    console.log("in trending-div.img click event");
-    console.log("you pressed " + $(this).data("movie-id"));
-    console.log("you pressed " + $(this).data("movie-title"));
+    console.log("in trending-div>img click event");
+    // console.log("you pressed " + $(this).data("movie-id"));
+    // console.log("you pressed " + $(this).data("movie-title"));
     manageSessionStorage.setSessionStorage("movieId",$(this).data("movie-id"));
     manageSessionStorage.setSessionStorage("movieTitle",$(this).data("movie-title"));
-    console.log("saved movie id: ", manageSessionStorage.getSessionStorage("movieId"));
-    console.log("saved movie title: ", manageSessionStorage.getSessionStorage("movieTitle"));
+    // console.log("saved movie id: ", manageSessionStorage.getSessionStorage("movieId"));
+    // console.log("saved movie title: ", manageSessionStorage.getSessionStorage("movieTitle"));
     // redirect to the detail page
     redirectToDetailPage();
   });
 
-  // watch list button event - show modal
-  $("#watch-list-btn").on("click",function() {
-    console.log("in global.watch-list-btn click event")
-   // show watch list
-    $('#my-modal').modal('show');
-  });
-
-  //  watch list modal content - movie title click
-  // should cause redirect to the detail page
-  $(document).on("click", ".watch-list-item", function() {
-    console.log("in global.watch-list-item click event");
-    console.log("you pressed " + $(this).data("movie-id"));
-    console.log("you pressed " + $(this).data("movie-title"));
-    manageSessionStorage.setSessionStorage("movieId",$(this).data("movie-id"));
-    manageSessionStorage.setSessionStorage("movieTitle",$(this).data("movie-title"));
-    console.log("saved movie id: ", manageSessionStorage.getSessionStorage("movieId"));
-    console.log("saved movie title: ", manageSessionStorage.getSessionStorage("movieTitle"));
-    // redirect to the detail page
-    redirectToDetailPage();
-  });
-
-  // no longer used - remove this (most likely)
-  // $("#submit-btn").on("click", function(event) {
-  //     // Search Input
-  //     // console.log($("#search-input").val());
-      
-  //     var tokenizedTitle = $("#search-input").val().split(' ');
-  //     var title = '';
-  //     for(var i = 0; i < tokenizedTitle.length; i++) {
-  //         title += tokenizedTitle[i] + "+";
-
-  //     }
-  //     console.log(title);
-  //     //var queryURL = "https://www.omdbapi.com/?t=" + title + "&y=&plot=short&apikey=6e5ba5d2";
-  //     var queryURL = "https://www.omdbapi.com/?t=guardians+of+the+galaxy+vol.2&y=&plot=short&apikey=6e5ba5d2";
-      
-  //     $.ajax({
-  //         url: queryURL,
-  //         method: "GET"
-  //     }).then(function(response) {
-  //         console.log("Response Object: ", response);
-  //         console.log(response.Actors.split(", ")[0]);
-  //         console.log(response.Runtime);
-  //         console.log(response.Released);
-  //     });
+  // // watch list button event - show modal
+  // // **** this code should be moved to common.js I believe
+  // $("#watch-list-btn").on("click",function() {
+  //   console.log("in global.watch-list-btn click event")
+  //  // show watch list
+  //   $('#my-modal').modal('show');
   // });
+
+
+  // MOVED TO COMMON.JS
+  // // watch list modal content - Delete click
+  // // finda all checked items; remove them from the arrays; re-build/re-render DOM
+  // // **** this code should be moved to the commmon.js I believe
+  // $(document).on("click", "#delete-watch-items", function() {
+  //   console.log("in global.delete-watch-items click event");
+  //   // find items checked and remove them from the watch arrays
+  //   // remove checked items from the DOM - each item appended to
+  //   // var modalBody =   $("#watch-list-body");
+  //   // the items to remove are of type:
+  //   //  $('<div class="watch-list-item-container"></div>');
+
+  //   $('.watch-list-checkbox:checked').each(function () {
+  //     console.log("this item was checked: ", this.value);
+  //     // next - remove this from the watch arrays :
+  //     // manageWatchList.removeFromWatchList(this.value);
+  //     // if we are on the detail page we might have just removed 
+  //     // that title from the watch list so update the save to watch list button
+  //     // only do if on detail page
+  //     // detailPage.setTextForWatchListButton();
+  //     // now update the DOM by removing this watch list container item 
+  //     // this parent and child look like this:
+  //     // <div class="watch-list-item-container">
+  //     //   <input class="watch-list-checkbox" type="checkbox" name="delete" value="Aladdin">
+  //     // look up how to target its parent and them run a remove method on it
+  //     // something like this:
+  //     // $(this)>parent.remove
+    
+  //   })
+  // });
+
+  // //  watch list modal content - movie title click
+  // // should cause redirect to the detail page
+  //   // **** this code should be moved to the commmon.js I believe
+  // $(document).on("click", ".watch-list-item", function() {
+  //   console.log("in global.watch-list-item click event");
+  //   // console.log("you pressed " + $(this).data("movie-id"));
+  //   // console.log("you pressed " + $(this).data("movie-title"));
+  //   manageSessionStorage.setSessionStorage("movieId",$(this).data("movie-id"));
+  //   manageSessionStorage.setSessionStorage("movieTitle",$(this).data("movie-title"));
+  //   // console.log("saved movie id: ", manageSessionStorage.getSessionStorage("movieId"));
+  //   // console.log("saved movie title: ", manageSessionStorage.getSessionStorage("movieTitle"));
+  //   // redirect to the detail page
+  //   redirectToDetailPage();
+  // });
+
 
   // ----------------------------------------------------------
   // START OF PROGRAM FLOW:
   // ----------------------------------------------------------
   console.log("In Landing Page");
   manageSessionStorage.clearSessionStorage("search-term");
+
+
+  manageWatchList.getWatchListFromLocalStorage();
+  console.log("watch list titles: ", manageWatchList.watchListMovieTitleArray);
+  console.log("watch list id: ", manageWatchList.watchListMovieIdArray);
+  console.log("watch list year: ", manageWatchList.watchListMovieYearArray);
+  console.log("watch list time: ", manageWatchList.watchListMovieTimeArray);
+
+  manageWatchList.buildWatchListInTheDom();
+
   
-
-  // no longer used - remove this (most likely)
-  //  // redirect button event 
-  //  $("#watch-list").on("click",function() {
-  //   console.log("in global.watch-list click event");
-  //   // var testMovieTitle = "jurassic+park";
-
-  //   // test local storage methods
-  //   manageSessionStorage.clearSessionStorage("movieTitle");
-  //   console.log("movieTitle is: ",manageSessionStorage.getSessionStorage("movieTitle"));
-  //   manageSessionStorage.setSessionStorage("movieTitle",testMovieTitle);
-  //   console.log("movieTitle is: ",manageSessionStorage.getSessionStorage("movieTitle"));
-  //   // testMovieTitle = manageSessionStorage.getSessionStorage("movieTitle");
-  //   // console.log("testMovieTitle is: ", testMovieTitle);
-    
-    
-  //   // // example of detailPage.populateDetailPage call
-  //   detailPage.redirectTo();
-    
-  // // clear the variables
-
-  // });
-
-    
 }); // end of document ready

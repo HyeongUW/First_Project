@@ -15,6 +15,8 @@
   <!-- Our own CSS stylesheet -->
   <link rel="stylesheet" href="assets/css/styles.css" media="screen">
   <link href="https://fonts.googleapis.com/css?family=Carter+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/watchlist.css" media="screen">
+
     <!-- Firebase References -->
     <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-database.js"></script>
@@ -54,7 +56,7 @@
       <div class="col-4" id="logodiv">
         <!-- Brand and toggle get grouped for better mobile display -->
  
-        <a class="navbar-brand" href="index.html" id="logo">A Web Site</a>
+        <a class="navbar-brand" href="index.html" id="logo">Movie Gopher <img src="assets/images/gopher.png" height="48" width="64"></a>
         
       </div>
       <div class="col-4">
@@ -68,7 +70,7 @@
             <li class="nav-item">
               <a class="nav-link" href="search.html">Search</a>
             <li class="nav-item active">
-              <button id="watch-list-btn" type="button" class="btn btn-outline-danger">WatchList</button>
+              <button id="watch-list-btn" type="button" class="btn btn-outline-primary">Save List</button>
             </li>
           </ul>
         </div>
@@ -106,34 +108,24 @@
 
 <!-- Modal -->
 <div id="my-modal" class="modal" tabindex="-1" role="dialog">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Watch List</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div>
-            <input type="checkbox" name="delete" value="aladdin">
-            <div class="watch-list-item" data-movie-id="123456" data-movie-title="aladdin">Aladdin</div>
-          </div>
-          <div>
-            <input type="checkbox" name="delete" value="The Lion King">
-            <div class="watch-list-item" data-movie-id="420818" data-movie-title="The Lion King">The Lion King</div>
-          </div>
-          <div>
-            <input type="checkbox" name="delete" value="argo">
-            <div class="watch-list-item" data-movie-id="444555" data-movie-title="argo">Argo</div>
-          </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary">Delete</button>          
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        </div>
+  <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Save List</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div id="watch-list-body" class="modal-body">
+      <!--  watch list content will be dynamically built here -->  
+      </div>  
+      <div id="watch-list-footer" class="modal-footer">
+        <button id="delete-watch-items" type="button" class="btn btn-secondary">Delete</button>          
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
+</div>
 
   <!-- Start of footer -->
 
@@ -171,8 +163,10 @@
 
 
   <!-- Main program body in javascript -->
+  <script src="assets/javascript/common.js"></script>
   <script src="assets/javascript/app.js"></script>
-  <script src="./assets/javascript/common.js"></script>
+  
+
 
 </body>
 

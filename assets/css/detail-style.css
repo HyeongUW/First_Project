@@ -3,8 +3,8 @@
   font-family:  'Carter One', cursive;
   color: white;
 }
-body {
 
+body {
   /* width: 1080px; */
   height: 100%;
   background-color: black;
@@ -199,7 +199,9 @@ body {
 .checkbox {
   width: 25%;
 }
+
 .watch-list-item {
   width: 75%;
   float: right;
 }
+
