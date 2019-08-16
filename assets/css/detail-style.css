@@ -116,6 +116,18 @@ body {
   margin-left: 30px
 }
 
+#cast {
+  overflow: scroll;
+  scrollbar-color: white;
+  scrollbar-track-color: white;
+  height: 120px;
+  border: solid 2px grey;
+  text-align: center;
+}
+
+#cast>ul {
+  list-style-type: square;
+}
 
 #movie-title {
   position: relative;
