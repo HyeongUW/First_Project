@@ -1,6 +1,7 @@
 /* attempt to get youtube video as background */
 *{
   font-family:  'Carter One', cursive;
+  color: white;
 }
 body {
 
@@ -17,7 +18,50 @@ body {
   height: 100%;
 } 
 
+#title {
+  text-align: left;
+  float: left;
+  padding: 0;
+}
 
+#title-text {
+  float: left;
+  padding: 0;
+}
+
+#release-date {
+  float: left;
+}
+
+#runtime {
+  float: left;
+}
+
+#overview {
+  float: right;
+  text-align: left;
+}
+
+#learn-more-btn {
+  text-align: center;
+  background: grey;
+  display: inline-block;
+}
+
+.streaming-site-logos {
+  clear: left;
+  text-align: left;
+  background: none;
+  display: inline-block;
+  float: left;
+  padding: 0;
+}
+
+#streaming-site {
+  width: auto;
+  height: 60px;
+
+}
 
 #movie-title {
   position: relative;
@@ -36,6 +80,30 @@ body {
 
 .row {
   display: block;
+}
+
+#carousel-header {
+  text-align: center;
+  margin-top: 60px;
+}
+
+.autoplay {
+  float: left;
+  width: 100%;
+  height: 200px;
+  margin-top: 20px;
+  margin-left: 40px;
+}
+
+#poster {
+  width: 100%;
+}
+
+#poster-photo {
+  width: auto;
+  height: 230px;
+  float: none;
+  margin-left: 15px
 }
 
 .test-box {
