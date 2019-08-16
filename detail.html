@@ -104,11 +104,11 @@
   <div class="container" style="color: white;" id="movie-info">
     <div class="row">
       <div class="row col-12">
-        <div id="title" class="col-5" style="text-align: left; float: left; padding: 0">
-          <h2 style="float: left; padding: 0" id="title-text">Blade Runner(
-            <h2 style="float: left;" id="release-date">1990</h2> )</h2>
+        <div id="title" class="col-5">
+          <h2 id="title-text">Blade Runner(
+            <h2 id="release-date">1990</h2> )</h2>
         </div>
-        <div id="runtime" style="float: left">
+        <div id="runtime">
           <h3>Runtime Here!</h3>
         </div>
       </div>
@@ -124,20 +124,16 @@
         ipsum nemo totam impedit consequatur, quaerat cum quia architecto neque voluptatibus delectus vero. Lorem ipsum
         dolor sit, amet consectetur adipisicing elit. Sunt, molestiae animi ipsum at repellat corporis non. Eveniet quis
         itaque dolore esse debitis cumque eum. Laudantium illum nobis distinctio recusandae modi.</p>
+        <button id="learn-more-btn">Learn More</button>
+      </div>
     </div>
     <div class="row">
       <div class="row-md-12">
-        <div class="streaming-site-logos col-3"
-          style="clear: left; text-align: left; background: none; display: inline-block; float: left; background: white; border-right: solid 4px grey; border-bottom: solid 4px grey; padding: 0">
+        <div class="streaming-site-logos col-3">
           <img src="assets/imgs/linkedin.png" id="streaming-site" style="width: 60px; height: 60px;">
           <img src="assets/imgs/stackover2.png" alt="..." id="streaming-site" style="width: 60px; height: 60px">
           <img src="assets/imgs/github.png" alt="..." id="streaming-site"
             style="width: 60px; height: 60px; border: solid 2px white">
-        </div>
-        <div class="homepage-link col-4"
-          style="text-align: center; background: none; display: inline-block; float: right;">
-          <img src="..." alt="..." class="homepage-img">
-          <h2 style="display: inline-block" id="homepage-title">Homepage Link</h2>
         </div>
       </div>
       <div class="row">
@@ -161,7 +157,14 @@
       </div>
     </div>
     <div class="row">
+      <h3 id="carousel-header">Recommended Movies</h3>
       <div class="autoplay col-7" data-slick='{"slidesToShow": 3, "slidesToScroll": 1}'>
+        <div id="poster">
+          <img src="assets/imgs/71K3S+Tk4OL._SY679_.jpg" alt="" id="poster-photo">
+        </div>
+        <div id="poster">
+          <img src="assets/imgs/71K3S+Tk4OL._SY679_.jpg" alt="" id="poster-photo">
+        </div>
         <div id="poster">
           <img src="assets/imgs/71K3S+Tk4OL._SY679_.jpg" alt="" id="poster-photo">
         </div>
@@ -191,13 +194,11 @@
 
   </div>
 
-
-
   <script>
     $('.autoplay').slick({
       slidesToShow: 3,
       slidesToScroll: 1,
-      autoplay: true,
+      autoplay: false,
       autoplaySpeed: 2000,
       infinite: false,
     });
