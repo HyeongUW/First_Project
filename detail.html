@@ -101,7 +101,7 @@
   </section>
 
 
-  <div class="container" style="color: white;" id="movie-info">
+  <div class="container col-10" style="color: white;" id="movie-info">
     <div class="row">
       <div class="row col-12">
         <div id="title" class="col-5">
@@ -114,7 +114,7 @@
       </div>
 
     </div>
-    <div id="overview" class="col-4" style="float: right;">
+    <div id="overview" class="col-4">
       <h2 id="overview-title">Overview</h2>
       <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque quam libero accusantium, quia fugiat qui fuga
         ad delectus laboriosam sequi numquam maxime obcaecati, quisquam harum cumque magnam in? Illo, saepe.</p>
@@ -124,72 +124,75 @@
         ipsum nemo totam impedit consequatur, quaerat cum quia architecto neque voluptatibus delectus vero. Lorem ipsum
         dolor sit, amet consectetur adipisicing elit. Sunt, molestiae animi ipsum at repellat corporis non. Eveniet quis
         itaque dolore esse debitis cumque eum. Laudantium illum nobis distinctio recusandae modi.</p>
-        <button id="learn-more-btn">Learn More</button>
+      <button id="learn-more-btn">Learn More</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="row" id="savelist-streamingsites">
+      <div class="savelist col-3">
+        <button id=“add-fav-btn” type=“button” class="btn btn-outline-danger">Remove from Save List</button>
+      </div>
+      <div class="streaming-site-logos col-3">
+        <img src="assets/imgs/linkedin.png" id="streaming-site">
+        <img src="assets/imgs/stackover2.png" alt="..." id="streaming-site">
+        <img src="assets/imgs/github.png" alt="..." id="streaming-site">
+      </div>
+    </div>
+    <div class="row" id="rated-ratings">
+      <div id="rated" class="col-2">
+        <h3>rated: </h3>
+      </div>
+      <div id="ratings" class="col-3">
+        <h3>Ratings: </h3>
       </div>
     </div>
     <div class="row">
-      <div class="row-md-12">
-        <div class="streaming-site-logos col-3">
-          <img src="assets/imgs/linkedin.png" id="streaming-site">
-          <img src="assets/imgs/stackover2.png" alt="..." id="streaming-site">
-          <img src="assets/imgs/github.png" alt="..." id="streaming-site">
-        </div>
-      </div>
-      <div class="row">
-        <div id="rated" class="col-2">
-          <h3>rated: </h3>
-        </div>
-        <div id="ratings" class="col-2">
-          <h3>Ratings</h3>
-        </div>
-      </div>
-      <div class="row">
-        <div id="genre" class="col-2">
-          <h3>Genre: </h3>
-        </div>
-      </div>
-      <div id="cast-crew" class="col-8">
-        <h2 id="cast-crew-header">cast & crew</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore ullam, praesentium, impedit recusandae
-          quis officia quibusdam ab neque dolorem dolores eius eos deleniti doloribus nesciunt, aperiam distinctio sit
-          asperiores voluptas.</p>
+      <div id="genre" class="col-6">
+        <h3>Genre: </h3>
       </div>
     </div>
-    <div class="row">
-      <h3 id="carousel-header">Recommended Movies</h3>
-      <div class="autoplay col-7" data-slick='{"slidesToShow": 3, "slidesToScroll": 1}'>
-        <div id="poster">
-          <img src="assets/imgs/71K3S+Tk4OL._SY679_.jpg" alt="" id="poster-photo">
-        </div>
-        <div id="poster">
-          <img src="assets/imgs/71K3S+Tk4OL._SY679_.jpg" alt="" id="poster-photo">
-        </div>
-        <div id="poster">
-          <img src="assets/imgs/71K3S+Tk4OL._SY679_.jpg" alt="" id="poster-photo">
-        </div>
-        <div id="poster">
-          <img src="assets/imgs/71K3S+Tk4OL._SY679_.jpg" alt="" id="poster-photo">
-        </div>
-        <div id="poster">
-          <img src="assets/imgs/71K3S+Tk4OL._SY679_.jpg" alt="" id="poster-photo">
-        </div>
-        <div id="poster">
-          <img src="assets/imgs/71K3S+Tk4OL._SY679_.jpg" alt="" id="poster-photo">
-        </div>
-        <div id="poster">
-          <img src="assets/imgs/71K3S+Tk4OL._SY679_.jpg" alt="" id="poster-photo">
-        </div>
-        <div id="poster">
-          <img src="assets/imgs/71K3S+Tk4OL._SY679_.jpg" alt="" id="poster-photo">
-        </div>
-        <div id="poster">
-          <img src="assets/imgs/71K3S+Tk4OL._SY679_.jpg" alt="" id="poster-photo">
-        </div>
-        <div id="poster">
-          <img src="assets/imgs/71K3S+Tk4OL._SY679_.jpg" alt="" id="poster-photo">
-        </div>
+    <div id="cast-crew" class="col-8">
+      <h2 id="cast-crew-header">cast & crew</h2>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore ullam, praesentium, impedit recusandae
+        quis officia quibusdam ab neque dolorem dolores eius eos deleniti doloribus nesciunt, aperiam distinctio sit
+        asperiores voluptas.</p>
+    </div>
+  </div>
+  <div class="row">
+    <h3 id="carousel-header">Recommended Movies</h3>
+    <div class="autoplay col-7" data-slick='{"slidesToShow": 3, "slidesToScroll": 1}'>
+      <div id="poster">
+        <img src="assets/imgs/71K3S+Tk4OL._SY679_.jpg" alt="" id="poster-photo">
+      </div>
+      <div id="poster">
+        <img src="assets/imgs/71K3S+Tk4OL._SY679_.jpg" alt="" id="poster-photo">
+      </div>
+      <div id="poster">
+        <img src="assets/imgs/71K3S+Tk4OL._SY679_.jpg" alt="" id="poster-photo">
+      </div>
+      <div id="poster">
+        <img src="assets/imgs/71K3S+Tk4OL._SY679_.jpg" alt="" id="poster-photo">
+      </div>
+      <div id="poster">
+        <img src="assets/imgs/71K3S+Tk4OL._SY679_.jpg" alt="" id="poster-photo">
+      </div>
+      <div id="poster">
+        <img src="assets/imgs/71K3S+Tk4OL._SY679_.jpg" alt="" id="poster-photo">
+      </div>
+      <div id="poster">
+        <img src="assets/imgs/71K3S+Tk4OL._SY679_.jpg" alt="" id="poster-photo">
+      </div>
+      <div id="poster">
+        <img src="assets/imgs/71K3S+Tk4OL._SY679_.jpg" alt="" id="poster-photo">
+      </div>
+      <div id="poster">
+        <img src="assets/imgs/71K3S+Tk4OL._SY679_.jpg" alt="" id="poster-photo">
+      </div>
+      <div id="poster">
+        <img src="assets/imgs/71K3S+Tk4OL._SY679_.jpg" alt="" id="poster-photo">
       </div>
     </div>
+  </div>
 
   </div>
 

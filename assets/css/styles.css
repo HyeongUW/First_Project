@@ -344,3 +344,7 @@ nav {
   width: 30px;
   
 }
+
+#copyright {
+  position: sticky;
+}

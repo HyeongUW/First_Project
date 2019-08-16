@@ -48,32 +48,48 @@ body {
   display: inline-block;
 }
 
-.streaming-site-logos {
+#savelist-streamingsites {
   clear: left;
+}
+
+.savelist {
+  float: left;
+  margin-left: 90px;
+}
+
+#add-fav-btn {
+  height: 60px;
+}
+
+.streaming-site-logos {
   text-align: left;
   background: none;
-  display: inline-block;
-  float: left;
+  float: right;
   padding: 0;
+  width: 100%;
 }
 
 #streaming-site {
   width: auto;
   height: 60px;
   background: white;
+  margin-right: 20px;
+  float: right;
 }
 
 #rated  {
   clear: left;
   padding: 0;
-  float: left;
   text-align: left;
+  margin-left: 100px;
+  margin-top: 50px
 }
 
 #ratings {
   text-align: left;
   float: left;
   padding-right: 20px;
+  margin: 40px;
 }
 
 #genre {
@@ -121,6 +137,7 @@ body {
   height: 200px;
   margin-top: 20px;
   margin-left: 40px;
+  margin-bottom: 40px;
 }
 
 #poster {
