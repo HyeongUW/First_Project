@@ -77,34 +77,56 @@ body {
   float: right;
 }
 
-#rated  {
-  clear: left;
-  padding: 0;
-  text-align: left;
-  margin-left: 100px;
-  margin-top: 50px
+#rated-ratings {
+  float: left;
+  display: inline-block;
+  margin-top: 20px;
+  margin-left: 20px
+
+}
+
+#rated {
+  text-align: center;
+  float: left;
 }
 
 #ratings {
-  text-align: left;
-  float: left;
-  padding-right: 20px;
-  margin: 40px;
+  display: inline-block;
+  text-align: center;
+  margin-right: 20px;
 }
 
 #genre {
-  text-align: left;
+  text-align: center;
   padding: 0;
   float: left;
+  margin-left: 40px;
+
+
 }
 
 #cast-crew {
   clear: left;
   text-align: center;
+  margin-top: 40px;
 }
 
 #cast-crew-header {
   text-align: center;
+  margin-left: 30px
+}
+
+#cast {
+  overflow: scroll;
+  scrollbar-color: white;
+  scrollbar-track-color: white;
+  height: 120px;
+  border: solid 2px grey;
+  text-align: center;
+}
+
+#cast>ul {
+  list-style-type: square;
 }
 
 #movie-title {
@@ -148,7 +170,12 @@ body {
   width: auto;
   height: 230px;
   float: none;
-  margin-left: 15px
+  margin-left: 20px
+}
+
+#recommended-title {
+  text-align: center;
+  margin-right: 20px
 }
 
 .test-box {
