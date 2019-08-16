@@ -1,10 +1,6 @@
 /* attempt to get youtube video as background */
-*{
-  font-family:  'Carter One', cursive;
-  color: white;
-}
-body {
 
+body {
   /* width: 1080px; */
   height: 100%;
   background-color: black;
@@ -18,116 +14,7 @@ body {
   height: 100%;
 } 
 
-#title {
-  text-align: left;
-  float: left;
-  padding: 0;
-}
 
-#title-text {
-  float: left;
-  padding: 0;
-}
-
-#release-date {
-  float: left;
-}
-
-#runtime {
-  float: left;
-}
-
-#overview {
-  float: right;
-  text-align: left;
-}
-
-#learn-more-btn {
-  text-align: center;
-  background: grey;
-  display: inline-block;
-}
-
-#savelist-streamingsites {
-  clear: left;
-}
-
-.savelist {
-  float: left;
-  margin-left: 90px;
-}
-
-#add-fav-btn {
-  height: 60px;
-}
-
-.streaming-site-logos {
-  text-align: left;
-  background: none;
-  float: right;
-  padding: 0;
-  width: 100%;
-}
-
-#streaming-site {
-  width: auto;
-  height: 60px;
-  background: white;
-  margin-right: 20px;
-  float: right;
-}
-
-#rated-ratings {
-  float: left;
-  display: inline-block;
-  margin-top: 20px;
-  margin-left: 20px
-
-}
-
-#rated {
-  text-align: center;
-  float: left;
-}
-
-#ratings {
-  display: inline-block;
-  text-align: center;
-  margin-right: 20px;
-}
-
-#genre {
-  text-align: center;
-  padding: 0;
-  float: left;
-  margin-left: 40px;
-
-
-}
-
-#cast-crew {
-  clear: left;
-  text-align: center;
-  margin-top: 40px;
-}
-
-#cast-crew-header {
-  text-align: center;
-  margin-left: 30px
-}
-
-#cast {
-  overflow: scroll;
-  scrollbar-color: white;
-  scrollbar-track-color: white;
-  height: 120px;
-  border: solid 2px grey;
-  text-align: center;
-}
-
-#cast>ul {
-  list-style-type: square;
-}
 
 #movie-title {
   position: relative;
@@ -146,36 +33,6 @@ body {
 
 .row {
   display: block;
-}
-
-#carousel-header {
-  text-align: center;
-  margin-top: 60px;
-}
-
-.autoplay {
-  float: left;
-  width: 100%;
-  height: 200px;
-  margin-top: 20px;
-  margin-left: 40px;
-  margin-bottom: 40px;
-}
-
-#poster {
-  width: 100%;
-}
-
-#poster-photo {
-  width: auto;
-  height: 230px;
-  float: none;
-  margin-left: 20px
-}
-
-#recommended-title {
-  text-align: center;
-  margin-right: 20px
 }
 
 .test-box {
@@ -199,7 +56,29 @@ body {
 .checkbox {
   width: 25%;
 }
+
 .watch-list-item {
   width: 75%;
   float: right;
+}
+
+#cast>ul {
+  list-style-type: square;
+}
+
+#cast-list {
+  margin: 0px;
+}
+
+#cast {
+  height: 200px;
+  overflow: scroll;
+}
+
+#temp-streaming {
+  color: white;
+}
+
+#add-fav-btn {
+  width: 200px;
 }

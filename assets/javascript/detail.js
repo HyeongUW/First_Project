@@ -5,38 +5,15 @@ $(document).ready(function() {
   // global variables:
   // ----------------------------------------------------------
     youTubeVideoId = '';
+    isTrailerPlaying = false;
+    genres = [];
+    streaming = [];
+
+
 
   // ----------------------------------------------------------
   // objects and classes:
   // ----------------------------------------------------------
-
-  // ----------------------------------------------------------
-  // object for local storage:
-  // ----------------------------------------------------------
-  // var manageSessionStorage = {
-  //   // local variables:
-
-  //   // methods:
-
-  //   // method to clear property from local storage
-  //   clearSessionStorage: function(property) {
-  //     console.log("in manageSessionStorage.clearSessionStorage");
-  //     sessionStorage.removeItem(property);
-  //   },
-
-  //   // method to get property from local storage
-  //   getSessionStorage: function(property) {
-  //     console.log("in manageSessionStorage.getSessionStorage");
-  //     var propVal = sessionStorage.getItem(property);
-  //     return propVal;
-  //   },
-
-  //   // method to set property in local storage
-  //   setSessionStorage: function(property,propVal) {
-  //     console.log("in manageSessionStorage.setSessionStorage");
-  //     sessionStorage.setItem(property,propVal);
-  //   },
-  // }
 
   // ----------------------------------------------------------
   // object for detail page:
@@ -45,11 +22,16 @@ $(document).ready(function() {
     // local variables:
     movieTitle: "",
     movieTitleId: "",
+    movieTitleYear: "",
+    movieTitleTime: "",
     country: "us",
     utellyHost: "",
     utellyKey: "",
     
     // methods:
+
+
+  
 
     // populate the detail page content
     populateDetailPage: function() {
@@ -59,14 +41,26 @@ $(document).ready(function() {
       console.log("movie title is: ", this.movieTitle);
       this.movieId = manageSessionStorage.getSessionStorage("movieId");
       console.log("movie id is: ", this.movieId);
-
+      // get utelly from local storage
+      console.log('utelly host: ',manageLocalStorage.getLocalStorage("host"));
+      console.log('utelly key: ',manageLocalStorage.getLocalStorage("key"));
+      
+      // manageLocalStorage.getLocalStorage("host"),
+      // console.log("rapid api host is: ", detailPage.utellyHost);
+      // utellyKey = manageLocalStorage.getLocalStorage("key"),
+      // console.log("rapid api key is: ", detailPage.utellyKey);
    
-      this.utellyHost = manageSessionStorage.getSessionStorage("host");
-      //console.log("rapid api host is: ", this.utellyHost);
-      this.utellyKey = manageSessionStorage.getSessionStorage("key");
-      //console.log("rapid api key is: ", this.utellyKey);
+      // this.utellyHost = manageSessionStorage.getSessionStorage("host");
+      // //console.log("rapid api host is: ", this.utellyHost);
+      // this.utellyKey = manageSessionStorage.getSessionStorage("key");
+      // //console.log("rapid api key is: ", this.utellyKey);
 
-      // call to API for detailed information
+      // commment utelly call out during unit testing 
+      // but keep commented during general testing
+      // due to the limited call allowance of 1000 calls per month:
+      streaming = [];
+      detailPage.getUtelly(this.movieTitle,this.country);
+  
       detailPage.getTmdbMovieDetails(this.movieTitleId);
 
       // call to API for movie rating (pg, pg-13, etc.)
@@ -75,16 +69,12 @@ $(document).ready(function() {
       // call to API for credit information
       detailPage.getTmdbMovieCredits(this.movieTitleId);
 
-      // commment utelly call out during unit testing 
-      // but keep commented during general testing
-      // due to the limited call allowance of 1000 calls per month:
-      // detailPage.getUtelly(this.movieTitle,this.country);
 
-      // call to API for video information
+      // // call to API for video information
       detailPage.getTmdbMovieVideo(this.movieTitleId);
 
 
-      // call to API for related movie information
+      // // call to API for related movie information
       detailPage.getTmdbRelatedMovies(this.movieTitleId);
 
      
@@ -118,16 +108,35 @@ $(document).ready(function() {
         // properties that should be mined for detail page
         // title
         console.log("title: ", response.original_title);
-        console.log("overview: ", response.overview);
+        console.log("name: ", response.original_name);
         console.log("release_date: ", response.release_date);
+        $("#title-text").text(detailPage.movieTitle + ' (' + response.release_date.substring(0,4) + ')');
+        detailPage.movieTitleYear = response.release_date.substring(0,4);
+
+        console.log("overview: ", response.overview);
+        $("#overview-text").text(response.overview);
+
         console.log("runtime: ", response.runtime);
+        $("#runtime-text").text(response.runtime  + ' min.');    
+        detailPage.movieTitleTime = response.runtime + ' min.';
+
         console.log("vote_average: ", response.vote_average);
-        console.log("title: ", response.original_title);
+        $("#ratings-text").text("Ratings: " + response.vote_average);   
+
         console.log("homepage: ", response.homepage);
+        if (response.runtime != null) {
+          $("#homepage").attr('href',response.homepage);
+        }
+        else {
+          $("#homepage").text('');
+        };
+      
+        detailPage.genres = [];
         response.genres.forEach(element => {
           console.log("genre: ", element.name)
+          genres.push(element.name);
         });
-
+        $("#genre").text("Genres: " + genres.join(', '));
       });  
     },
 
@@ -190,11 +199,15 @@ $(document).ready(function() {
           "data": "{}"
       }
 
+      var castUl = $("#cast-list");
+
       $.ajax(settings).done(function (response) {
           console.log(response);
           response.cast.forEach(element => {
               console.log("cast character: ",element.character);
               console.log("cast name: ",element.name);
+              var newLi = $('<li>' + element.character + '  - (' + element.name + ')' + '</li>');
+              castUl.append(newLi);
           });
       });  
     },
@@ -207,9 +220,9 @@ $(document).ready(function() {
       console.log("detail titleId", titleId);
 
       // look up the API endpoint details and code as appropriate below:
-
+      // try similiar and recommendations
       var apiKey = "4eb3939343ef4ca0932079284f76225d";
-      var searchURL = "https://api.themoviedb.org/3/movie/" + titleId + "/similar?api_key=" + apiKey 
+      var searchURL = "https://api.themoviedb.org/3/movie/" + titleId + "/recommendations?api_key=" + apiKey 
                      + "&language=en-US";
 
       var settings = {
@@ -223,14 +236,199 @@ $(document).ready(function() {
 
       $.ajax(settings).done(function (response) {
           console.log(response);
+          var i = 1;
           response.results.forEach(element => {
-              console.log("related movie id: ",element.id);
-              console.log("related movie original title: ",element.original_title);
-              console.log("related movie title: ", element.title);
-              console.log("related movie overview: ",element.overview);
+            console.log("related movie id: ",element.id);
+            console.log("related movie original title: ",element.original_title);
+            console.log("related movie title: ", element.title);
+            console.log("related movie overview: ",element.overview);
+            console.log("poster_path: ",element.poster_path);
+
+            if (i === 1) {
+              var imageURL = "https://image.tmdb.org/t/p/w500" + element.poster_path;
+              var carbox = $("#car01");
+              carbox.attr("src",imageURL);
+              carbox.attr('data-movie-id',element.id);
+              // Some of the returned data does not have "original_title" data, some
+              // of them had "original_name" instead.
+              if(element.original_title !== undefined) {
+                carbox.attr('data-movie-title',element.original_title);
+              } else {
+                carbox.attr('data-movie-title',element.original_name);
+              }
+            };
+
+            if (i === 2) {
+              var imageURL = "https://image.tmdb.org/t/p/w500" + element.poster_path;
+              var carbox = $("#car02");
+              carbox.attr("src",imageURL);
+              carbox.attr('data-movie-id',element.id);
+              // Some of the returned data does not have "original_title" data, some
+              // of them had "original_name" instead.
+              if(element.original_title !== undefined) {
+                carbox.attr('data-movie-title',element.original_title);
+              } else {
+                carbox.attr('data-movie-title',element.original_name);
+              }
+            };
+
+            if (i === 3) {
+              var imageURL = "https://image.tmdb.org/t/p/w500" + element.poster_path;
+              var carbox = $("#car03");
+              carbox.attr("src",imageURL);
+              carbox.attr('data-movie-id',element.id);
+              // Some of the returned data does not have "original_title" data, some
+              // of them had "original_name" instead.
+              if(element.original_title !== undefined) {
+                carbox.attr('data-movie-title',element.original_title);
+              } else {
+                carbox.attr('data-movie-title',element.original_name);
+              }
+            };
+
+            if (i === 4) {
+              var imageURL = "https://image.tmdb.org/t/p/w500" + element.poster_path;
+              var carbox = $("#car04");
+              carbox.attr("src",imageURL);
+              carbox.attr('data-movie-id',element.id);
+              // Some of the returned data does not have "original_title" data, some
+              // of them had "original_name" instead.
+              if(element.original_title !== undefined) {
+                carbox.attr('data-movie-title',element.original_title);
+              } else {
+                carbox.attr('data-movie-title',element.original_name);
+              }
+            };
+
+            if (i === 5) {
+              var imageURL = "https://image.tmdb.org/t/p/w500" + element.poster_path;
+              var carbox = $("#car05");
+              carbox.attr("src",imageURL);
+              carbox.attr('data-movie-id',element.id);
+              // Some of the returned data does not have "original_title" data, some
+              // of them had "original_name" instead.
+              if(element.original_title !== undefined) {
+                carbox.attr('data-movie-title',element.original_title);
+              } else {
+                carbox.attr('data-movie-title',element.original_name);
+              }
+            };
+
+            if (i === 6) {
+              var imageURL = "https://image.tmdb.org/t/p/w500" + element.poster_path;
+              var carbox = $("#car06");
+              carbox.attr("src",imageURL);
+              carbox.attr('data-movie-id',element.id);
+              // Some of the returned data does not have "original_title" data, some
+              // of them had "original_name" instead.
+              if(element.original_title !== undefined) {
+                carbox.attr('data-movie-title',element.original_title);
+              } else {
+                carbox.attr('data-movie-title',element.original_name);
+              }
+            };
+
+            if (i === 7) {
+              var imageURL = "https://image.tmdb.org/t/p/w500" + element.poster_path;
+              var carbox = $("#car07");
+              carbox.attr("src",imageURL);
+              carbox.attr('data-movie-id',element.id);
+              // Some of the returned data does not have "original_title" data, some
+              // of them had "original_name" instead.
+              if(element.original_title !== undefined) {
+                carbox.attr('data-movie-title',element.original_title);
+              } else {
+                carbox.attr('data-movie-title',element.original_name);
+              }
+            };
+
+            if (i === 8) {
+              var imageURL = "https://image.tmdb.org/t/p/w500" + element.poster_path;
+              var carbox = $("#car08");
+              carbox.attr("src",imageURL);
+              carbox.attr('data-movie-id',element.id);
+              // Some of the returned data does not have "original_title" data, some
+              // of them had "original_name" instead.
+              if(element.original_title !== undefined) {
+                carbox.attr('data-movie-title',element.original_title);
+              } else {
+                carbox.attr('data-movie-title',element.original_name);
+              }
+            };
+
+            if (i === 9) {
+              var imageURL = "https://image.tmdb.org/t/p/w500" + element.poster_path;
+              var carbox = $("#car09");
+              carbox.attr("src",imageURL);
+              carbox.attr('data-movie-id',element.id);
+              // Some of the returned data does not have "original_title" data, some
+              // of them had "original_name" instead.
+              if(element.original_title !== undefined) {
+                carbox.attr('data-movie-title',element.original_title);
+              } else {
+                carbox.attr('data-movie-title',element.original_name);
+              }
+            };
+
+            if (i === 10) {
+              var imageURL = "https://image.tmdb.org/t/p/w500" + element.poster_path;
+              var carbox = $("#car10");
+              carbox.attr("src",imageURL);
+              carbox.attr('data-movie-id',element.id);
+              // Some of the returned data does not have "original_title" data, some
+              // of them had "original_name" instead.
+              if(element.original_title !== undefined) {
+                carbox.attr('data-movie-title',element.original_title);
+              } else {
+                carbox.attr('data-movie-title',element.original_name);
+              }
+            };
+
+            // increment
+            i++;
+              
           });
       });  
+
+   
     },
+
+
+
+  //    // Returns trending movies
+  //    for(var i = 0; i < response.results.length; i++) {
+  //     var tempDiv = $("<div>");
+  //     tempDiv.addClass("trending-div");
+
+  //     var tempImage = $("<img>");
+  //     var imageURL = "https://image.tmdb.org/t/p/w500" + response.results[i].poster_path;
+  //     tempImage.attr("src", imageURL);
+  //     tempImage.attr('data-movie-id', response.results[i].id);
+  //     tempImage.addClass("trending-poster");
+      
+      
+  //     var tempTitle = $("<h3>");
+      
+  //     // Some of the returned data does not have "original_title" data, some
+  //     // of them had "original_name" instead.
+  //     if(response.results[i].original_title !== undefined) {
+  //       tempTitle.text(response.results[i].original_title);
+  //       tempImage.attr('data-movie-title',response.results[i].original_title);
+  //     } else {
+  //       tempTitle.text(response.results[i].original_name);
+  //       tempImage.attr('data-movie-title',response.results[i].original_name);
+  //     }
+      
+      
+  //     tempDiv.append(tempImage).append(tempTitle);
+      
+  //     $("#trending-placehold").append(tempDiv);
+  // }
+
+
+
+
+
 
 
     // get related movie rating (pg, pg-13, etc.) from OMDB API
@@ -239,28 +437,18 @@ $(document).ready(function() {
       console.log("in detailPage.getOmdbMovieRating");
       console.log("detail title", title);
 
-      // look up the API endpoint details and code as appropriate below:
-      
-      // var apiKey = "4eb3939343ef4ca0932079284f76225d";
-      // var searchURL = "https://api.themoviedb.org/3/movie/" + titleId + "/credits?api_key=" + apiKey 
-      //                + "&language=en-US";
+      // construct our URL
+      var queryURL = "https://www.omdbapi.com/?t=" + title + "&apikey=trilogy";
 
-      // var settings = {
-      //     "async": true,
-      //     "crossDomain": true,
-      //     "url": searchURL,
-      //     "method": "GET",
-      //     "headers": {},
-      //     "data": "{}"
-      // }
-
-      // $.ajax(settings).done(function (response) {
-      //     console.log(response);
-      //     response.cast.forEach(element => {
-      //         console.log("cast character: ",element.character);
-      //         console.log("cast name: ",element.name);
-      //     });
-      // });  
+      // make API call
+      $.ajax({
+        url: queryURL,
+        method: "GET"
+      }).then(function(response) {
+        console.log(response);
+        console.log("rated: ", response.Rated);
+        $("#rated").text("Rated: " + response.Rated);
+      });
     },
 
 
@@ -282,6 +470,8 @@ $(document).ready(function() {
       // console.log("rapid api host is: ", detailPage.utellyHost);
       // console.log("rapid api key is: ",detailPage.utellyKey);
       
+      // this.streaming = [];
+
       // build call to the API
       const options = {
       method: 'GET',
@@ -291,7 +481,7 @@ $(document).ready(function() {
           },
       };
       
-
+    
 
       // ajax call to utelly API
       // 1.  loop through the results
@@ -299,7 +489,7 @@ $(document).ready(function() {
       //     1.2 loop through the locations on each match
       //     1.3 surface the location and location url on the detail page
       $.ajax(url, options).then(function(response) { 
-          console.log("in ajax call for utelly");
+          console.log("in ajax call for Utelly");
           
           console.log(response.results);
           console.log("results-length: ", response.results.length);
@@ -308,8 +498,8 @@ $(document).ready(function() {
             console.log("result is: ",element);
             console.log("results-name ",element.name);
             // check to see if this result matches target movie
-            console.log("target title: ", title.toLowerCase().replace('+',' '));
-            console.log("results name: ", element.name.toLowerCase());
+            console.log(">>>>>>>>>>>>>>>>>>>>>>>target title: ", title.toLowerCase().replace('+',' '));
+            console.log(">>>>>>>>>>>>>>>>>>>>>>>results name: ", element.name.toLowerCase());
             if (element.name.toLowerCase() === title.toLowerCase().replace('+',' ')) {
               console.log("match on title: ", title.toLowerCase().replace('+',' '));
               // loop thru locations to see where title can be streamed
@@ -318,16 +508,52 @@ $(document).ready(function() {
                 // console.log("this location url is: ", element.url);
                 // right here need to put the location and location url on the detail page 
                 // think of un-ordered list 
-                $("#stream-id").text(element.display_name);
-                $("#stream-url").text(element.url);
+                  console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+                  console.log("streaming-: ", element.display_name);
+                  console.log("going to push " + element.display_name + " into streaming array");
+                  streaming.push(element.display_name);
+
+                  
+                  console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+                  
+                // $("#stream-url").text(element.url);
 
               }); // end of locations forEach
             }; // end of title check loop
           }); // end of results forEach
+
+        console.log("streaming array = ", streaming.join(', '));
+        $("#temp-streaming").text('Streaming on: ' + streaming.join(', '));
+
       }); // end of the ajax call
+
+
     }, // end of method getUtelly
 
+
     // other methods go below
+
+    // method to determine toggle for detail page watch list badge
+    // i.e. if title is in watch list the badge should be:
+    // remove from watch list
+    // if title is not in watch list the badge should be:
+    // add to watch list
+    setTextForWatchListButton() {
+      console.log("in manageWatchList.setTextForWatchListButton");
+      // if title is not in watch list then button should read ADD else REMOVE
+      console.log("title to check for in watch list is: ",detailPage.movieTitle);
+      
+      if (manageWatchList.watchListMovieTitleArray.indexOf(detailPage.movieTitle) === -1) {
+        $("#add-fav-btn").text("Add to Save List");
+        $("#add-fav-btn").removeClass('btn-outline-danger');
+        $("#add-fav-btn").addClass('btn-outline-success');
+      }
+      else {
+        $("#add-fav-btn").text("Remove from Save List");
+        $("#add-fav-btn").removeClass('btn-outline-success');
+        $("#add-fav-btn").addClass('btn-outline-danger');
+      };
+    },
 
   } // end of detailPage object
 
@@ -337,11 +563,121 @@ $(document).ready(function() {
   // ----------------------------------------------------------
   console.log("In Detail Page");
 
+  manageWatchList.getWatchListFromLocalStorage();
+  console.log("watch list titles: ", manageWatchList.watchListMovieTitleArray);
+  console.log("watch list id: ", manageWatchList.watchListMovieIdArray);
+  console.log("watch list year: ", manageWatchList.watchListMovieYearArray);
+  console.log("watch list time: ", manageWatchList.watchListMovieTimeArray);
+  
+  // manageWatchList.buildWatchListInTheDom();
+
   detailPage.movieTitle = manageSessionStorage.getSessionStorage("movieTitle");
-  detailPage.movieTitleId = manageSessionStorage.getSessionStorage("movieId")
+  detailPage.movieTitleId = manageSessionStorage.getSessionStorage("movieId");
+  detailPage.setTextForWatchListButton();
   // detailPage.movieTitleId = 420817;
   // detailPage.movieTitle = 'Aladdin'
   detailPage.populateDetailPage();
+
+
+  // add to fav button event - toggle into/out of watch list
+  $("#add-fav-btn").on("click",function() {
+    console.log("in global.add-fav-btn click event");
+    
+    // if title not in watch list add it and change badge class
+    //  else remove it from watch list and change badge class
+    if (manageWatchList.watchListMovieTitleArray.indexOf(detailPage.movieTitle) === -1) {
+      // not in list - add it
+      manageWatchList.addToWatchList(detailPage.movieTitle, detailPage.movieTitleId,detailPage.movieTitleYear,detailPage.movieTitleTime);
+      detailPage.setTextForWatchListButton();
+      manageWatchList.getWatchListFromLocalStorage();
+      console.log("A:length of watch list is: ", manageWatchList.watchListMovieTitleArray.length);
+      console.log("watch list titles: ", manageWatchList.watchListMovieTitleArray);
+      console.log("watch list id: ", manageWatchList.watchListMovieIdArray);
+      console.log("watch list year: ", manageWatchList.watchListMovieYearArray);
+      console.log("watch list time: ", manageWatchList.watchListMovieTimeArray);
+      // manageWatchList.buildWatchListInTheDom();
+    }
+    else {
+      // in list already so remove it
+      manageWatchList.removeFromWatchList(detailPage.movieTitle);
+      detailPage.setTextForWatchListButton();
+      manageWatchList.getWatchListFromLocalStorage();
+      console.log("R:length of watch list is: ", manageWatchList.watchListMovieTitleArray.length);
+      console.log("watch list titles: ", manageWatchList.watchListMovieTitleArray);
+      console.log("watch list id: ", manageWatchList.watchListMovieIdArray);
+      console.log("watch list year: ", manageWatchList.watchListMovieYearArray);
+      console.log("watch list time: ", manageWatchList.watchListMovieTimeArray);
+      // manageWatchList.buildWatchListInTheDom();
+    };
+  });
+
+
+  // MOVED TO COMMON.JS
+  // watch list button event - show modal
+  $("#watch-list-btn").on("click",function() {
+    console.log("in global.watch-list-btn click event")
+   // show watch list
+    $('#my-modal').modal('show');
+  });
+
+  // watch list modal content - Delete click
+  // finda all checked items; remove them from the arrays; re-build/re-render DOM
+  // **** this code should be moved to the commmon.js I believe
+  $(document).on("click", "#delete-watch-items", function() {
+    console.log("in global.delete-watch-items click event");
+    // find items checked and remove them from the watch arrays
+    // remove checked items from the DOM - each item appended to
+    // var modalBody =   $("#watch-list-body");
+    // the items to remove are of type:
+    //  $('<div class="watch-list-item-container"></div>');
+
+    $('.watch-list-checkbox:checked').each(function () {
+      console.log("this item was checked: ", this.value);
+      // next - remove this from the watch arrays :
+      // manageWatchList.removeFromWatchList(this.value);
+      // if we are on the detail page we might have just removed 
+      // that title from the watch list so update the save to watch list button
+      // only do if on detail page
+      // detailPage.setTextForWatchListButton();
+      // now update the DOM by removing this watch list container item 
+      // this parent and child look like this:
+      // <div class="watch-list-item-container">
+      //   <input class="watch-list-checkbox" type="checkbox" name="delete" value="Aladdin">
+      // look up how to target its parent and them run a remove method on it
+      // something like this:
+      // $(this)>parent.remove
+    
+    })
+  });
+  
+  // watch list modal content - movie title click
+  // should cause redirect to the detail page
+  $(document).on("click", ".watch-list-item", function() {
+    console.log("in global.watch-list-item click event");
+    // console.log("you pressed " + $(this).data("movie-id"));
+    // console.log("you pressed " + $(this).data("movie-title"));
+    manageSessionStorage.setSessionStorage("movieId",$(this).data("movie-id"));
+    manageSessionStorage.setSessionStorage("movieTitle",$(this).data("movie-title"));
+    // console.log("saved movie id: ", manageSessionStorage.getSessionStorage("movieId"));
+    // console.log("saved movie title: ", manageSessionStorage.getSessionStorage("movieTitle"));
+    // redirect to the detail page
+    redirectToDetailPage();
+  });
+
+
+  // go to detail page on recommended movie click
+  $(document).on("click",".carousel-item>img", function() {
+    console.log("in carousel-item>img click event");
+    // console.log("you pressed " + $(this).data("movie-id"));
+    // console.log("you pressed " + $(this).data("movie-title"));
+    manageSessionStorage.setSessionStorage("movieId",$(this).data("movie-id"));
+    manageSessionStorage.setSessionStorage("movieTitle",$(this).data("movie-title"));
+    // console.log("saved movie id: ", manageSessionStorage.getSessionStorage("movieId"));
+    // console.log("saved movie title: ", manageSessionStorage.getSessionStorage("movieTitle"));
+    // redirect to the detail page
+    redirectToDetailPage();
+  });
+
 
 }); // end of document ready
 
@@ -373,8 +709,9 @@ $(document).ready(function() {
     function onPlayerReady(event) {
 
       event.target.loadVideoById(youTubeVideoId);
-      event.target.setVolume(20);
+      event.target.setVolume(10);
       event.target.playVideo();
+      isTrailerPlaying = true;
       // event.target.playVideoAt(0);
       // event.loadPlaylist(youTubeVideoId);
       // event.setLoop(true);
@@ -391,6 +728,7 @@ $(document).ready(function() {
     function onPlayerStateChange(event) {
       if (event.data == YT.PlayerState.ENDED) {
         event.target.playVideo();
+        isTrailerPlaying = true;
       }
     }
 
@@ -402,5 +740,50 @@ $(document).ready(function() {
 
 
 
-      
+    // toggle trailer on/off when users scrolls down/up
+    window.onscroll = function() {trailerToggle()};
 
+    function trailerToggle() {
+      // console.log("in global.trailerToggle");
+      // console.log(("isTrailerPlaying: ", isTrailerPlaying));
+      // console.log("scrollTop: ", document.body.scrollTop);
+      // console.log("elementTop: ", document.documentElement.scrollTop);
+      if (document.documentElement.scrollTop > 200) {
+          if (isTrailerPlaying) {
+            //pause trailer
+            isTrailerPlaying = false;
+            player.pauseVideo();
+          };
+      } 
+      else if (document.documentElement.scrollTop <= 200) {
+              if (!isTrailerPlaying) {
+                //un-pause trailer
+                isTrailerPlaying = true;
+                player.playVideo();
+              }
+      }
+    }
+
+
+  // pause trailer if user click external movie homepage link
+  // should cause redirect to the detail page
+  $(document).on("click", "#homepage", function() {
+    console.log("in global.homepage click event");
+    isTrailerPlaying = false;
+    player.pauseVideo();
+  });
+
+  // // not working - need more research
+  // // start trailer up again if user return to web page
+  // const windowHasFocus = function () {
+  //   window.addEventListener("focus", function(event) 
+  //   { 
+  //      isTrailerPlaying = true;
+  //      player.playVideo();
+  //   }, false);
+
+  // }  
+ 
+
+ 
+    

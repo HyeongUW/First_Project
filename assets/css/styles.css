@@ -1,11 +1,10 @@
 /* --- STYLES FOR ALL PAGES --- */
 * {
-  font-family:  'Carter One', cursive;
   box-sizing: border-box;
 }
 body {
   /* Typography */
-  /* font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; */
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
 /* background-color: rgba(rgb(17, 14, 14), green, blue, alpha); */
 background: none;
 margin: 0;
@@ -42,7 +41,8 @@ margin: 0 0 30px;
 color:white;
 background: #1a1919;
 /* border-bottom: 2px solid #cccccc; */
-font-family: 'Tangerine', serif;
+
+font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 font-size: 28px;
 }
 
@@ -62,8 +62,8 @@ font-size: 28px;
   color: white;
 }
 #logodiv {
-  /* font-family: 'Tangerine', serif; */
-  /* font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; */
+ 
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
         font-size: 48px;
   text-align: center;
   color: white;
@@ -89,16 +89,16 @@ html {
   background-color: #1d1c1b;
   border-top: solid #1d1c1b 90px;
   color: red;
-  /* font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  /* font-family: 'Tangerine', serif; */ */
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  
         font-size: 38px;
   margin-top: 70px;      
 }
 
 /* NAV START */
 #logo {
-  /* font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; */
-  /* font-family: 'Tangerine', serif; */
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  
         font-size: 288px;
         color: white;
 
@@ -343,8 +343,4 @@ nav {
 .star-icon {
   width: 30px;
   
-}
-
-#copyright {
-  position: sticky;
 }
