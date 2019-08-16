@@ -163,23 +163,3 @@ body {
   float: right;
 }
 
-#cast>ul {
-  list-style-type: square;
-}
-
-#cast-list {
-  margin: 0px;
-}
-
-#cast {
-  height: 200px;
-  overflow: scroll;
-}
-
-#temp-streaming {
-  color: white;
-}
-
-#add-fav-btn {
-  width: 200px;
-}
