@@ -1,4 +1,8 @@
 /* attempt to get youtube video as background */
+*{
+  font-family:  'Carter One', cursive;
+  color: white;
+}
 
 body {
   /* width: 1080px; */
