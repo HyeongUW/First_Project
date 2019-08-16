@@ -38,6 +38,17 @@ body {
   display: block;
 }
 
+.autoplay {
+  display: inline-block;
+}
+
+#poster {
+  width: auto;
+  height: 200px;
+  display: inline-block;
+
+}
+
 .test-box {
   display: block;
   color: lightsteelblue;
