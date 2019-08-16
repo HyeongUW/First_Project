@@ -17,6 +17,8 @@ main {
 }
 .navbar-light .navbar-nav .nav-link {
   color: white;
+  margin-top: 10px;
+  margin-right: 20px;
 }
 .container{
 
@@ -33,7 +35,7 @@ text-align: center;
 /* header*/
 #masthead{
 position: fixed;
-/* z-index: 99; */
+z-index: 99;
 width: 100%;
 margin: 0 0 30px;
 /* overflow: auto; */
@@ -84,9 +86,10 @@ html {
   /* Typography */
   background-color: #1d1c1b;
   border-top: solid #1d1c1b 90px;
-  color: red;
+  color: #31708e;
   font-size: 38px;
   margin-top: 70px;      
+  letter-spacing: 0.2em;
 }
 
 /* NAV START */
@@ -278,6 +281,7 @@ nav {
 /* ---------------------------------------------------------------------- */
 /* Maybe we do not need this part  August 10, Merging Request*/
 #myBtn {
+  font-family:  'Carter One', cursive;
   display: none;
   position: fixed;
   bottom: 20px;
@@ -286,7 +290,7 @@ nav {
   font-size: 18px;
   border: none;
   outline: none;
-  background-color: #7FDBFF;
+  background-color: #31708e ;
   color: white;
   cursor: pointer;
   padding: 15px;
@@ -336,6 +340,10 @@ nav {
   
 }
 
-#copyright {
-  position: sticky;
+#watch-list-btn {
+  margin-top: 21px;
+}
+
+.navbar-brand img {
+  margin-bottom: 20px;
 }
