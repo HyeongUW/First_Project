@@ -42,12 +42,19 @@ body {
   float: left;
   width: 100%;
   height: 200px;
+  margin-top: 20px;
+  margin-left: 40px;
 }
 
 #poster {
+  width: 100%;
+}
+
+#poster-photo {
   width: auto;
-  height: 100px;
-  clear: left;
+  height: 190px;
+  float: none;
+  margin-left: 25px
 }
 
 .test-box {

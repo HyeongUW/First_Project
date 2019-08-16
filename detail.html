@@ -149,7 +149,7 @@
         </div>
       </div>
       <div class="row">
-        <div id="genre" class="col-2" style="text-align: left; padding: 0; margin-top: 20px; float: left">
+        <div id="genre" class="col-2" style="text-align: left; padding: 0; float: left">
           <h3>Genre: </h3>
         </div>
       </div>
@@ -161,24 +161,30 @@
       </div>
     </div>
     <div class="row">
-      <div class="autoplay" data-slick='{"slidesToShow": 3, "slidesToScroll": 1}'>
-        <div>
-          <img id="poster" src="assets/imgs/71K3S+Tk4OL._SY679_.jpg" alt="">
+      <div class="autoplay col-7" data-slick='{"slidesToShow": 3, "slidesToScroll": 1}'>
+        <div id="poster">
+          <img src="assets/imgs/71K3S+Tk4OL._SY679_.jpg" alt="" id="poster-photo">
         </div>
-        <div>
-          <img src="assets/imgs/71K3S+Tk4OL._SY679_.jpg" alt="" id="poster">
+        <div id="poster">
+          <img src="assets/imgs/71K3S+Tk4OL._SY679_.jpg" alt="" id="poster-photo">
         </div>
-        <div>
-          <img src="assets/imgs/71K3S+Tk4OL._SY679_.jpg" alt="" id="poster">
+        <div id="poster">
+          <img src="assets/imgs/71K3S+Tk4OL._SY679_.jpg" alt="" id="poster-photo">
         </div>
-        <div>
-          <img src="assets/imgs/71K3S+Tk4OL._SY679_.jpg" alt="" id="poster">
+        <div id="poster">
+          <img src="assets/imgs/71K3S+Tk4OL._SY679_.jpg" alt="" id="poster-photo">
         </div>
-        <div>
-          <h3>5</h3>
+        <div id="poster">
+          <img src="assets/imgs/71K3S+Tk4OL._SY679_.jpg" alt="" id="poster-photo">
         </div>
-        <div>
-          <h3>6</h3>
+        <div id="poster">
+          <img src="assets/imgs/71K3S+Tk4OL._SY679_.jpg" alt="" id="poster-photo">
+        </div>
+        <div id="poster">
+          <img src="assets/imgs/71K3S+Tk4OL._SY679_.jpg" alt="" id="poster-photo">
+        </div>
+        <div id="poster">
+          <img src="assets/imgs/71K3S+Tk4OL._SY679_.jpg" alt="" id="poster-photo">
         </div>
       </div>
     </div>
@@ -191,10 +197,9 @@
     $('.autoplay').slick({
       slidesToShow: 3,
       slidesToScroll: 1,
-      autoplay: false,
+      autoplay: true,
       autoplaySpeed: 2000,
-      infinite: true,
-      pauseOnHover: true,
+      infinite: false,
     });
   </script>
 
