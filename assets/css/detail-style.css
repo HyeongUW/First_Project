@@ -60,7 +60,35 @@ body {
 #streaming-site {
   width: auto;
   height: 60px;
+  background: white;
+}
 
+#rated  {
+  clear: left;
+  padding: 0;
+  float: left;
+  text-align: left;
+}
+
+#ratings {
+  text-align: left;
+  float: left;
+  padding-right: 20px;
+}
+
+#genre {
+  text-align: left;
+  padding: 0;
+  float: left;
+}
+
+#cast-crew {
+  clear: left;
+  text-align: center;
+}
+
+#cast-crew-header {
+  text-align: center;
 }
 
 #movie-title {
