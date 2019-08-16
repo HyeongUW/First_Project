@@ -136,6 +136,36 @@ body {
   display: block;
 }
 
+#carousel-header {
+  text-align: center;
+  margin-top: 60px;
+}
+
+.autoplay {
+  float: left;
+  width: 100%;
+  height: 200px;
+  margin-top: 20px;
+  margin-left: 40px;
+  margin-bottom: 40px;
+}
+
+#poster {
+  width: 100%;
+}
+
+#poster-photo {
+  width: auto;
+  height: 230px;
+  float: none;
+  margin-left: 20px
+}
+
+#recommended-title {
+  text-align: center;
+  margin-right: 20px
+}
+
 .test-box {
   display: block;
   color: lightsteelblue;
