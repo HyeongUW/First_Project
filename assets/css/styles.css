@@ -85,19 +85,14 @@ html {
   background-color: #1d1c1b;
   border-top: solid #1d1c1b 90px;
   color: red;
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  
-        font-size: 38px;
+  font-size: 38px;
   margin-top: 70px;      
 }
 
 /* NAV START */
 #logo {
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  
-        font-size: 288px;
-        color: white;
-
+  font-size: 288px;
+  color: white;
   /* Typography */
   font-size: 45px;
   font-weight: bold;
