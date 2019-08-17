@@ -162,11 +162,12 @@ body {
   margin-bottom: 40px;
 }
 
+
 #poster {
   width: 100%;
 }
 
-#poster-photo {
+.poster-photo {
   width: auto;
   height: 230px;
   float: none;

@@ -117,7 +117,7 @@ $(document).ready(function() {
         $("#overview-text").text(response.overview);
 
         console.log("runtime: ", response.runtime);
-        $("#runtime-text").text(response.runtime  + ' min.');    
+        $("#runtime-text").text("(" + response.runtime  + ' min' + ")");    
         detailPage.movieTitleTime = response.runtime + ' min.';
 
         console.log("vote_average: ", response.vote_average);

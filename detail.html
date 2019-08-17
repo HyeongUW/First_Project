@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-  <title>The Name of Our Website Comes Here!</title>
+  <title>Movie Gopher!</title>
 
   <!-- Boostrap Stylesheet -->
   <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"> -->
@@ -106,13 +106,10 @@
 
   <div class="container col-10" style="color: white;" id="movie-info">
     <div class="row">
-      <div class="row col-12">
-        <div id="title" class="col-5">
+      <div class="col-12">
+        <div id="title" class="col-8">
           <h2 id="title-text">Blade Runner(
-            <h2 id="release-date">1990</h2> )</h2>
-        </div>
-        <div id="runtime">
-          <h3 id="runtime-text">Runtime Here!</h3>
+            <!-- <h2 id="release-date">1990</h2> )</h2> -->
         </div>
       </div>
 
@@ -124,6 +121,9 @@
         dolor sit, amet consectetur adipisicing elit. Sunt, molestiae animi ipsum at repellat corporis non. Eveniet quis
         itaque dolore esse debitis cumque eum. Laudantium illum nobis distinctio recusandae modi.
       </div>
+      <div class="homepage-link col-5" style="float: left; text-align: left; background: none" >
+        <a id="homepage" href="" title="movie homepage" target="_blank">Learn More</a>
+      </div>      
     </div>
     <div class="row">
       <div class="row">
@@ -136,36 +136,45 @@
         <div style="float: left;">
             <button id="add-fav-btn" type="button" class="btn btn-outline-success">Add-Remove</button>
         </div>
-        <div class="homepage-link col-3" style="float: left; text-align: left; background: none">
-          <!-- <img src="..." alt="..."> -->
-          <a id="homepage" href="" title="movie homepage" target="_blank">Movie Homepage</a>
-          <!-- <h2>Movie Homepage</h2> -->
-        </div>
+
       </div>
       <div class="row">
+        <div id="runtime">
+          <h3 id="runtime-text">Runtime Here!</h3>
+        </div>        
         <div id="rated">
           <h3>rated: </h3>
         </div>
         <div id="ratings">
           <h3 id="ratings-text">Ratings</h3>
         </div>
+        <div id="genre" >
+          <h3>Genre: </h3>
+        </div>
+        
+
       </div>
-      <div id="cast">
-        <h2>Cast</h2>
-        <ul id="cast-list">
-          <!-- <li>eddie  John Doe</li>
-          <li>jane       Sarah Smith</li>
-          <li>the gardener Alexis Branch</li>
-          <li>the police officer Ponch Reese</li>
-          <li>man on street  Richard Jackson</li> -->
-        </ul>
+
+
+
+
       </div>
-      </div>
-      </div>
+      <div class="row">
+          <div id="cast">
+            <h2>Cast</h2>
+            <ul id="cast-list">
     
+            </ul>
+          </div>
+        </div>      
+      
+      
+      
       <div class=“row”>
+        
         <h3 id=“carousel-header”>Recommended Movies</h3>
-        <div class=“autoplay col-7” data-slick=‘{“slidesToShow”: 3, “slidesToScroll”: 1}’>
+        <!-- 
+        <div class="autoplay col-7" data-slick='{"slidesToShow": 3, "slidesToScroll": 1}'>
           <div id=“poster”>
             <img src=“assets/imgs/71K3S+Tk4OL.SY679.jpg” alt=“” id="car01">
           </div>
@@ -195,12 +204,63 @@
           </div>
           <div id=“poster”>
             <img src=“assets/imgs/71K3S+Tk4OL.SY679.jpg” alt=“” id="car10">   
-          </div>            
-      <div class="row">
-        <div id="genre" class="col-7">
-          <h3>Genre: </h3>
-        </div>
-      </div>
+          </div>             -->
+          <div class="autoplay col-7" data-slick='{"slidesToShow": 3, "slidesToScroll": 1}'>
+              <div id="poster">
+                <img src="assets/imgs/71K3S+Tk4OL._SY679_.jpg" alt="" id="car01" class="poster-photo">
+  
+              </div>
+              <div id="poster">
+                <img src="assets/imgs/71K3S+Tk4OL._SY679_.jpg" alt="" id="car02" class="poster-photo">
+  
+              </div>
+              <div id="poster">
+                <img src="assets/imgs/71K3S+Tk4OL._SY679_.jpg" alt="" id="car03" class="poster-photo">
+  
+              </div>
+              <div id="poster">
+                <img src="assets/imgs/71K3S+Tk4OL._SY679_.jpg" alt="" id="car04" class="poster-photo">
+  
+              </div>
+              <div id="poster">
+                <img src="assets/imgs/71K3S+Tk4OL._SY679_.jpg" alt="" id="car05" class="poster-photo">
+  
+              </div>
+              <div id="poster">
+                <img src="assets/imgs/71K3S+Tk4OL._SY679_.jpg" alt="" id="car06" class="poster-photo">
+  
+              </div>
+              <div id="poster">
+                <img src="assets/imgs/71K3S+Tk4OL._SY679_.jpg" alt="" id="car07" class="poster-photo">
+  
+              </div>
+              <div id="poster">
+                <img src="assets/imgs/71K3S+Tk4OL._SY679_.jpg" alt="" id="car08" class="poster-photo">
+  
+              </div>
+              <div id="poster">
+                <img src="assets/imgs/71K3S+Tk4OL._SY679_.jpg" alt="" id="car09" class="poster-photo">
+  
+              </div>
+              <div id="poster">
+                <img src="assets/imgs/71K3S+Tk4OL._SY679_.jpg" alt="" id="car10" class="poster-photo">
+  
+              </div>
+            </div>
+          </div>
+        
+          </div>
+        
+          <script>
+            $('.autoplay').slick({
+              slidesToShow: 3,
+              slidesToScroll: 1,
+              autoplay: false,
+              autoplaySpeed: 2000,
+              infinite: false,
+            });
+          </script>    
+    </div>                
     <!-- </div>
     <div class="row">
       <div id="carouselExampleIndicators" class="carousel slide col-8" data-ride="carousel" style="float: left;">
