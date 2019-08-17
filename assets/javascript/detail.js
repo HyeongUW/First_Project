@@ -117,7 +117,7 @@ $(document).ready(function() {
         $("#overview-text").text(response.overview);
 
         console.log("runtime: ", response.runtime);
-        $("#runtime-text").text(response.runtime  + ' min.');    
+        $("#runtime-text").text("Running Time: " + response.runtime  + ' mins');    
         detailPage.movieTitleTime = response.runtime + ' min.';
 
         console.log("vote_average: ", response.vote_average);
@@ -132,11 +132,13 @@ $(document).ready(function() {
         };
       
         detailPage.genres = [];
+        
         response.genres.forEach(element => {
           console.log("genre: ", element.name)
           genres.push(element.name);
         });
-        $("#genre").text("Genres: " + genres.join(', '));
+
+        $("#genre-text").text("Genres: " + genres.join(', '));
       });  
     },
 
@@ -213,7 +215,7 @@ $(document).ready(function() {
     },
 
 
-    // get related movie info from TMDB API
+ // get related movie info from TMDB API
     // parameter: movie id
     getTmdbRelatedMovies: function(titleId) {
       console.log("in detailPage.getTmdbRelatedMovies");
@@ -246,7 +248,7 @@ $(document).ready(function() {
 
             if (i === 1) {
               var imageURL = "https://image.tmdb.org/t/p/w500" + element.poster_path;
-              var carbox = $("#car01");
+              var carbox = $("#poster-photo1");
               carbox.attr("src",imageURL);
               carbox.attr('data-movie-id',element.id);
               // Some of the returned data does not have "original_title" data, some
@@ -260,7 +262,7 @@ $(document).ready(function() {
 
             if (i === 2) {
               var imageURL = "https://image.tmdb.org/t/p/w500" + element.poster_path;
-              var carbox = $("#car02");
+              var carbox = $("#poster-photo2");
               carbox.attr("src",imageURL);
               carbox.attr('data-movie-id',element.id);
               // Some of the returned data does not have "original_title" data, some
@@ -274,7 +276,7 @@ $(document).ready(function() {
 
             if (i === 3) {
               var imageURL = "https://image.tmdb.org/t/p/w500" + element.poster_path;
-              var carbox = $("#car03");
+              var carbox = $("#poster-photo3");
               carbox.attr("src",imageURL);
               carbox.attr('data-movie-id',element.id);
               // Some of the returned data does not have "original_title" data, some
@@ -288,7 +290,7 @@ $(document).ready(function() {
 
             if (i === 4) {
               var imageURL = "https://image.tmdb.org/t/p/w500" + element.poster_path;
-              var carbox = $("#car04");
+              var carbox = $("#poster-photo4");
               carbox.attr("src",imageURL);
               carbox.attr('data-movie-id',element.id);
               // Some of the returned data does not have "original_title" data, some
@@ -302,7 +304,7 @@ $(document).ready(function() {
 
             if (i === 5) {
               var imageURL = "https://image.tmdb.org/t/p/w500" + element.poster_path;
-              var carbox = $("#car05");
+              var carbox = $("#poster-photo5");
               carbox.attr("src",imageURL);
               carbox.attr('data-movie-id',element.id);
               // Some of the returned data does not have "original_title" data, some
@@ -316,7 +318,7 @@ $(document).ready(function() {
 
             if (i === 6) {
               var imageURL = "https://image.tmdb.org/t/p/w500" + element.poster_path;
-              var carbox = $("#car06");
+              var carbox = $("#poster-photo6");
               carbox.attr("src",imageURL);
               carbox.attr('data-movie-id',element.id);
               // Some of the returned data does not have "original_title" data, some
@@ -330,7 +332,7 @@ $(document).ready(function() {
 
             if (i === 7) {
               var imageURL = "https://image.tmdb.org/t/p/w500" + element.poster_path;
-              var carbox = $("#car07");
+              var carbox = $("#poster-photo7");
               carbox.attr("src",imageURL);
               carbox.attr('data-movie-id',element.id);
               // Some of the returned data does not have "original_title" data, some
@@ -344,7 +346,7 @@ $(document).ready(function() {
 
             if (i === 8) {
               var imageURL = "https://image.tmdb.org/t/p/w500" + element.poster_path;
-              var carbox = $("#car08");
+              var carbox = $("#poster-photo8");
               carbox.attr("src",imageURL);
               carbox.attr('data-movie-id',element.id);
               // Some of the returned data does not have "original_title" data, some
@@ -358,7 +360,7 @@ $(document).ready(function() {
 
             if (i === 9) {
               var imageURL = "https://image.tmdb.org/t/p/w500" + element.poster_path;
-              var carbox = $("#car09");
+              var carbox = $("#poster-photo9");
               carbox.attr("src",imageURL);
               carbox.attr('data-movie-id',element.id);
               // Some of the returned data does not have "original_title" data, some
@@ -372,7 +374,7 @@ $(document).ready(function() {
 
             if (i === 10) {
               var imageURL = "https://image.tmdb.org/t/p/w500" + element.poster_path;
-              var carbox = $("#car10");
+              var carbox = $("#poster-photo10");
               carbox.attr("src",imageURL);
               carbox.attr('data-movie-id',element.id);
               // Some of the returned data does not have "original_title" data, some
@@ -392,6 +394,8 @@ $(document).ready(function() {
 
    
     },
+
+
 
 
 
@@ -669,7 +673,9 @@ $(document).ready(function() {
 
 
   // go to detail page on recommended movie click
-  $(document).on("click",".carousel-item>img", function() {
+  // go to detail page on recommended movie click
+ $(document).on("click",".poster>img", function() {
+  //$(document).on("click",".carousel-item>img", function() {
     console.log("in carousel-item>img click event");
     // console.log("you pressed " + $(this).data("movie-id"));
     // console.log("you pressed " + $(this).data("movie-title"));
@@ -751,14 +757,14 @@ $(document).ready(function() {
       // console.log(("isTrailerPlaying: ", isTrailerPlaying));
       // console.log("scrollTop: ", document.body.scrollTop);
       // console.log("elementTop: ", document.documentElement.scrollTop);
-      if (document.documentElement.scrollTop > 200) {
+      if (document.documentElement.scrollTop > 350) {
           if (isTrailerPlaying) {
             //pause trailer
             isTrailerPlaying = false;
             player.pauseVideo();
           };
       } 
-      else if (document.documentElement.scrollTop <= 200) {
+      else if (document.documentElement.scrollTop <= 350) {
               if (!isTrailerPlaying) {
                 //un-pause trailer
                 isTrailerPlaying = true;
