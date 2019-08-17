@@ -292,7 +292,7 @@ body {
 
  #logo {
    margin-left: 580px;
-   margin-right: 380px;
+   margin-right: 315px; 
    float: left;
    font-size: 45px;
    color: white;
@@ -300,9 +300,16 @@ body {
 
  .nav-link {
    margin-top: 10px;
+   color: white !important;
+   font-size: 30px;
  }
 
  .navbar {
-  background-color: black;
   height: 80px;
  }
+
+ #nav-black {
+  background-color: black !important;
+
+ }
+
