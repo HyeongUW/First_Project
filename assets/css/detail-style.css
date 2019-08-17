@@ -64,11 +64,12 @@ body {
 }
 
 #add-fav-btn {
+  /* position:fixed; */
   height: 59px;
-  margin-left: -405px;
+  margin-left: 124px;
   margin-top: 53px;
   width: 149px;
-  margin-bottom: 10px
+  margin-bottom: 10px;
 
 }
 
