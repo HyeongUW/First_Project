@@ -752,14 +752,14 @@ $(document).ready(function() {
       // console.log(("isTrailerPlaying: ", isTrailerPlaying));
       // console.log("scrollTop: ", document.body.scrollTop);
       // console.log("elementTop: ", document.documentElement.scrollTop);
-      if (document.documentElement.scrollTop > 200) {
+      if (document.documentElement.scrollTop > 350) {
           if (isTrailerPlaying) {
             //pause trailer
             isTrailerPlaying = false;
             player.pauseVideo();
           };
       } 
-      else if (document.documentElement.scrollTop <= 200) {
+      else if (document.documentElement.scrollTop <= 350) {
               if (!isTrailerPlaying) {
                 //un-pause trailer
                 isTrailerPlaying = true;
