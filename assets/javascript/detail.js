@@ -136,7 +136,7 @@ $(document).ready(function() {
           console.log("genre: ", element.name)
           genres.push(element.name);
         });
-        $("#genre").text("Genres: " + genres.join(', '));
+        $("#genre-text").text("Genres: " + genres.join(', '));
       });  
     },
 
