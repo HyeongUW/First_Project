@@ -306,10 +306,15 @@ body {
 
  .navbar {
   height: 80px;
+  /* background-color: white !important; */
  }
 
- #nav-black {
+ #nav-item-1{
+   background-color: white;
+ }
+
+ /* #nav-black {
   background-color: black !important;
 
- }
+ } */
 
