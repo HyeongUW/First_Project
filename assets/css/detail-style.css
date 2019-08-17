@@ -226,7 +226,7 @@ body {
 
 #copyright {
   /* Positioning */
-  position: fixed;
+  /* position: fixed; */
   bottom: 0;
   color: white;
   text-align: center;
@@ -270,4 +270,21 @@ body {
  
  .slick-slider {
    margin-left: 355px;
+ }
+
+ #logo {
+   margin-left: 580px;
+   margin-right: 380px;
+   float: left;
+   font-size: 45px;
+   color: white;
+ }
+
+ .nav-link {
+   margin-top: 10px;
+ }
+
+ .navbar {
+  background-color: black;
+  height: 80px;
  }
