@@ -133,12 +133,10 @@ $(document).ready(function() {
       
         detailPage.genres = [];
         
-        /* response.genres.forEach(element => {
+        response.genres.forEach(element => {
           console.log("genre: ", element.name)
           genres.push(element.name);
-        }); */
-        genres.push(response.genres[0].name);
-        /* response.genres[0].name */
+        });
 
         $("#genre-text").text("Genres: " + genres.join(', '));
       });  
