@@ -50,32 +50,38 @@
 
   
 
-    <header id="masthead">
-        <nav class="navbar ">
-          <!-- navbar-expand-lg navbar-dark bg-light -->
+    <header id = "masthead">
+        <nav id="nav-black" class="navbar navbar-expand-lg navbar-light bg-light">
       
           <div class="row" id="nav-row">
             <div class="col-4">
-          </div>
+            </div>
       
-          <div class="col-4" id="logodiv">
-            <!-- Brand and toggle get grouped for better mobile display -->
-      
-            <a class="navbar-brand" href="index.html" id="logo">Movie Gopher <img src="assets/images/gopher.png" height="48" width="64"></a>
-            
-          </div>
+            <div class="col-4" id="logodiv">
+              <!-- Brand and toggle get grouped for better mobile display -->
+       
+              <a class="navbar-brand" href="index.html" id="logo">Movie Gopher <img src="assets/images/gopher.png" height="48" width="64"></a>
+              
+            </div>
             <div class="col-4">
-              <button id="nav-btn" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+              <!-- <button id="nav-btn" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
+                aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
-              </button>
+              </button> -->
               <!-- Collect the nav links, forms, and other content for toggling -->
-<!--               <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+              <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
                 <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-                  <li class="nav-item">
+
+                  <li id="nav-item-1" class="nav-item">
                     <a class="nav-link" href="index.html">Home</a>
                   </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="search.html">Search</a>
+                  </li>  
+                  
+                  
                 </ul>
-              </div> -->
+              </div>
       
             </div>
             <!-- /.navbar-collapse -->
@@ -123,12 +129,12 @@
           <img src="assets/imgs/stackover2.png" alt="..." id="streaming-site" style="width: 60px; height: 60px">
           <img src="assets/imgs/github.png" alt="..." id="streaming-site" style="width: 60px; height: 60px"> -->
         </div>
-        <div style="float: left;">
+        <div id="add-btn" style="float: left;">
             <button id="add-fav-btn" type="button" class="btn btn-outline-success">Add-Remove</button>
         </div>
 
       </div>
-      <div class="row">
+      <div id="info" class="row">
         <div id="rated">
           <h3 id="rated-text">rated: </h3>
         </div>
