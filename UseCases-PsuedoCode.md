@@ -19,10 +19,24 @@ Nice to have features could include
 3.  saved watch later list
 4.  personal preferences leveraged for suggestions on the landing page 
 
+* overall concept:
+  ![preliminary design whiteboard](assets/images/prelim-design-whiteboard.png)
 
-![preliminary design whiteboard](assets/images/prelim-design-whiteboard.png)
+* Landing page:
 
+  ![preliminary design whiteboard](assets/images/wireframe-landing.png)
 
+* Search page:
+
+  ![preliminary design whiteboard](assets/images/wireframe-search.png)
+
+* Save List modal:
+
+  ![preliminary design whiteboard](assets/images/wireframe-savelist.png)
+
+* Preferences modal:
+
+  ![preliminary design whiteboard](assets/images/wireframe-preferences.png)
 
 ## User Stories / Use Cases
 

@@ -45,15 +45,15 @@ $(document).ready(function() {
       console.log('utelly host: ',manageLocalStorage.getLocalStorage("host"));
       console.log('utelly key: ',manageLocalStorage.getLocalStorage("key"));
       
-      // manageLocalStorage.getLocalStorage("host"),
-      // console.log("rapid api host is: ", detailPage.utellyHost);
-      // utellyKey = manageLocalStorage.getLocalStorage("key"),
-      // console.log("rapid api key is: ", detailPage.utellyKey);
+      manageLocalStorage.getLocalStorage("host"),
+      console.log("rapid api host is: ", detailPage.utellyHost);
+      utellyKey = manageLocalStorage.getLocalStorage("key"),
+      console.log("rapid api key is: ", detailPage.utellyKey);
    
-      // this.utellyHost = manageSessionStorage.getSessionStorage("host");
-      // //console.log("rapid api host is: ", this.utellyHost);
-      // this.utellyKey = manageSessionStorage.getSessionStorage("key");
-      // //console.log("rapid api key is: ", this.utellyKey);
+      this.utellyHost = manageSessionStorage.getSessionStorage("host");
+      console.log("rapid api host is: ", this.utellyHost);
+      this.utellyKey = manageSessionStorage.getSessionStorage("key");
+      console.log("rapid api key is: ", this.utellyKey);
 
       // commment utelly call out during unit testing 
       // but keep commented during general testing
@@ -477,11 +477,14 @@ $(document).ready(function() {
       // this.streaming = [];
 
       // build call to the API
+
+       console.log("rapid api host is: ", this.utellyHost);
+      console.log("rapid api key is: ",this.utellyKey);
       const options = {
       method: 'GET',
       headers: {
-          "X-RapidAPI-Host": detailPage.utellyHost,
-          "X-RapidAPI-Key": detailPage.utellyKey
+          "X-RapidAPI-Host": this.utellyHost,
+          "X-RapidAPI-Key": this.utellyKey
           },
       };
       

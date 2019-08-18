@@ -1,50 +1,58 @@
-# Movie/Streaming - Search
+# Movie Gopher
 
 Search assistant for Movie/Streaming titles
 
 ## Description
  
 This web application helps a user search for Movie/Streaming content to view.
-It consists of a Landing page with top Box office and trending movies, a search page and a detail page.
-Clicking on a movie within either the landing page or the search page results will bring that title up in the detail page.
+It consists of a Landing page with trending movies, a search page, detail page and a persistent save title list.
+
+Clicking on a movie image or title within the above pages will load the detail page with a trailer and details for that movie.
 
 
-### Wireframes:
-Fill images below in with wireframe first then 
-later replace with prototype web page images 
-and finally with finished product images.
+### Page Examples:
+
 
 * Landing page:
-
-        ![landing-page](assets/images/wireframeA.png)
+  ![landing-page](assets/images/wireframe_trend01.png)
 
 * Search page:
-
-        ![search-page](assets/images/wireframeB.png)
+  ![search-page](assets/images/wireframe_search01.png)
 
 * Detail page:
+  ![detail-page](assets/images/wireframe_detail01.png)
 
-        ![detail-page](assets/images/wireframeC.png)
+* Detail page:
+  ![detail-page](assets/images/wireframe_detail02.png)
+
+* Save list Modal:
+  ![detail-page](assets/images/wireframe_savelist01.png)
 
 
 ## Getting Started
 
 ### Dependencies
 
-* none - responsive design usable on phone, table, laptop or desktop
+* best viewed laptop or desktop
 
 ### Installing
 
-* none necessary - use browser to play
+* none necessary - use browser to view
 
 ### Executing program
 
 * open in browser 
-    1. scroll thru listing and click on title poster to jump to detai page
+    1. scroll thru trending movie posters and click on title poster to jump to detail page
     2. click on nav link to search page
         1. enter search criteria and hit search button
         2. scroll thru search results and click title to jumpt to detail page
-    2. Use nav links to move between landing page, search page and detail page     
+    3. When on detail page carousel of recommended movies is shown at bottom of page - click on
+       title to reload detail page with that movie
+    3. Use nav links to move between landing page, search page and detail page    
+    4. When on detail page add or remove title from the Save List using button
+    5. When on landing page call up the Save List from navbar button
+    6. Remove titles from the Save List with checkboxes and delete button.
+    7. Click on a movie title in Save List to load detail page with it 
 
 ## Help
 
