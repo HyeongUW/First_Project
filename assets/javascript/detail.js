@@ -37,28 +37,32 @@ $(document).ready(function() {
     populateDetailPage: function() {
       console.log("in detailPage.populateDetailPage");
       // get movie title from session storage
-      this.movieTitle = manageSessionStorage.getSessionStorage("movieTitle");
-      console.log("movie title is: ", this.movieTitle);
-      this.movieId = manageSessionStorage.getSessionStorage("movieId");
-      console.log("movie id is: ", this.movieId);
-      // get utelly from local storage
-      console.log('utelly host: ',manageLocalStorage.getLocalStorage("host"));
-      console.log('utelly key: ',manageLocalStorage.getLocalStorage("key"));
+      // this.movieTitle = manageSessionStorage.getSessionStorage("movieTitle");
+      // console.log("movie title is: ", this.movieTitle);
+      // this.movieId = manageSessionStorage.getSessionStorage("movieId");
+      // console.log("movie id is: ", this.movieId);
+      // // get utelly from local storage
+      // console.log('utelly host: ',manageLocalStorage.getLocalStorage("host"));
+      // console.log('utelly key: ',manageLocalStorage.getLocalStorage("key"));
       
-      manageLocalStorage.getLocalStorage("host"),
+      detailPage.utellyHost = manageLocalStorage.getLocalStorage("host"),
       console.log("rapid api host is: ", detailPage.utellyHost);
-      utellyKey = manageLocalStorage.getLocalStorage("key"),
+      detailPage.utellyKey = manageLocalStorage.getLocalStorage("key"),
       console.log("rapid api key is: ", detailPage.utellyKey);
    
-      this.utellyHost = manageSessionStorage.getSessionStorage("host");
-      console.log("rapid api host is: ", this.utellyHost);
-      this.utellyKey = manageSessionStorage.getSessionStorage("key");
-      console.log("rapid api key is: ", this.utellyKey);
+      // detailPage.utellyHost = manageSessionStorage.getSessionStorage("host");
+      // console.log("rapid api host is: ", this.utellyHost);
+      // this.utellyKey = manageSessionStorage.getSessionStorage("key");
+      // console.log("rapid api key is: ", this.utellyKey);
 
       // commment utelly call out during unit testing 
       // but keep commented during general testing
       // due to the limited call allowance of 1000 calls per month:
       streaming = [];
+
+            // // call to API for movie review information
+            detailPage.getTmdbMovieReview(this.movieTitleId);
+
       detailPage.getUtelly(this.movieTitle,this.country);
   
       detailPage.getTmdbMovieDetails(this.movieTitleId);
@@ -76,6 +80,8 @@ $(document).ready(function() {
 
       // // call to API for related movie information
       detailPage.getTmdbRelatedMovies(this.movieTitleId);
+
+
 
      
       }, // end of method populateDetailPage
@@ -117,7 +123,8 @@ $(document).ready(function() {
         $("#overview-text").text(response.overview);
 
         console.log("runtime: ", response.runtime);
-        $("#runtime-text").text("Running Time: " + response.runtime  + ' mins');    
+        // $("#runtime-text").text("Running Time: " + response.runtime  + ' mins');    
+        $("#runtime-text").text(response.runtime  + ' min.');   
         detailPage.movieTitleTime = response.runtime + ' min.';
 
         console.log("vote_average: ", response.vote_average);
@@ -143,6 +150,48 @@ $(document).ready(function() {
     },
 
     // get movie video info from TMDB API
+    // parameter: movie title
+    getTmdbMovieReview: function(titleId) {
+      console.log("in detailPage.getTmdbMovieReview");
+      console.log("detail titleId", titleId);
+
+      var apiKey = "4eb3939343ef4ca0932079284f76225d";
+      var searchURL = "https://api.themoviedb.org/3/movie/" + titleId + "/reviews?api_key=" + apiKey
+                    + "&language=en-US";
+
+      var settings = {
+          "async": true,
+          "crossDomain": true,
+          "url": searchURL,
+          "method": "GET",
+          "headers": {},
+          "data": "{}"
+      }
+
+     
+      $.ajax(settings).done(function (response) {
+          console.log("MOVIE REVIEW: ",response);
+          // response.results.forEach(element => {
+          //   if(element.type === "Trailer" && element.site === "YouTube") {
+          //     console.log("trailer: ",element.name);
+          //     console.log("site: ",element.site);
+          //     console.log("type: ",element.type);
+          //     console.log("key: ",element.key);
+          //     youTubeVideoId = element.key;
+          //     console.log("youTubeVideoId: ",youTubeVideoId);
+              
+          //     // embed the trailer
+          //     // youTubeSrc = "https://www.youtube.com/embed/" + element.key + "?autoplay=1&mute=1&controls=0&showinfo=0&autohide=1"
+          //     // console.log("src :", youTubeSrc);
+          //     // $("#video-frame").attr('src',youTubeSrc);
+
+          //   }
+          // });
+      });  
+    },
+
+
+    // get movie reviews info from TMDB API
     // parameter: movie title
     getTmdbMovieVideo: function(titleId) {
       console.log("in detailPage.getTmdbMovieVideo");
@@ -181,6 +230,7 @@ $(document).ready(function() {
           });
       });  
     },
+
 
     // get movie credits info from TMDB API
     // parameter: movie title
@@ -471,8 +521,8 @@ $(document).ready(function() {
 
       console.log("url :", url);
       
-      // console.log("rapid api host is: ", detailPage.utellyHost);
-      // console.log("rapid api key is: ",detailPage.utellyKey);
+      console.log("rapid api host is: ", detailPage.utellyHost);
+      console.log("rapid api key is: ",detailPage.utellyKey);
       
       // this.streaming = [];
 
@@ -483,8 +533,10 @@ $(document).ready(function() {
       const options = {
       method: 'GET',
       headers: {
-          "X-RapidAPI-Host": this.utellyHost,
-          "X-RapidAPI-Key": this.utellyKey
+          // "X-RapidAPI-Host": 'utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com',
+          // "X-RapidAPI-Key": '80549481bdmsha65d8ad2b7edcfap1d5cc3jsncf554c0fbd38'
+          "X-RapidAPI-Host": detailPage.utellyHost,
+          "X-RapidAPI-Key": detailPage.utellyKey
           },
       };
       
@@ -551,12 +603,12 @@ $(document).ready(function() {
       console.log("title to check for in watch list is: ",detailPage.movieTitle);
       
       if (manageWatchList.watchListMovieTitleArray.indexOf(detailPage.movieTitle) === -1) {
-        $("#add-fav-btn").text("Add to Save List");
+        $("#add-fav-btn").text("Add");
         $("#add-fav-btn").removeClass('btn-outline-danger');
         $("#add-fav-btn").addClass('btn-outline-success');
       }
       else {
-        $("#add-fav-btn").text("Remove from Save List");
+        $("#add-fav-btn").text("Remove");
         $("#add-fav-btn").removeClass('btn-outline-success');
         $("#add-fav-btn").addClass('btn-outline-danger');
       };
@@ -707,7 +759,7 @@ $(document).ready(function() {
       width: '100%', //'640',
       videoId: '', //youTubeVideoId, //'foyufD52aog',
       events: {
-        'onReady': onPlayerReady,
+        'onReady': onPlayerReady,   // MRC - uncomment when done with CSS changes
         'onStateChange': onPlayerStateChange //,
         //'onError': onError
       }
@@ -718,8 +770,8 @@ $(document).ready(function() {
     function onPlayerReady(event) {
 
       event.target.loadVideoById(youTubeVideoId);
-      event.target.setVolume(40);
-      event.target.playVideo();
+      event.target.setVolume(5);
+      event.target.playVideo();    // MRC - uncomment when done with CSS changes
       isTrailerPlaying = true;
       // event.target.playVideoAt(0);
       // event.loadPlaylist(youTubeVideoId);
@@ -736,7 +788,7 @@ $(document).ready(function() {
     var done = false;
     function onPlayerStateChange(event) {
       if (event.data == YT.PlayerState.ENDED) {
-        event.target.playVideo();
+        event.target.playVideo(); // MRC - uncomment when done with CSS changes
         isTrailerPlaying = true;
       }
     }
@@ -768,7 +820,7 @@ $(document).ready(function() {
               if (!isTrailerPlaying) {
                 //un-pause trailer
                 isTrailerPlaying = true;
-                player.playVideo();
+                player.playVideo();  // MRC - uncomment when done with CSS changes
               }
       }
     }

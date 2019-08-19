@@ -58,6 +58,14 @@ Clicking on a movie image or title within the above pages will load the detail p
 
 For further development details see [UseCases and Psuedo Code](UseCases-PsuedoCode.md)
 
+## Enhancements
+
+* list of possible enhancements
+    1. improved detail page layout
+    2. improved typography
+    3. make Save List modal available on Search and Detail pages
+    4. section with movie reviews (New York Time api)
+    
 ## Authors
 
 * Samuel Meyer - sam.smeyer17@gmail.com

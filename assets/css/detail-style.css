@@ -1,13 +1,15 @@
 /* attempt to get youtube video as background */
 *{
   font-family:  'Carter One', cursive;
-  color: white;
+  color: #b3b3b3;
 }
 
 body {
   /* width: 1080px; */
   height: 100%;
-  background-color: black;
+  /* background-color: #1a1a1a; */
+  background-color: #0d0d0d;
+  color: #b3b3b3;
 }
 
 #player {
@@ -18,19 +20,19 @@ body {
   height: 100%;
 } 
 
-#title {
+/* #title {
   text-align: left;
   float: left;
   padding: 0;
-}
+} */
 
-#title-text {
+/* #title-text {
   float: left;
   padding: 0;
   margin-left: 110px;
-}
+} */
 
-#release-date {
+/* #release-date {
   float: left;
 }
 
@@ -42,7 +44,7 @@ body {
 #overview {
   float: right;
   text-align: left;
-}
+} */
 
 #learn-more-btn {
   text-align: center;
@@ -64,12 +66,13 @@ body {
 }
 
 #add-fav-btn {
+  width: 89px;
   /* position:fixed; */
-  height: 59px;
-  margin-left: 124px;
-  margin-top: 53px;
-  width: 149px;
-  margin-bottom: 10px;
+  /* height: 59px; */
+  /* margin-left: 124px;
+  margin-top: 53px; */
+  /* width: 149px; */
+  /* margin-bottom: 10px; */
 
 }
 
@@ -139,7 +142,7 @@ body {
   width:  189px;
   margin-left: 310px; */
 }
-#cast {
+/* #cast {
   overflow: scroll;
   scrollbar-color: white;
   scrollbar-track-color: white;
@@ -152,7 +155,7 @@ body {
 
 #cast>ul {
   list-style-type: square;
-}
+} */
 
 #movie-title {
   position: relative;
@@ -169,14 +172,18 @@ body {
   height: 100%;
 }
 
-.row {
+/* .row {
+  display: block;
+} */
+
+.upper-row {
   display: block;
 }
 
-#carousel-header {
+/* #carousel-header {
   text-align: center;
   margin-top: 60px;
-}
+} */
 
 .autoplay {
   float: left;
@@ -190,12 +197,13 @@ body {
 
 #poster {
   width: 100%;
+  
 }
 
 .poster-photo {
   width: auto;
   height: 230px;
-  float: none;
+  float: left;
   margin-left: 20px
 }
 
@@ -296,22 +304,22 @@ body {
    margin-right: 315px; 
    float: left;
    font-size: 45px;
-   color: white;
+   color: #b3b3b3;
  }
 
  .nav-link {
    margin-top: 10px;
-   color: white !important;
+   color: #b3b3b3 !important;
    font-size: 30px;
  }
 
  .navbar {
   height: 80px;
-  /* background-color: white !important; */
+  /* background-color: b3b3b3 !important; */
  }
 
  #nav-item-1{
-   background-color: white;
+   background-color: #b3b3b3;
  }
 
  /* #nav-black {
