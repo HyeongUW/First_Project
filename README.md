@@ -9,6 +9,9 @@ It consists of a Landing page with trending movies, a search page, detail page a
 
 Clicking on a movie image or title within the above pages will load the detail page with a trailer and details for that movie.
 
+## Deployed Page:
+https://hyeonguw.github.io/First_Project/index.html
+
 
 ### Page Examples:
 
