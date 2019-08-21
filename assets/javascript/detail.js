@@ -60,10 +60,12 @@ $(document).ready(function() {
       // due to the limited call allowance of 1000 calls per month:
       streaming = [];
 
-            // // call to API for movie review information
-            detailPage.getTmdbMovieReview(this.movieTitleId);
+      // // call to API for movie review information
+      detailPage.getNYTimesMovieReview(this.movieTitle);
 
-      detailPage.getUtelly(this.movieTitle,this.country);
+      // detailPage.getUtelly(this.movieTitle,this.country);
+      // placeholder to save utelly API calls during testing
+      $("#streaming-text").text('Netflix, Amazon Prime, iTunes');
   
       detailPage.getTmdbMovieDetails(this.movieTitleId);
 
@@ -124,8 +126,8 @@ $(document).ready(function() {
 
         console.log("runtime: ", response.runtime);
         // $("#runtime-text").text("Running Time: " + response.runtime  + ' mins');    
-        $("#runtime-text").text(response.runtime  + ' min.');   
-        detailPage.movieTitleTime = response.runtime + ' min.';
+        $("#runtime-text").text('Time: ' + response.runtime  + ' min.');   
+        detailPage.movieTitleTime = 'Time: ' + response.runtime + ' min.';
 
         console.log("vote_average: ", response.vote_average);
         $("#ratings-text").text("Ratings: " + response.vote_average);   
@@ -145,53 +147,42 @@ $(document).ready(function() {
           genres.push(element.name);
         });
 
-        $("#genre-text").text("Genres: " + genres.join(', '));
+        $("#genre-text").text(genres.join(', '));
       });  
     },
 
     // get movie video info from TMDB API
     // parameter: movie title
-    getTmdbMovieReview: function(titleId) {
-      console.log("in detailPage.getTmdbMovieReview");
-      console.log("detail titleId", titleId);
+    getNYTimesMovieReview: function(title) {
+      console.log("in detailPage.getNYTimesMovieReview");
+      var urlMovieTitle = title.split(' ').join('+');
+      console.log("detail title", urlMovieTitle);
 
-      var apiKey = "4eb3939343ef4ca0932079284f76225d";
-      var searchURL = "https://api.themoviedb.org/3/movie/" + titleId + "/reviews?api_key=" + apiKey
-                    + "&language=en-US";
+      var apiKey = "fktEHhHIqR2YM2KALXsEB3bfkvxW38ZU";
+      var searchURL = "https://api.nytimes.com/svc/movies/v2/reviews/search.json?query=" + urlMovieTitle + "&api-key=" + apiKey;
+      
+      console.log("NyTimes Key: ", apiKey);
+      console.log("NyTimes URL: ", searchURL);
+    
+      
 
       var settings = {
-          "async": true,
-          "crossDomain": true,
           "url": searchURL,
           "method": "GET",
-          "headers": {},
-          "data": "{}"
       }
 
      
       $.ajax(settings).done(function (response) {
           console.log("MOVIE REVIEW: ",response);
-          // response.results.forEach(element => {
-          //   if(element.type === "Trailer" && element.site === "YouTube") {
-          //     console.log("trailer: ",element.name);
-          //     console.log("site: ",element.site);
-          //     console.log("type: ",element.type);
-          //     console.log("key: ",element.key);
-          //     youTubeVideoId = element.key;
-          //     console.log("youTubeVideoId: ",youTubeVideoId);
-              
-          //     // embed the trailer
-          //     // youTubeSrc = "https://www.youtube.com/embed/" + element.key + "?autoplay=1&mute=1&controls=0&showinfo=0&autohide=1"
-          //     // console.log("src :", youTubeSrc);
-          //     // $("#video-frame").attr('src',youTubeSrc);
-
-          //   }
-          // });
-      });  
+          console.log("byline: ",response.results[0].byline);
+          console.log("byline: ",response.results[0].headline);
+          console.log("byline: ",response.results[0].summary_short);
+          console.log("byline: ",response.results[0].link.url);
+      });
     },
 
 
-    // get movie reviews info from TMDB API
+    // get movie Video info from TMDB API
     // parameter: movie title
     getTmdbMovieVideo: function(titleId) {
       console.log("in detailPage.getTmdbMovieVideo");
@@ -251,15 +242,32 @@ $(document).ready(function() {
           "data": "{}"
       }
 
-      var castUl = $("#cast-list");
+      // var castUl = $("#cast-list");
+      // var castTable = $("#cast-table");
+      var castTable = $("tbody");
+
+            // <div  id="cast" class="col-12 all-n">
+            // <table  class="all-n">
+            //   <caption><h4>CAST</h4></caption>
+            //   <tr>
+            //     <th>CHARACTER</th>
+            //     <th>ACTOR/ACTRESS</th>
+            //   </tr>
+            //   <tr>
+            //     <td>the wife</td>
+            //     <td>Jane Smith</td>
+            //   </tr>
+            //  </table> 
 
       $.ajax(settings).done(function (response) {
           console.log(response);
           response.cast.forEach(element => {
               console.log("cast character: ",element.character);
-              console.log("cast name: ",element.name);
-              var newLi = $('<li>' + element.character + '  - (' + element.name + ')' + '</li>');
-              castUl.append(newLi);
+              console.log("cast name: ",element.name);'>/'
+              var newTr = $('<tr><td>' + element.character + '</td><td>' + element.name + '</td></tr>');
+              castTable.append(newTr);
+              // var newLi = $('<li>' + element.character + '  - (' + element.name + ')' + '</li>');
+              // castUl.append(newLi);
           });
       });  
     },
@@ -494,6 +502,9 @@ $(document).ready(function() {
       // construct our URL
       var queryURL = "https://www.omdbapi.com/?t=" + title + "&apikey=trilogy";
 
+      console.log("OMDB URL: ", queryURL);
+      
+
       // make API call
       $.ajax({
         url: queryURL,
@@ -501,7 +512,7 @@ $(document).ready(function() {
       }).then(function(response) {
         console.log(response);
         console.log("rated: ", response.Rated);
-        $("#rated").text("Rated: " + response.Rated);
+        $("#rated-text").text("Rated: " + response.Rated);
       });
     },
 
@@ -582,7 +593,7 @@ $(document).ready(function() {
           }); // end of results forEach
 
         console.log("streaming array = ", streaming.join(', '));
-        $("#temp-streaming").text('Streaming on: ' + streaming.join(', '));
+        $("#streaming-text").text(streaming.join(', '));
 
       }); // end of the ajax call
 
@@ -603,12 +614,12 @@ $(document).ready(function() {
       console.log("title to check for in watch list is: ",detailPage.movieTitle);
       
       if (manageWatchList.watchListMovieTitleArray.indexOf(detailPage.movieTitle) === -1) {
-        $("#add-fav-btn").text("Add");
+        $("#add-fav-btn").text("Add Bookmark");
         $("#add-fav-btn").removeClass('btn-outline-danger');
         $("#add-fav-btn").addClass('btn-outline-success');
       }
       else {
-        $("#add-fav-btn").text("Remove");
+        $("#add-fav-btn").text("Remove Bookmark");
         $("#add-fav-btn").removeClass('btn-outline-success');
         $("#add-fav-btn").addClass('btn-outline-danger');
       };
@@ -770,7 +781,7 @@ $(document).ready(function() {
     function onPlayerReady(event) {
 
       event.target.loadVideoById(youTubeVideoId);
-      event.target.setVolume(5);
+      event.target.setVolume(20);
       event.target.playVideo();    // MRC - uncomment when done with CSS changes
       isTrailerPlaying = true;
       // event.target.playVideoAt(0);

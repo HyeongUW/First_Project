@@ -61,12 +61,20 @@ body {
   margin-left: 90px;
 }
 
-#add-btn {
-
+#book-btn-div {
+  width: 100px;
+  text-align: center;
+  padding: 4px;
+  margin: auto;
 }
 
 #add-fav-btn {
-  width: 89px;
+  width: 110px;
+  text-align: center;
+  font-size: 16px;
+  padding: 0px 10px;
+  margin: auto;
+ 
   /* position:fixed; */
   /* height: 59px; */
   /* margin-left: 124px;
@@ -121,7 +129,7 @@ body {
 
 } */
 
-#cast-crew {
+/* #cast-crew {
   clear: left;
   text-align: center;
   margin-top: 40px;
@@ -130,7 +138,7 @@ body {
 #cast-crew-header {
   text-align: center;
   margin-left: 30px
-}
+} */
 
 #info {
 /*   overflow: hidden;

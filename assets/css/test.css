@@ -1,6 +1,6 @@
 /* css experimenting */
 
-h1, h2, h3, h4 { 
+h1, h2, h3, h4, h5 {  
   text-align: center;
   /* background-color: #262626; */
   color: #4196be;
@@ -11,18 +11,111 @@ h1, h2, h3, h4 {
   word-spacing: .15em;
 }
 
+/* 
+table { 
+  border-collapse: collapse;
+  border-spacing: 0px; 
+  width: 100%
+} */
 
-.all-n, table, caption, th, tr, td {
-  font-family:  'Carter One', cursive;
-  /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
-  /* font-family: Arial, Helvetica, sans-serif; */
-  /* background-color: #0d0d0d; */
-  /* color: #b3b3b3; */
+table, th, td { 
+  border: 1px solid gray; 
+}
+
+
+.all-n,  th, tr, td {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #b3b3b3;
   font-size: 16px;
   line-height: 1.5;
   padding: 8px;
   margin: 0px;
+  /* overflow: scroll; */
 }
+
+table {
+  font-family: Arial, Helvetica, sans-serif;
+  /* background-color: #0d0d0d; */
+  color: #b3b3b3;
+  font-size: 16px;
+  line-height: 1.5;
+  padding: 8px;
+  margin: 0px;
+  /* height: 200px; */
+  /* border-collapse: collapse; */
+  border-spacing: 0px; 
+  width: 100%;
+  /* overflow: scroll; */
+}
+
+
+#cast-title {
+  margin-top: 10px;;
+  padding-bottom: 0px
+}
+
+#role-title {
+  margin: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px
+}
+
+#cast {
+  margin: 0px 10px 10px 40px;
+  padding-top: 0px;
+  height: 300px;
+  overflow: scroll;
+}
+
+/* #cast-table {
+  height: 200px;
+  overflow: scroll;
+} */
+
+
+
+/* tr {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  padding: 10px;
+  width: 100%;
+  margin: auto;
+  margin: 10px;
+  /* text-align: center; */
+/* } */
+
+
+
+#runtime-text, #rated-text, #ratings-text,
+#genre-text, #streaming-text, #homepage {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 24px;
+  padding: 10px;
+  width: 100%;
+  margin: auto;
+  text-align: center;
+}
+
+#genre-text, #streaming-text {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 24px;
+  padding: 10px;
+  width: 100%;
+  margin: auto;
+  margin: 10px;
+  text-align: center;
+}
+
+#genre-title, #streaming-title {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 24px;
+  /* padding: 10px;
+  width: 100%; */
+  /* margin: auto; */
+  margin: 10px 0px 10px 40px;
+  text-align: left;
+}
+
 
 /* .book-mark-green {
   height: 30px;
@@ -38,51 +131,61 @@ h1, h2, h3, h4 {
   font-size: 24px;
 }
 
-caption { 
+/* caption { 
   caption-side: top;
   text-align: center;
 
-}
+} */
 
-table { 
+/* table { 
   border-collapse: collapse;
   border-spacing: 0px; 
   width: 100%
-}
+} */
 
-table, th, td { 
-  border: 1px solid gray; 
-}
 
 
 .kerning {
   letter-spacing: .25em;
 }
 
-.word-space {
+/* .word-space {
   word-spacing: .6em
-}
+} */
 
 .centered {
   text-align: center
 }
 
+#overview,  {
+  margin-top: 10px;
+}
 
 #overview-text {
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  /* font-family: Georgia, 'Times New Roman', Times, serif; */
+  font-family: Arial, Helvetica, sans-serif;
   /* font-weight: bold; */
   font-size: 20px;
   line-height: 1.5;
   padding: 8px;
   margin: 0px;
-  height: 400px;
-  overflow: scroll;
-  padding: 30px;
-}
-
-#cast {
   height: 300px;
   overflow: scroll;
+  padding: 20px 30px;
+  /* word-spacing: .6em; */
+}
+
+/* #cast {
+  height: 300px;
+  overflow: scroll;
+} */
+
+
+#homepage-div {
+  text-align: center;
+ }
+#homepage {
+ color: #28a745;
 }
 
 #recommended {
@@ -97,5 +200,9 @@ table, th, td {
   margin-top: 10px;
   height: 250px;
 } */
+
+
+/* fixed table header solution */
+
 
 
