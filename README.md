@@ -12,6 +12,8 @@ Clicking on a movie image or title within the above pages will load the detail p
 ## Deployed Page:
 https://hyeonguw.github.io/First_Project/index.html
 
+https://vkcgithub2019.github.io/First_Project/
+
 
 ### Page Examples:
 
@@ -88,3 +90,7 @@ For further development details see [UseCases and Psuedo Code](UseCases-PsuedoCo
 ## Acknowledgments
 
 Thanks to beta testers - Myles Carey's 15yo & 17yo daughters and wife 
+
+
+This is the link to the deployed project;
+https://vkcgithub2019.github.io/First_Project/
