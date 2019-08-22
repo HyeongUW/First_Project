@@ -63,9 +63,9 @@ $(document).ready(function() {
       // // call to API for movie review information
       detailPage.getNYTimesMovieReview(this.movieTitle);
 
-      // detailPage.getUtelly(this.movieTitle,this.country);
       // placeholder to save utelly API calls during testing
-      $("#streaming-text").text('Netflix, Amazon Prime, iTunes');
+      // $("#streaming-text").text('Netflix, Amazon Prime, iTunes');
+      detailPage.getUtelly(this.movieTitle,this.country);
   
       detailPage.getTmdbMovieDetails(this.movieTitleId);
 
@@ -163,21 +163,44 @@ $(document).ready(function() {
       
       console.log("NyTimes Key: ", apiKey);
       console.log("NyTimes URL: ", searchURL);
-    
-      
 
       var settings = {
           "url": searchURL,
           "method": "GET",
       }
-
      
       $.ajax(settings).done(function (response) {
           console.log("MOVIE REVIEW: ",response);
-          console.log("byline: ",response.results[0].byline);
-          console.log("byline: ",response.results[0].headline);
-          console.log("byline: ",response.results[0].summary_short);
-          console.log("byline: ",response.results[0].link.url);
+          var noMatch = true;
+          response.results.forEach(element => {
+            // check to see if this result matches target movie
+            console.log(">>>>>>>>>>>>>>>>>>>>>>>target title: ", title.toLowerCase().replace('+',' '));
+            console.log(">>>>>>>>>>>>>>>>>>>>>>>results name: ", element.display_title.toLowerCase());
+            if (element.display_title.toLowerCase() === title.toLowerCase().replace('+',' ')) {
+              console.log("match on title: ", title.toLowerCase().replace('+',' '));
+              // harvest details
+              noMatch = false;
+              console.log("headline: ",element.headline);
+              $("#head-line").text(element.headline);
+
+              console.log("summary: ",element.summary_short);
+              $("#summary-short").text(element.summary_short);
+
+              console.log("byline: ",element.byline);
+              $("#by-line").text(element.byline);
+
+              console.log("url: ",element.link.url);
+              $("#review-link").attr('href',element.link.url);
+              console.log("display title: ",element.display_title);
+            }
+            
+          });
+
+          if (noMatch) {
+            // clear the DOM
+          }
+
+
       });
     },
 

@@ -1,15 +1,15 @@
 /* attempt to get youtube video as background */
 *{
   font-family:  'Carter One', cursive;
-  color: #b3b3b3;
+  /* color: #b3b3b3; */
 }
 
 body {
   /* width: 1080px; */
   height: 100%;
   /* background-color: #1a1a1a; */
-  background-color: #0d0d0d;
-  color: #b3b3b3;
+ background-color: #000000;
+  color: #808080;
 }
 
 #player {
@@ -63,9 +63,9 @@ body {
 
 #book-btn-div {
   width: 100px;
-  text-align: center;
+  text-align: left;
   padding: 4px;
-  margin: auto;
+  margin-left: 20px;
 }
 
 #add-fav-btn {
@@ -260,7 +260,7 @@ body {
   /* Positioning */
   /* position: fixed; */
   bottom: 0;
-  color: white;
+  color: #808080;
   text-align: center;
   padding: 0;
   clear: both;
@@ -268,7 +268,7 @@ body {
   bottom: 0;
   width: 100%;
   margin: auto;
-  font-weight: 10;
+  font-weight: 2;
   font-size: 0.8em;
 
   /* Box-model */
@@ -312,12 +312,12 @@ body {
    margin-right: 315px; 
    float: left;
    font-size: 45px;
-   color: #b3b3b3;
+   color: #4196be;
  }
 
  .nav-link {
    margin-top: 10px;
-   color: #b3b3b3 !important;
+   color: #808080 !important;
    font-size: 30px;
  }
 

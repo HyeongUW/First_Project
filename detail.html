@@ -26,6 +26,8 @@
   <link rel="stylesheet" href="assets/css/test.css" media="screen">
   
   <link href="https://fonts.googleapis.com/css?family=Carter+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=IM+Fell+English&display=swap" rel="stylesheet">
 
   <!-- Add the slick-theme.css if you want default styling -->
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css" />
@@ -226,10 +228,11 @@
 
       <div class="row">
         <div class="col-6">
+        <div id="inner-left-upper">
           <div class="row">
             <h1 id="title-text" class="col-12"></h1>
           </div>  
-          <div class="row">
+          <div id="ratings-row" class="row">
             <div class="col-3 all-n">
               <div id="book-btn-div">
                 <button id="add-fav-btn" type="button" class="btn btn-outline-success"></button>
@@ -254,20 +257,27 @@
             </div>
             <div id="streaming-text" class="col-8  all-n"></div>
           </div> 
+        </div>
+        <div id='inner-left-lower'>
           <div class="row">
-            <div class="col-12">
+            <!-- <div class="col-1"></div> -->
+            <div class="col-10">
               <h3 id="cast-title">CAST</h3>
             </div> 
+            <div class="col-1"></div>
           </div>  
           <div class="row">
+              <!-- <div class="col-1"></div> -->
               <div class="col-6">
                 <h5 id="role-title">ROLE</h5>
               </div> 
-              <div class="col-6">
+              <div class="col-4">
                 <h5 id="role-title">PLAYED BY</h5>
               </div>
+              <div class="col-1"></div>
           </div> 
           <div class="row">
+            <!-- <div class="col-1"></div> -->
             <div  id="cast" class="col-10 all-n">
               <table class="all-n">
                 <tr>
@@ -278,10 +288,14 @@
                 </tbody>  
               </table>    
             </div>
+            <div class="col-1"></div>
           </div>
         </div>
+      </div>
         
-        <div class="col-6">
+        
+        <div id="right-side-column" class="col-6">
+        <div id="inner-right-side">  
           <div class="row">
             <div class="col-12">
               <h3 id="overview" >OVERVIEW</h3>
@@ -296,11 +310,34 @@
             <div id="homepage-div" class="col-12">
               <a id="homepage" href="" title="movie homepage" target="_blank">Learn More</a>
             </div>
-            <div class="col-6">
-              NY Times Review
-            </div> 
           </div>
+          <div class="row">
+            <div class="col-12 review-div">
+              <h4 id="review" >The New York Times</h4>
+            </div>
+          </div> 
+          <div class="row review-div">
+            <div class="col-12 kerning word-space">
+              <div id="head-line" ></div>
+            </div>
+          </div> 
+          <div class="row review-div">
+            <div class="col-12 kerning word-space">
+              <div id="summary-short" ></div>
+            </div>
+          </div> 
+          <div class="row review-div">
+            <div class="col-12 kerning word-space">
+              <div id="by-line" ></div>
+            </div>
+          </div> 
+          <div class="row review-div">
+            <div id="review-link-div" class="col-12">
+              <a id="review-link" href="" title="nytimes review" target="_blank">New York Times Review</a>
+            </div>
+            </div>       
         </div> 
+        </div>
         
       </div> 
       <!-- <div class="row">
@@ -310,8 +347,9 @@
           <div id="recommended" class="col-12"></div>
       </div>  -->
       <div class="row">
+      <div id="lower-row">
         <div id="recommended" class="col-12">
-          <h4>Recommended Movies</h4>
+          <h3>Recommended Movies</h3>
           <div class="autoplay col-9" data-slick='{"slidesToShow": 4, "slidesToScroll": 1}'>
             <div class="poster">
               <img src="assets/imgs/71K3S+Tk4OL._SY679_.jpg" alt="" id="poster-photo1">
@@ -345,6 +383,7 @@
             </div>   
           </div>
         </div>
+      </div>  
       </div>
   </div>
               

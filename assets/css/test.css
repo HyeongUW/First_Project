@@ -1,5 +1,40 @@
 /* css experimenting */
 
+#inner-right-side {
+  width: 98%;
+  border: 1px solid #333333;
+  border-radius: .9em;
+  margin-top: 10px;
+  margin-right: 0px;
+}
+
+#inner-left-upper {
+  width: 99%;
+  border: 1px solid #333333;
+  border-radius: .9em;
+  margin-top: 10px;
+  margin-bottom: 40px;
+  margin-left: 10px;
+}
+
+#inner-left-lower {
+  width: 99%;
+  border: 1px solid #333333;
+  border-radius: .9em;
+  margin: 0px;
+  margin-left: 10px;
+}
+
+#lower-row {
+  width: 96.7%;
+  border: 1px solid #333333;
+  border-radius: .9em;
+  margin-top: 40px;
+  margin-left: 25px;
+  margin-right: -30px;
+  margin-bottom: 20px;
+}
+
 h1, h2, h3, h4, h5 {  
   text-align: center;
   /* background-color: #262626; */
@@ -25,7 +60,7 @@ table, th, td {
 
 .all-n,  th, tr, td {
   font-family: Arial, Helvetica, sans-serif;
-  color: #b3b3b3;
+  /* color: #b3b3b3; */
   font-size: 16px;
   line-height: 1.5;
   padding: 8px;
@@ -36,7 +71,7 @@ table, th, td {
 table {
   font-family: Arial, Helvetica, sans-serif;
   /* background-color: #0d0d0d; */
-  color: #b3b3b3;
+  /* color: #b3b3b3; */
   font-size: 16px;
   line-height: 1.5;
   padding: 8px;
@@ -65,6 +100,7 @@ table {
   padding-top: 0px;
   height: 300px;
   overflow: scroll;
+  margin-bottom: 10px;
 }
 
 /* #cast-table {
@@ -87,13 +123,13 @@ table {
 
 
 #runtime-text, #rated-text, #ratings-text,
-#genre-text, #streaming-text, #homepage {
+#homepage {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 24px;
   padding: 10px;
   width: 100%;
   margin: auto;
-  text-align: center;
+  text-align: left;
 }
 
 #genre-text, #streaming-text {
@@ -103,7 +139,7 @@ table {
   width: 100%;
   margin: auto;
   margin: 10px;
-  text-align: center;
+  text-align: left;
 }
 
 #genre-title, #streaming-title {
@@ -116,7 +152,9 @@ table {
   text-align: left;
 }
 
-
+#ratings-row {
+  margin-left: 0px;
+}
 /* .book-mark-green {
   height: 30px;
   width: 60px;
@@ -146,7 +184,7 @@ table {
 
 
 .kerning {
-  letter-spacing: .25em;
+  letter-spacing: .20em;
 }
 
 /* .word-space {
@@ -157,8 +195,56 @@ table {
   text-align: center
 }
 
-#overview,  {
+#overview {
   margin-top: 10px;
+  margin-bottom: 0px;
+}
+
+#review-link-div {
+  margin-bottom: 10px;
+}
+
+.review-div {
+  margin-left: 0px;
+}
+
+#review {
+  /* font-family: 'UnifrakturMaguntia', cursive; */
+  font-family: 'IM Fell English', serif;
+  margin-top: 40px;
+  margin-bottom: 0px;
+  font-size: 24px;
+}
+
+
+
+
+#head-line, #summary-short, #by-line {
+  /* font-family: Georgia, 'Times New Roman', Times, serif; */
+  font-family: Arial, Helvetica, sans-serif;
+  /* font-weight: bold; */
+  font-size: 16px;
+  line-height: 1.5;
+  /* padding: 8px; */
+  margin: 0px;
+  /* height: 300px; */
+  max-height: 100px;
+  overflow: scroll;
+  padding: 10px 10px;
+  /* word-spacing: .6em; */
+}
+
+
+#review-link {
+  font-family: 'IM Fell English', serif;
+  margin-top: 40px;
+  margin-bottom: 0px;
+  font-size: 16px;
+  color: #28a745;
+  padding-left: 10px;
+  padding-bottom: 10px;
+  
+  /* padding: 10px; */
 }
 
 #overview-text {
@@ -167,11 +253,12 @@ table {
   /* font-weight: bold; */
   font-size: 20px;
   line-height: 1.5;
-  padding: 8px;
-  margin: 0px;
-  height: 300px;
+   margin: 0px;
+  /* height: 300px; */
+  max-height: 300px;
   overflow: scroll;
-  padding: 20px 30px;
+  /* padding: 20px 30px; */
+  padding: 20px 40px;
   /* word-spacing: .6em; */
 }
 
@@ -182,18 +269,32 @@ table {
 
 
 #homepage-div {
-  text-align: center;
+  text-align: left;
+  margin-top: 0px;
  }
+
 #homepage {
  color: #28a745;
+ font-size: 20px;
+ margin-top: 0px;
+ padding-top: 0px;
+ padding-left: 15px;
 }
 
 #recommended {
   text-align: center;
-  margin-top: 10px;
+  margin-top: 20px;
   height: 250px;
   margin-bottom: 100px;
 }
+
+/* #head-line, #summary-short, #by-line {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 22px;
+} */
+
+
+
 
 /* #carousel-header {
   text-align: center;
