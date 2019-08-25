@@ -198,6 +198,8 @@ $(document).ready(function() {
 
           if (noMatch) {
             // clear the DOM
+            $("#review").text('');
+            $("#review-link").text('');
           }
 
 
@@ -804,7 +806,7 @@ $(document).ready(function() {
     function onPlayerReady(event) {
 
       event.target.loadVideoById(youTubeVideoId);
-      event.target.setVolume(20);
+      event.target.setVolume(10);
       event.target.playVideo();    // MRC - uncomment when done with CSS changes
       isTrailerPlaying = true;
       // event.target.playVideoAt(0);

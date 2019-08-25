@@ -249,7 +249,10 @@
     // method to add new item to the watch list and save it
     addToWatchList: function(title,id,year,time) {
       console.log("in manageWatchList.addToWatchList");
+      console.log("BUG - title is:  ", title);
+      
       this.watchListMovieTitleArray.push(title);
+      // this.watchListMovieTitleArray.push('McFarland, USA');
       this.watchListMovieIdArray.push(id);
       this.watchListMovieYearArray.push(year);
       this.watchListMovieTimeArray.push(time);
