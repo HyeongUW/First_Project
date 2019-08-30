@@ -3,7 +3,7 @@
 Search assistant for Movie/Streaming titles
 
 ## Description
- 
+
 This web application helps a user search for Movie/Streaming content to view.
 It consists of a Landing page with trending movies, a search page, detail page and a persistent save title list.
 
@@ -12,21 +12,34 @@ Clicking on a movie image or title within the above pages will load the detail p
 ## Deployed Page:
 https://hyeonguw.github.io/First_Project/index.html
 
-### Page Examples:
+## Use Example:
+
+### ![use-example](./assets/images/use-example.gif)
+
+
+
+## Screen Captures:
 
 
 * Landing page:
   ![landing-page](assets/images/wireframe_trend01.png)
 
 * Search page:
-  ![search-page](assets/images/wireframe_search01.png)
-
+  
+![search-1-new](/Users/Myles/Bootcamp/WORK/Project1/First_Project/assets/images/search-1-new.png)
+  
+  
+  
 * Detail page:
-  ![detail-page](assets/images/wireframe_detail01.png)
+  ![detail-page](assets/images/detail-1-new.png)
 
-* Detail page:
-  ![detail-page](assets/images/wireframe_detail02.png)
+  
+  
+*  Detail page continued:
+  ![detail-page](assets/images/detail-2-new.png)
 
+  
+  
 * Save list Modal:
   ![detail-page](assets/images/wireframe_savelist01.png)
 
@@ -76,7 +89,7 @@ For further development details see [UseCases and Psuedo Code](UseCases-PsuedoCo
 * Victor Chung - victorchung998@yahoo.com
 
 ## Version History
- 
+
 * 0.1
     * Initial Release
 
