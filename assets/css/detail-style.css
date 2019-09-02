@@ -65,7 +65,7 @@ body {
   width: 100px;
   text-align: left;
   padding: 4px;
-  margin-left: 20px;
+  /* margin-left: 20px; */
 }
 
 #add-fav-btn {

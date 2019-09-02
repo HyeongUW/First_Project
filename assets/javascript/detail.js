@@ -329,6 +329,7 @@ $(document).ready(function() {
             console.log("related movie overview: ",element.overview);
             console.log("poster_path: ",element.poster_path);
 
+
             if (i === 1) {
               var imageURL = "https://image.tmdb.org/t/p/w500" + element.poster_path;
               var carbox = $("#poster-photo1");
@@ -762,7 +763,8 @@ $(document).ready(function() {
 
   // go to detail page on recommended movie click
   // go to detail page on recommended movie click
- $(document).on("click",".poster>img", function() {
+//  $(document).on("click",".poster>img", function() { 
+ $(document).on("click",".carousel-cell>img", function() {
   //$(document).on("click",".carousel-item>img", function() {
     console.log("in carousel-item>img click event");
     // console.log("you pressed " + $(this).data("movie-id"));

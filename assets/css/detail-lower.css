@@ -123,38 +123,36 @@ table {
 
 
 #runtime-text, #rated-text, #ratings-text,
-#homepage {
+#homepage ,#genre-text, #streaming-text, #genre-title, #streaming-title {
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 24px;
+  font-size: 18px;
   padding: 10px;
   width: 100%;
   margin: auto;
   text-align: left;
 }
 
-#genre-text, #streaming-text {
+/* #genre-text, #streaming-text, #genre-title, #streaming-title {
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 24px;
+  font-size: 18px;
   padding: 10px;
   width: 100%;
   margin: auto;
-  margin: 10px;
   text-align: left;
-}
+} */
 
-#genre-title, #streaming-title {
+/* #genre-title, #streaming-title {
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 24px;
-  /* padding: 10px;
-  width: 100%; */
-  /* margin: auto; */
-  margin: 10px 0px 10px 40px;
+  font-size: 18px;
+  margin: 0px 0px 10px 0px;
   text-align: left;
+} */
+
+.upper-left-detail-row{
+  margin: 0px; 
 }
 
-#ratings-row {
-  margin-left: 0px;
-}
+
 /* .book-mark-green {
   height: 30px;
   width: 60px;
@@ -299,7 +297,56 @@ table {
   margin-bottom: 100px;
 }
 
-/* #head-line, #summary-short, #by-line {
+
+/* .carousel-cell {
+  width: 10%;
+  height: 230px;
+  margin-right: 50px;
+  counter-increment: carousel-cell;
+} */
+
+.carousel {
+  /* background: #FAFAFA; */
+  margin: 0 60px; /* space for prev/next buttons */
+}
+
+.carousel-cell {
+  width: 13%;
+  height: 230px;
+  margin-right: 50px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.rec-movie:hover {
+  border: solid 2px #28a745;
+  border-radius: .25em;
+}
+
+/* smaller, dark, rounded square */
+.flickity-prev-next-button {
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
+  background: #333;
+}
+.flickity-prev-next-button:hover {
+  background: #F90;
+}
+/* arrow color */
+.flickity-prev-next-button .arrow {
+  fill: white;
+}
+.flickity-prev-next-button.no-svg {
+  color: white;
+}
+/* position outside */
+.flickity-prev-next-button.previous {
+  left: -40px;
+}
+.flickity-prev-next-button.next {
+  right: -40px;
+}/* #head-line, #summary-short, #by-line {
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: 22px;
 } */
