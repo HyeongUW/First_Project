@@ -170,6 +170,7 @@ function populateActorResult(searchTerm, resultLength) {
             var tempActorDiv = $("<div class='actor-div row'>");
             
             // HTML image tag
+            var tempActorImageDiv = $("<div class='actor-image-div'>");
             var tempActorImage = $("<img id='search-result-actor-image'>");
             var actorImageURL;
             if(response.results[i].profile_path === null || response.results[i].profile_path === undefined) {
@@ -180,7 +181,8 @@ function populateActorResult(searchTerm, resultLength) {
             tempActorImage.attr("src", actorImageURL);
             tempActorImage.attr('data-actor-id', response.results[i].id);
             tempActorImage.addClass("search-result-actor");
-            tempActorDiv.append(tempActorImage);
+            tempActorImageDiv.append(tempActorImage);
+            tempActorDiv.append(tempActorImageDiv);
 
             // Actor info div
             var tempActorInfoDiv = $("<div class='actor-info-div'>");
