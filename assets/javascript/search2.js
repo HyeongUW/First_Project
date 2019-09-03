@@ -1,3 +1,9 @@
+// Check List for Today
+// 1. Make Rating to be star format
+// 2. Show how many people voted
+
+
+
 // TMDB Api Key
 var apiKey = "4eb3939343ef4ca0932079284f76225d";
 
@@ -8,10 +14,9 @@ $(document).ready(function() {
         console.log("Search Term Was Already Defined!");
 
         var searchTerm = manageSessionStorage.getSessionStorage("search-term");
-        var searchOption = manageSessionStorage.getSessionStorage("search-option");
 
         //populateSearchResult(searchTerm);
-        pageNumberReturner(searchTerm, searchOption);
+        pageNumberReturner(searchTerm);
 
     }
 
@@ -23,18 +28,12 @@ $(document).ready(function() {
         // console logging the search term
         console.log(searchTerm);
 
-        
-        /* Console Logging Which Option has been used on this */
-        //console.log($('input:radio[name = advSearchOpt]:checked').val());
-        var searchOption = $('input:radio[name = advSearchOpt]:checked').val();
-        /*----------------------------------------------------*/
-
         // Storing the search term into the session storage
         sessionStorage.clear();
         sessionStorage.setItem("search-term", searchTerm);
-        sessionStorage.setItem("search-option", searchOption);
 
-        pageNumberReturner(searchTerm, searchOption);
+        //populateSearchResult(searchTerm);
+        pageNumberReturner(searchTerm)
 
 
     });
@@ -83,30 +82,15 @@ var manageSessionStorage = {
     }
 }
 
-function pageNumberReturner(searchTerm, searchOption) {
-    switch(searchOption) {
-        case "movieTitle":
-            //console.log("movie Title searched");
-            var searchURL = "https://api.themoviedb.org/3/search/multi?api_key=" + apiKey + "&language=en-US&query=" + searchTerm + "&page=1&include_adult=false&region=us";
-            console.log("Movie Search URL: ", searchURL);
-            break;
-        case "actor":
-            //console.log("actor searched");
-            
-            var searchURL = 'https://api.themoviedb.org/3/search/person?api_key=' + apiKey + '&language=en-US&query=' + searchTerm + '&page=1&include_adult=false&region=us';
-            console.log("Actor Search URL: ", searchURL);
-            break;
-        case "tvshows":
-            //console.log("tv shows searched");
-            var searchURL = "https://api.themoviedb.org/3/search/multi?api_key=" + apiKey + "&language=en-US&query=" + searchTerm + "&page=1&include_adult=false&region=us";
-            break;            
-        default:
-            break;
-    }
-    
-    
-    
-    
+// probably can remove after testing this - it was moved to common.js
+// function redirectToDetailPage() {
+//     console.log("in global.redirectToDetailPage");
+//     // switch the browser to the detail page
+//     window.location = 'detail.html';
+// }; 
+
+function pageNumberReturner(searchTerm) {
+    var searchURL = "https://api.themoviedb.org/3/search/multi?api_key=" + apiKey + "&language=en-US&query=" + searchTerm + "&page=1&include_adult=false&region=us"
     
     // Passing the search-term to ajax function
     var settings = {
@@ -121,25 +105,9 @@ function pageNumberReturner(searchTerm, searchOption) {
 
     $.ajax(settings).done(function (response) {
         var numOfPages = response.total_pages;
-        console.log("Number of Pages: ", numOfPages);
 
-        switch(searchOption) {
-            case "movieTitle":
-                console.log("movie Title Search Result");
-                titleSearch.populateSearchResult(searchTerm, numOfPages);
-                break;
-            case "actor":
-                console.log(response.results[0]);
-                //populateActorResult(searchTerm);
-                break;
-            case "tvshows":
-                //console.log("tv shows searched");
-                var searchURL = "https://api.themoviedb.org/3/search/multi?api_key=" + apiKey + "&language=en-US&query=" + searchTerm + "&page=1&include_adult=false&region=us";
-                break;            
-            default:
-                break;
-        }
-        
+
+        populateSearchResult(searchTerm, numOfPages);
 
     });
 
@@ -255,7 +223,7 @@ function populateSearchResult(searchTerm, numOfPages) {
     
 
 
-/* $(document).on("click", ".poster-div>img", function() {
+$(document).on("click", ".poster-div>img", function() {
     //console.log("in trending-div.img click event");
     //console.log("you pressed " + $(this).data("movie-id"));
     //console.log("you pressed " + $(this).data("movie-title"));
@@ -269,7 +237,7 @@ function populateSearchResult(searchTerm, numOfPages) {
 
 
     redirectToDetailPage();
-}); */
+});
 
 
 
