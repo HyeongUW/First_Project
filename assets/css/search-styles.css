@@ -1,0 +1,13 @@
+.search-result-actor {
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+}
+
+.search-result-div {
+    /* width: 98%; */
+    border: 1px solid #333333;
+    border-radius: .9em;
+    /* margin-top: 10px; */
+    /* margin-right: 0px;     */
+}

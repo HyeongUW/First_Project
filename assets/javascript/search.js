@@ -126,11 +126,11 @@ function pageNumberReturner(searchTerm, searchOption) {
         switch(searchOption) {
             case "movieTitle":
                 console.log("movie Title Search Result");
-                titleSearch.populateSearchResult(searchTerm, numOfPages);
+                populateSearchResult(searchTerm, numOfPages);
                 break;
             case "actor":
-                console.log(response.results[0]);
-                //populateActorResult(searchTerm);
+                //console.log(response.results[0]);
+                populateActorResult(searchTerm, response.results.length);
                 break;
             case "tvshows":
                 //console.log("tv shows searched");
@@ -145,12 +145,138 @@ function pageNumberReturner(searchTerm, searchOption) {
 
 }
 
-function populateSearchResult(searchTerm, numOfPages) {
-    //var numOfPages = pageNumberReturner(searchTerm);
-    //console.log("Page Number (populateSearchResult): ", numOfPages);
-
-    // page number should be defined here before the searchURL
+function populateActorResult(searchTerm, resultLength) {
+    //console.log("Actor " + searchTerm + " has been searched, " + resultLength + " objects returned.");
+    var searchURL = 'https://api.themoviedb.org/3/search/person?api_key=' + apiKey + '&language=en-US&query=' + searchTerm + '&page=1&include_adult=false&region=us';
+    var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": searchURL,
+        "method": "GET",
+        "headers": {},
+        "data": "{}"
+    }
     
+    $.ajax(settings).done(function (response) {
+        // Goes over the entire retrieved data
+        for(var i = 0; i < resultLength; i++) {
+            console.log(response);
+            var entireRowDiv = $('<div class="row">'); 
+            // Creating a div for each of the search results
+            var tempDiv = $('<div class="row" style="text-align: left;">'); 
+            tempDiv.addClass("search-result-div");
+    
+            /* --------------------------------------------- */
+            var tempActorDiv = $("<div class='actor-div'>");
+            
+            // HTML image tag
+            var tempActorImage = $("<img id='search-result-actor-image'>");
+            var actorImageURL;
+            if(response.results[i].profile_path === null || response.results[i].profile_path === undefined) {
+                actorImageURL = "./assets/images/actor_image_not_available.png"
+            } else {
+                actorImageURL = "https://image.tmdb.org/t/p/w500" + response.results[i].profile_path;    
+            }
+            tempActorImage.attr("src", actorImageURL);
+            tempActorImage.attr('data-actor-id', response.results[i].id);
+            tempActorImage.addClass("search-result-actor");
+            tempActorDiv.append(tempActorImage);
+
+            // Actor info div
+            var tempActorInfoDiv = $("<div class='actor-info-div'>");
+            var tempActorName = $("<h1>").text(response.results[i].name);
+            var tempActorKnownFor = $("<h1>").text(response.results[i].known_for_department);
+            var tempActorPopularity = $("<h1>").text(response.results[i].popularity);
+            tempActorInfoDiv.append(tempActorName).append(tempActorKnownFor).append(tempActorPopularity);
+
+            tempActorDiv.append(tempActorInfoDiv);
+
+            /* --------------------------------------------- */
+            tempDiv.append(tempActorDiv);
+            /* --------------------------------------------- */
+            for(var j = 0; j < response.results[i].known_for.length; j++) {
+                //console.log(response.results[i].known_for[j].title);
+
+                // Make a div for image and put the image tag in it
+
+                var tempImgDiv = $("<div class='poster-div'>");
+                var tempImage = $("<img id='search-result-image'>");
+                var imageURL;
+                if(response.results[i].known_for[j].poster_path === null || response.results[i].known_for[j].poster_path === undefined) {
+                    imageURL = "./assets/images/no-image-available-icon-6.jpg"
+                } else {
+                    imageURL = "https://image.tmdb.org/t/p/w500" + response.results[i].known_for[j].poster_path;    
+                }
+                tempImage.attr("src", imageURL);
+                tempImage.attr('data-movie-id', response.results[i].known_for[j].id);
+                tempImage.addClass("search-result-poster");
+                tempImgDiv.append(tempImage);
+        
+        
+                // Retrieving title, release date, average vote, and vote count
+                var tempDataDiv = $("<div id='search-result-data'>");
+                var tempTitle = $("<h1>");
+                tempTitle.attr('data-movie-id', response.results[i].known_for[j].id);
+                
+                // Some of the returned data does not have "original_title" data, some
+                // of them had "original_name" instead.
+                if(response.results[i].known_for[j].original_title !== undefined) {
+                    tempTitle.text(response.results[i].known_for[j].original_title);
+                    tempTitle.attr('data-movie-title', response.results[i].known_for[j].original_title);
+                    tempImage.attr('data-movie-title', response.results[i].known_for[j].original_title);
+                } else {
+                    tempTitle.text(response.results[i].known_for[j].original_name);
+                    tempTitle.attr('data-movie-title', response.results[i].known_for[j].original_title);
+                    tempImage.attr('data-movie-title', response.results[i].known_for[j].original_name);
+                }
+                tempTitle.addClass("search-result-title");
+        
+                var tempRelease = $("<h3>");
+                //tempRelease.text("Release Date: " + response.results[i].release_date);
+                if(response.results[i].known_for[j].release_date === undefined) {
+                    tempRelease.text("");
+                } else {
+                    tempRelease.text("(" + response.results[i].known_for[j].release_date + ")");
+                }
+                //tempRelease.text("(" + response.results[i].release_date + ")");
+                
+                
+                var starIcon = $("<img class='star-icon' style='float: left';>");
+                starIcon.attr('src', './assets/images/icons8-star-96.png');
+                
+                
+        
+                var tempVoteAvg = $("<h3 style='float: left';>");
+                tempVoteAvg.text(response.results[i].known_for[j].vote_average);
+        
+                var userIcon = $("<img class='star-icon' style='float: left';>");
+                userIcon.attr('src', './assets/images/icons8-people-96.png');
+        
+                
+                var tempVoteCount = $("<h3>");
+                tempVoteCount.text(response.results[i].known_for[j].vote_count);
+        
+                
+                tempDataDiv.append(tempTitle).append(tempRelease).append(starIcon).append(tempVoteAvg).append(userIcon).append(tempVoteCount);
+                tempDiv.append(tempImgDiv).append(tempDataDiv);
+            }
+
+
+    
+            
+            
+            
+            
+            
+            entireRowDiv.append(tempDiv);
+            $("#result-placehold").append(entireRowDiv);
+            
+        }     
+
+    });     
+}
+
+function populateSearchResult(searchTerm, numOfPages) {
     for(var i = 1; i <= numOfPages; i++) {
         //console.log("Call #" + i);
         var searchURL = "https://api.themoviedb.org/3/search/multi?api_key=" + apiKey + "&language=en-US&query=" + searchTerm + "&page=" + i + "&include_adult=false&region=us";
