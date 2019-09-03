@@ -161,13 +161,13 @@ function populateActorResult(searchTerm, resultLength) {
         // Goes over the entire retrieved data
         for(var i = 0; i < resultLength; i++) {
             console.log(response);
-            var entireRowDiv = $('<div class="row">'); 
+        
             // Creating a div for each of the search results
             var tempDiv = $('<div class="row" style="text-align: left;">'); 
             tempDiv.addClass("search-result-div");
     
             /* --------------------------------------------- */
-            var tempActorDiv = $("<div class='actor-div'>");
+            var tempActorDiv = $("<div class='actor-div row'>");
             
             // HTML image tag
             var tempActorImage = $("<img id='search-result-actor-image'>");
@@ -268,8 +268,8 @@ function populateActorResult(searchTerm, resultLength) {
             
             
             
-            entireRowDiv.append(tempDiv);
-            $("#result-placehold").append(entireRowDiv);
+            
+            $("#result-placehold").append(tempDiv);
             
         }     
 
