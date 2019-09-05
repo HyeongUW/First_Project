@@ -30,9 +30,9 @@
   <link href="https://fonts.googleapis.com/css?family=IM+Fell+English&display=swap" rel="stylesheet">
 
   <!-- Add the slick-theme.css if you want default styling -->
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css" />
+  <!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css" /> -->
   <!-- Add the slick-theme.css if you want default styling -->
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css" />
+  <!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css" /> -->
   <!-- CSS -->
   <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
   
@@ -41,12 +41,28 @@
 
   <!-- Local -->
   <!--Latest JQuery download -->
-  <script src="assets/javascript/jquery-3.4.1.js"></script>
+  <!-- <script src="assets/javascript/jquery-3.4.1.js"></script> -->
+
+   <!-- jQuery CDN -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
   <!-- Popper -->
-  <script src="assets/javascript/popper.min.js"></script>
+  <!-- <script src="assets/javascript/popper.min.js"></script> -->
   <!-- Latest compiled and minified JavaScript -->
-  <script src="assets/javascript/bootstrap.min.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>  
+  <!-- <script src="assets/javascript/bootstrap.min.js"></script> -->
+  <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>   -->
+
+  <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script> -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
   <!-- JavaScript -->
   <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
   
@@ -54,29 +70,19 @@
     <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-database.js"></script>
   
-  <!-- Font Awesome -->
-  <script src="https://kit.fontawesome.com/6eecbb7cb2.js"></script>
+
 
 </head>
 
 <body>
-
-  
-
     <header id = "masthead">
-
         <nav class="navbar navbar-expand-lg">
-
-      
           <div class="upper-row" id="nav-row">
             <div class="col-4">
             </div>
-      
             <div class="col-4" id="logodiv">
               <!-- Brand and toggle get grouped for better mobile display -->
-       
               <a class="navbar-brand" href="index.html" id="logo">Movie Gopher <img src="assets/images/gopher.png" height="48" width="64"></a>
-              
             </div>
             <div class="col-4">
               <button id="nav-btn" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
@@ -89,147 +95,25 @@
                   <li class="nav-item">
                     <a class="nav-link" href="index.html">Home</a>
                   </li>
-
                   <li class="nav-item">
                     <a class="nav-link" href="search.html">Search</a>
                   </li>
-
-
-
                 </ul>
               </div>
-      
             </div>
             <!-- /.navbar-collapse -->
           </div>
           <!-- /.container -->
         </nav>
         <!-- End of navbar -->
-      
-        </header>
+    </header>
 
   <section class="upper-row">
     <div style="padding-top:56.25%; position: relative;">
       <div id="player"></div>
   </section>
-
-<!-- 
-  <div class="container col-10" style="color: white;" id="movie-info">
-    <div class="row">
-      <div class="row col-12">
-        <div id="title" class="col-5">
-          <h2 id="title-text">
-            <h2 id="release-date"></h2></h2>
-        </div>
-        <div id="runtime">
-          <h3 id="runtime-text">Runtime Here!</h3>
-        </div>
-      </div>
-
-    </div>
-    <div id="overview" class="col-4">
-      <h2 id="overview-title">Overview</h2>
-      <div id="overview-text">
-      </div>
-      <div class="homepage-link col-5" style="float: left; text-align: left; background: none" >
-        <a id="homepage" href="" title="movie homepage" target="_blank">Learn More</a>
-      </div>    
-    </div>
-    <div class="row">
-      <div class="row">
-        <div class="streaming-site-logos col-3">
-          <h3 id="temp-streaming"></h3>
-
-        </div>
-        <div id="add-btn" style="float: left;">
-            <button id="add-fav-btn" type="button" class="btn btn-outline-success">Add-Remove</button>
-        </div>
-
-      </div>
-      <div id="info" class="row">
-        <div id="rated">
-          <h3 id="rated-text">rated: </h3>
-        </div>
-        <br>
-        <div id="ratings">
-          <h3 id="ratings-text">Ratings</h3>
-        </div>
-        <div id="genre">
-          <h3 id="genre-text"></h3>
-        </div>
-      </div>
-      
-      <br>
-      
-      <div id="cast">
-        <h2>Cast</h2>
-        <ul id="cast-list">
-        </ul>
-      </div>
-      
-    </div>
-  </div>
-    
-  <div class="row">
-      <h3 id="carousel-header">Recommended Movies</h3>
-      <div class="autoplay col-7" data-slick='{"slidesToShow": 3, "slidesToScroll": 1}'>
-        <div class="poster">
-          <img src="assets/imgs/71K3S+Tk4OL._SY679_.jpg" alt="" id="poster-photo1">
-          
-        </div>
-        <div class="poster">
-          <img src="assets/imgs/71K3S+Tk4OL._SY679_.jpg" alt="" id="poster-photo2">
-          
-        </div>
-        <div class="poster">
-          <img src="assets/imgs/71K3S+Tk4OL._SY679_.jpg" alt="" id="poster-photo3">
-          
-        </div>
-        <div class="poster">
-          <img src="assets/imgs/71K3S+Tk4OL._SY679_.jpg" alt="" id="poster-photo4">
-          
-        </div>
-        <div class="poster">
-          <img  src="assets/imgs/71K3S+Tk4OL._SY679_.jpg" alt="" id="poster-photo5">
-          
-        </div>
-        <div class="poster">
-          <img src="assets/imgs/71K3S+Tk4OL._SY679_.jpg" alt="" id="poster-photo6">
-          
-        </div>
-        <div class="poster">
-          <img src="assets/imgs/71K3S+Tk4OL._SY679_.jpg" alt="" id="poster-photo7">
-          
-        </div>
-        <div class="poster">
-          <img src="assets/imgs/71K3S+Tk4OL._SY679_.jpg" alt="" id="poster-photo8">
-          
-        </div>
-        <div class="poster">
-          <img src="assets/imgs/71K3S+Tk4OL._SY679_.jpg" alt="" id="poster-photo9">
-          
-        </div>
-        <div class="poster">
-          <img src="assets/imgs/71K3S+Tk4OL._SY679_.jpg" alt="" id="poster-photo10">
-          
-        </div>   
-      </div>
-    </div>
-  
-    </div>
-  
-    <script>
-      $('.autoplay').slick({
-        slidesToShow: 3,
-        slidesToScroll: 1,
-        autoplay: true,
-        autoplaySpeed: 3000,
-        infinite: false,
-      });
-    </script> -->
   
   <div class="container-fluid" role="main">
-
       <div class="row">
         <div class="col-6">
         <div id="inner-left-upper">
@@ -246,34 +130,25 @@
             <div id="ratings-text" class="col-3 all-n "></div>
             <div id="runtime-text" class="col-3 all-n "></div>
           </div>
-          <!-- <div class="row">
-            <div id="genre-text" class="col-12  all-n">GENRES: Fiction, Drama, Mystery</div>
-          </div> -->
           <div class="row upper-left-detail-row">
             <div class="col-3"></div>
             <div id="genre-title" class="col-3 all-n">Genre:</div>
-              <!-- <div id="genre-title">Genre:</div>
-            </div> -->
             <div id="genre-text" class="col-6  all-n"></div>
           </div>
           <div class="row upper-left-detail-row">
               <div class="col-3"></div>
             <div id="streaming-title" class="col-3 all-n">Streaming:</div>
-              <!-- <div id="streaming-title">Streaming:</div>
-            </div> -->
             <div id="streaming-text" class="col-6  all-n"></div>
           </div> 
         </div>
         <div id='inner-left-lower'>
           <div class="row">
-            <!-- <div class="col-1"></div> -->
             <div class="col-10">
               <h3 id="cast-title">CAST</h3>
             </div> 
             <div class="col-1"></div>
           </div>  
           <div class="row">
-              <!-- <div class="col-1"></div> -->
               <div class="col-6">
                 <h5 id="role-title">ROLE</h5>
               </div> 
@@ -283,13 +158,8 @@
               <div class="col-1"></div>
           </div> 
           <div class="row">
-            <!-- <div class="col-1"></div> -->
             <div  id="cast" class="col-10 all-n">
               <table class="s-bar all-n">
-                <!-- <tr>
-                  <th>ROLE</th>
-                  <th>ACTOR/ACTRESS</th>
-                </tr> -->
                 <tbody>
                 </tbody>  
               </table>    
@@ -298,8 +168,6 @@
           </div>
         </div>
       </div>
-        
-        
         <div id="right-side-column" class="col-6">
         <div id="inner-right-side">  
           <div class="row">
@@ -345,12 +213,6 @@
         </div>
         
       </div> 
-      <!-- <div class="row">
-          <div class="col-12 kerning centered">
-            <h4>RECOMMENDED MOVIES</h4>
-          </div>
-          <div id="recommended" class="col-12"></div>
-      </div>  -->
       <div class="row">
       <div id="lower-row">
         <div id="recommended" class="col-12">
@@ -388,58 +250,11 @@
                   <img class="rec-movie" src="" alt="" id="poster-photo10">
               </div>
           </div>
-
-          <!-- <div class="autoplay col-9" data-slick='{"slidesToShow": 4, "slidesToScroll": 1}'>
-            <div class="poster">
-              <img src="assets/imgs/71K3S+Tk4OL._SY679_.jpg" alt="" id="poster-photo1">
-            </div>
-            <div class="poster">
-              <img src="assets/imgs/71K3S+Tk4OL._SY679_.jpg" alt="" id="poster-photo2">
-            </div>
-            <div class="poster">
-              <img src="assets/imgs/71K3S+Tk4OL._SY679_.jpg" alt="" id="poster-photo3">
-            </div>
-            <div class="poster">
-              <img src="assets/imgs/71K3S+Tk4OL._SY679_.jpg" alt="" id="poster-photo4">
-            </div>
-            <div class="poster">
-              <img  src="assets/imgs/71K3S+Tk4OL._SY679_.jpg" alt="" id="poster-photo5">
-            </div>
-            <div class="poster">
-              <img src="assets/imgs/71K3S+Tk4OL._SY679_.jpg" alt="" id="poster-photo6">
-            </div>
-            <div class="poster">
-              <img src="assets/imgs/71K3S+Tk4OL._SY679_.jpg" alt="" id="poster-photo7">
-            </div>
-            <div class="poster">
-              <img src="assets/imgs/71K3S+Tk4OL._SY679_.jpg" alt="" id="poster-photo8">
-            </div>
-            <div class="poster">
-              <img src="assets/imgs/71K3S+Tk4OL._SY679_.jpg" alt="" id="poster-photo9">
-            </div>
-            <div class="poster">
-              <img src="assets/imgs/71K3S+Tk4OL._SY679_.jpg" alt="" id="poster-photo10">
-            </div>   
-          </div> -->
         </div>
       </div>  
       </div>
   </div>
               
-  <!-- <script>
-    $('.autoplay').slick({
-      slidesToShow: 3,
-      slidesToScroll: 1,
-      autoplay: true,
-      autoplaySpeed: 3000,
-      infinite: false,
-    });
-  </script> -->
-
-
-
-
-
   <!-- End of container -->
 
 

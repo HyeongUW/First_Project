@@ -480,45 +480,6 @@ $(document).ready(function() {
     },
 
 
-
-
-
-  //    // Returns trending movies
-  //    for(var i = 0; i < response.results.length; i++) {
-  //     var tempDiv = $("<div>");
-  //     tempDiv.addClass("trending-div");
-
-  //     var tempImage = $("<img>");
-  //     var imageURL = "https://image.tmdb.org/t/p/w500" + response.results[i].poster_path;
-  //     tempImage.attr("src", imageURL);
-  //     tempImage.attr('data-movie-id', response.results[i].id);
-  //     tempImage.addClass("trending-poster");
-      
-      
-  //     var tempTitle = $("<h3>");
-      
-  //     // Some of the returned data does not have "original_title" data, some
-  //     // of them had "original_name" instead.
-  //     if(response.results[i].original_title !== undefined) {
-  //       tempTitle.text(response.results[i].original_title);
-  //       tempImage.attr('data-movie-title',response.results[i].original_title);
-  //     } else {
-  //       tempTitle.text(response.results[i].original_name);
-  //       tempImage.attr('data-movie-title',response.results[i].original_name);
-  //     }
-      
-      
-  //     tempDiv.append(tempImage).append(tempTitle);
-      
-  //     $("#trending-placehold").append(tempDiv);
-  // }
-
-
-
-
-
-
-
     // get related movie rating (pg, pg-13, etc.) from OMDB API
     // parameter: movie id
     getOmdbMovieRating: function(title) {
@@ -872,17 +833,6 @@ $(document).ready(function() {
     player.pauseVideo();
   });
 
-  // // not working - need more research
-  // // start trailer up again if user return to web page
-  // const windowHasFocus = function () {
-  //   window.addEventListener("focus", function(event) 
-  //   { 
-  //      isTrailerPlaying = true;
-  //      player.playVideo();
-  //   }, false);
-
-  // }  
- 
-
+  
  
     

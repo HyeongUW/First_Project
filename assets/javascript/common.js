@@ -11,49 +11,14 @@
  
 
   // watch list button event - show modal
-  // **** this code should be moved to common.js I believe
   $("#watch-list-btn").on("click",function() {
     console.log("in global.watch-list-btn click event")
    // show watch list
     $('#my-modal').modal('show');
   });
 
-
-
-  // // watch list modal content - Delete click
-  // // finda all checked items; remove them from the arrays; re-build/re-render DOM
-  // // **** this code should be moved to the commmon.js I believe
-  // $(document).on("click", "#delete-watch-items", function() {
-  //   console.log("in global.delete-watch-items click event");
-  //   // find items checked and remove them from the watch arrays
-  //   // remove checked items from the DOM - each item appended to
-  //   // var modalBody =   $("#watch-list-body");
-  //   // the items to remove are of type:
-  //   //  $('<div class="watch-list-item-container"></div>');
-
-  //   $('.watch-list-checkbox:checked').each(function () {
-  //     console.log("this item was checked: ", this.value);
-  //     // next - remove this from the watch arrays :
-  //     // manageWatchList.removeFromWatchList(this.value);
-  //     // if we are on the detail page we might have just removed 
-  //     // that title from the watch list so update the save to watch list button
-  //     // only do if on detail page
-  //     // detailPage.setTextForWatchListButton();
-  //     // now update the DOM by removing this watch list container item 
-  //     // this parent and child look like this:
-  //     // <div class="watch-list-item-container">
-  //     //   <input class="watch-list-checkbox" type="checkbox" name="delete" value="Aladdin">
-  //     // look up how to target its parent and them run a remove method on it
-  //     // something like this:
-  //     // $(this)>parent.remove
-    
-  //   })
-  // });
-
-
   // watch list modal content - Delete click
   // finda all checked items; remove them from the arrays; re-build/re-render DOM
-  // **** this code should be moved to the commmon.js I believe
   $(document).on("click", "#delete-watch-items", function() {
     console.log("in global.delete-watch-items click event");
     // find items checked and remove them from the watch arrays
@@ -192,16 +157,6 @@
     // methods:
 
 
-    // // is watch list emtpy
-    // isWatchListEmpty () {
-    //   if (this.watchListMovieIdArray === null) {
-    //     return true;
-    //   } 
-    //   else {
-    //     return false;
-    //   }
-    // },
-
     // method to clear the watch list from local storage
     clearWatchListFromLocalStorage: function() {
       console.log("in manageWatchList.clearWatchListFromLocalStorage");
@@ -296,32 +251,6 @@
         manageWatchList.setWatchListInLocalStorage();
       };
 
-      // // remove that index position element from all four parallel arrays
-      // this.watchListMovieTitleArray.splice(targetIndex,1);
-      // this.watchListMovieIdArray.splice(targetIndex,1);
-      // this.watchListMovieYearArray.splice(targetIndex,1);
-      // this.watchListMovieTimeArray.splice(targetIndex,1);
-      // console.log("AFTER array length is: ", this.watchListMovieTitleArray.length);
-      // console.log("AFTER: array is ", this.watchListMovieTitleArray );
-      // // this is a band-aid until i figure out how to properly slice the array to 0 elements
-      // if (this.watchListMovieTitleArray.length === 1) {
-      //   console.log("SETTING TO ZERO");
-      //    manageLocalStorage.clearLocalStorage('watchListTitle');
-      //    manageLocalStorage.clearLocalStorage('watchListId');
-      //    manageLocalStorage.clearLocalStorage('watchListYear');
-      //    manageLocalStorage.clearLocalStorage('watchListTime');
-      // };
-     
-        
-      //   // this.watchListMovieTitleArray = [];
-      //   // this.watchListMovieYearArray = [];
-      //   // this.watchListMovieIdArray = [];
-      //   // this.watchListMovieTimeArray = [];
-      
-
-      // // clear watch list from local storage and re-save it
-      // manageWatchList.clearWatchListFromLocalStorage();
-      // manageWatchList.setWatchListInLocalStorage();
     },
 
     // build watch list in the DOM
@@ -412,15 +341,6 @@
         }
         
     },
-
-
-
-
-    // click event for detail page watchlist badge
-    // do some stuff here
-    // click should either remove the title, id, year, time from watch list or add to watch list
-    // set the appropriate class / button text
-    // call the appropriate methods to achieve the change in the watch list
 
   }
 
