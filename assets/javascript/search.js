@@ -126,7 +126,7 @@ function pageNumberReturner(searchTerm, searchOption) {
         switch(searchOption) {
             case "movieTitle":
                 console.log("movie Title Search Result");
-                populateSearchResult(searchTerm, numOfPages);
+                populateSearchResult(searchTerm, numOfPages, "movie");
                 break;
             case "actor":
                 //console.log(response.results[0]);
@@ -134,7 +134,8 @@ function pageNumberReturner(searchTerm, searchOption) {
                 break;
             case "tvshows":
                 //console.log("tv shows searched");
-                var searchURL = "https://api.themoviedb.org/3/search/multi?api_key=" + apiKey + "&language=en-US&query=" + searchTerm + "&page=1&include_adult=false&region=us";
+                //var searchURL = "https://api.themoviedb.org/3/search/tv?api_key=" + apiKey + "&language=en-US&query=" + searchTerm;
+                populateSearchResult(searchTerm, numOfPages, "tvshow");
                 break;            
             default:
                 break;
@@ -278,12 +279,18 @@ function populateActorResult(searchTerm, resultLength) {
     });     
 }
 
-function populateSearchResult(searchTerm, numOfPages) {
+function populateSearchResult(searchTerm, numOfPages, option) {
     for(var i = 1; i <= numOfPages; i++) {
-        //console.log("Call #" + i);
-        var searchURL = "https://api.themoviedb.org/3/search/multi?api_key=" + apiKey + "&language=en-US&query=" + searchTerm + "&page=" + i + "&include_adult=false&region=us";
-    
-    
+        
+        var searchURL;
+        if(option === "movie") {
+            // If a movie title searched
+            searchURL = "https://api.themoviedb.org/3/search/multi?api_key=" + apiKey + "&language=en-US&query=" + searchTerm + "&page=" + i + "&include_adult=false&region=us";
+        } else {
+            // if tv Show searched
+            searchURL = "https://api.themoviedb.org/3/search/tv?api_key=" + apiKey + "&language=en-US&query=" + searchTerm + "&page=" + i + "&include_adult=false&region=us";
+        }
+            
         // Passing the search-term to ajax function
         var settings = {
             "async": true,
