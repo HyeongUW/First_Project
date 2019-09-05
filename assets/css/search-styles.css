@@ -1,23 +1,24 @@
 
 .search-result-actor {
     border-radius: 50%;
-    width: 225px;
-    height: 225px;
-    border: 1.75px solid #333333;
+    width: 175px;
+    height: 175px;
+    border: 4.75px solid #333333;
     
 }
 .actor-image-div{
     margin-top: 2%;
-    margin-left: 20%;
+    margin-left: 2.5%;
 }
 
 .actor-info-div {
-    margin-top: 5%;
-    margin-left: 7.5%;
+    margin-top: 4%;
+    margin-left: 2.5%;
 }
 
 .actor-info-div h1 {
     color: aliceblue;
+    font-size: 2em;
 }
 
 .search-result-div {
@@ -34,7 +35,7 @@
     margin-bottom: 15px;
 }
 
-#search-result-image {
+#search-result-image, #actor-search-result-image {
     width: 220px;
     height: 260px;
     margin-right: 40px;
@@ -46,7 +47,8 @@
 .search-result-title {
     width: 600px;
 }
-#search-result-image:hover { 
+
+#search-result-image:hover, #actor-search-result-image:hover { 
     filter:blur(2px) brightness(60%);
 
 }
@@ -77,4 +79,17 @@
 .poster-div {
     margin-top: 1.25%;
     margin-bottom: 1.5%;
+    margin-left: -135px;
+}
+
+#actor-search-result-image {
+    height: 150px;
+    width: 125px;
+    margin-top: 10%;
+}
+
+#actor-search-result-data h1, h3{
+    color: whitesmoke;
+    font-size: 1.5em;
+    
 }

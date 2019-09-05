@@ -168,7 +168,7 @@ function populateActorResult(searchTerm, resultLength) {
             tempDiv.addClass("search-result-div");
     
             /* --------------------------------------------- */
-            var tempActorDiv = $("<div class='actor-div row'>");
+            var tempActorDiv = $("<div class='actor-div col-3'>");
             
             // HTML image tag
             var tempActorImageDiv = $("<div class='actor-image-div'>");
@@ -201,9 +201,10 @@ function populateActorResult(searchTerm, resultLength) {
                 //console.log(response.results[i].known_for[j].title);
 
                 // Make a div for image and put the image tag in it
+                var movieDiv = $("<div class='movie-div col-3'>");
 
                 var tempImgDiv = $("<div class='poster-div'>");
-                var tempImage = $("<img id='search-result-image'>");
+                var tempImage = $("<img id='actor-search-result-image'>");
                 var imageURL;
                 if(response.results[i].known_for[j].poster_path === null || response.results[i].known_for[j].poster_path === undefined) {
                     imageURL = "./assets/images/no-image-available-icon-6.jpg"
@@ -217,7 +218,7 @@ function populateActorResult(searchTerm, resultLength) {
         
         
                 // Retrieving title, release date, average vote, and vote count
-                var tempDataDiv = $("<div id='search-result-data'>");
+                var tempDataDiv = $("<div id='actor-search-result-data'>");
                 var tempTitle = $("<h1>");
                 tempTitle.attr('data-movie-id', response.results[i].known_for[j].id);
                 
@@ -261,7 +262,9 @@ function populateActorResult(searchTerm, resultLength) {
         
                 
                 tempDataDiv.append(tempTitle).append(tempRelease).append(starIcon).append(tempVoteAvg).append(userIcon).append(tempVoteCount);
-                tempDiv.append(tempImgDiv).append(tempDataDiv);
+                
+                movieDiv.append(tempImgDiv).append(tempDataDiv);
+                tempDiv.append(movieDiv);
             }
 
 
