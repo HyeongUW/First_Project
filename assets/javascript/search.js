@@ -225,12 +225,19 @@ function populateActorResult(searchTerm, resultLength) {
                 // Some of the returned data does not have "original_title" data, some
                 // of them had "original_name" instead.
                 if(response.results[i].known_for[j].original_title !== undefined) {
+                    /* ------------------------------------------------------------ */
+                    // 타이틀을 보내서 길이에 따른 처리를 하는 함수 만들기
+                    //console.log("Title: ", response.results[i].known_for[j].original_title);
+                    //console.log("The Length of the title: ", response.results[i].known_for[j].original_title.length);
+                    //var titleArray = response.results[i].known_for[j].original_title.split(" ");
+                    //console.log(titleArray);
+                    /* ------------------------------------------------------------ */
                     tempTitle.text(response.results[i].known_for[j].original_title);
                     tempTitle.attr('data-movie-title', response.results[i].known_for[j].original_title);
                     tempImage.attr('data-movie-title', response.results[i].known_for[j].original_title);
                 } else {
                     tempTitle.text(response.results[i].known_for[j].original_name);
-                    tempTitle.attr('data-movie-title', response.results[i].known_for[j].original_title);
+                    tempTitle.attr('data-movie-title', response.results[i].known_for[j].original_name);
                     tempImage.attr('data-movie-title', response.results[i].known_for[j].original_name);
                 }
                 tempTitle.addClass("search-result-title");

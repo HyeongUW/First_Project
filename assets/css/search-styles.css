@@ -44,12 +44,10 @@
 
 }
 
-.search-result-title {
-    width: 600px;
-}
 
 #search-result-image:hover, #actor-search-result-image:hover { 
     filter:blur(2px) brightness(60%);
+    cursor: pointer;
 
 }
 
@@ -86,6 +84,16 @@
     height: 150px;
     width: 125px;
     margin-top: 10%;
+}
+
+#actor-search-result-data h1 {
+    
+    /* width: 10em; 
+    overflow: hidden; 
+    white-space: nowrap; 
+    text-overflow: ellipsis; */
+    
+    /* word-wrap: break-word; */
 }
 
 #actor-search-result-data h1, h3{
