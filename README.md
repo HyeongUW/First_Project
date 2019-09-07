@@ -26,7 +26,7 @@ https://hyeonguw.github.io/First_Project/index.html
 
 * Search page:
   
-![search-1-new](/Users/Myles/Bootcamp/WORK/Project1/First_Project/assets/images/search-1-new.png)
+  ![search-1-new](assets/images/search-1-new.png)
   
   
   
