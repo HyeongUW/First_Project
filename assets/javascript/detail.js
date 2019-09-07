@@ -37,28 +37,34 @@ $(document).ready(function() {
     populateDetailPage: function() {
       console.log("in detailPage.populateDetailPage");
       // get movie title from session storage
-      this.movieTitle = manageSessionStorage.getSessionStorage("movieTitle");
-      console.log("movie title is: ", this.movieTitle);
-      this.movieId = manageSessionStorage.getSessionStorage("movieId");
-      console.log("movie id is: ", this.movieId);
-      // get utelly from local storage
-      console.log('utelly host: ',manageLocalStorage.getLocalStorage("host"));
-      console.log('utelly key: ',manageLocalStorage.getLocalStorage("key"));
+      // this.movieTitle = manageSessionStorage.getSessionStorage("movieTitle");
+      // console.log("movie title is: ", this.movieTitle);
+      // this.movieId = manageSessionStorage.getSessionStorage("movieId");
+      // console.log("movie id is: ", this.movieId);
+      // // get utelly from local storage
+      // console.log('utelly host: ',manageLocalStorage.getLocalStorage("host"));
+      // console.log('utelly key: ',manageLocalStorage.getLocalStorage("key"));
       
-      manageLocalStorage.getLocalStorage("host"),
+      detailPage.utellyHost = manageLocalStorage.getLocalStorage("host"),
       console.log("rapid api host is: ", detailPage.utellyHost);
-      utellyKey = manageLocalStorage.getLocalStorage("key"),
+      detailPage.utellyKey = manageLocalStorage.getLocalStorage("key"),
       console.log("rapid api key is: ", detailPage.utellyKey);
    
-      this.utellyHost = manageSessionStorage.getSessionStorage("host");
-      console.log("rapid api host is: ", this.utellyHost);
-      this.utellyKey = manageSessionStorage.getSessionStorage("key");
-      console.log("rapid api key is: ", this.utellyKey);
+      // detailPage.utellyHost = manageSessionStorage.getSessionStorage("host");
+      // console.log("rapid api host is: ", this.utellyHost);
+      // this.utellyKey = manageSessionStorage.getSessionStorage("key");
+      // console.log("rapid api key is: ", this.utellyKey);
 
       // commment utelly call out during unit testing 
       // but keep commented during general testing
       // due to the limited call allowance of 1000 calls per month:
       streaming = [];
+
+      // // call to API for movie review information
+      detailPage.getNYTimesMovieReview(this.movieTitle);
+
+      // placeholder to save utelly API calls during testing
+      // $("#streaming-text").text('Netflix, Amazon Prime, iTunes');
       detailPage.getUtelly(this.movieTitle,this.country);
   
       detailPage.getTmdbMovieDetails(this.movieTitleId);
@@ -76,6 +82,8 @@ $(document).ready(function() {
 
       // // call to API for related movie information
       detailPage.getTmdbRelatedMovies(this.movieTitleId);
+
+
 
      
       }, // end of method populateDetailPage
@@ -117,8 +125,9 @@ $(document).ready(function() {
         $("#overview-text").text(response.overview);
 
         console.log("runtime: ", response.runtime);
-        $("#runtime-text").text("Running Time: " + response.runtime  + ' mins');    
-        detailPage.movieTitleTime = response.runtime + ' min.';
+        // $("#runtime-text").text("Running Time: " + response.runtime  + ' mins');    
+        $("#runtime-text").text('Time: ' + response.runtime  + ' min.');   
+        detailPage.movieTitleTime = 'Time: ' + response.runtime + ' min.';
 
         console.log("vote_average: ", response.vote_average);
         $("#ratings-text").text("Ratings: " + response.vote_average);   
@@ -138,11 +147,67 @@ $(document).ready(function() {
           genres.push(element.name);
         });
 
-        $("#genre-text").text("Genres: " + genres.join(', '));
+        $("#genre-text").text(genres.join(', '));
       });  
     },
 
     // get movie video info from TMDB API
+    // parameter: movie title
+    getNYTimesMovieReview: function(title) {
+      console.log("in detailPage.getNYTimesMovieReview");
+      var urlMovieTitle = title.split(' ').join('+');
+      console.log("detail title", urlMovieTitle);
+
+      var apiKey = "fktEHhHIqR2YM2KALXsEB3bfkvxW38ZU";
+      var searchURL = "https://api.nytimes.com/svc/movies/v2/reviews/search.json?query=" + urlMovieTitle + "&api-key=" + apiKey;
+      
+      console.log("NyTimes Key: ", apiKey);
+      console.log("NyTimes URL: ", searchURL);
+
+      var settings = {
+          "url": searchURL,
+          "method": "GET",
+      }
+     
+      $.ajax(settings).done(function (response) {
+          console.log("MOVIE REVIEW: ",response);
+          var noMatch = true;
+          response.results.forEach(element => {
+            // check to see if this result matches target movie
+            console.log(">>>>>>>>>>>>>>>>>>>>>>>target title: ", title.toLowerCase().replace('+',' '));
+            console.log(">>>>>>>>>>>>>>>>>>>>>>>results name: ", element.display_title.toLowerCase());
+            if (element.display_title.toLowerCase() === title.toLowerCase().replace('+',' ')) {
+              console.log("match on title: ", title.toLowerCase().replace('+',' '));
+              // harvest details
+              noMatch = false;
+              console.log("headline: ",element.headline);
+              $("#head-line").text(element.headline);
+
+              console.log("summary: ",element.summary_short);
+              $("#summary-short").text(element.summary_short);
+
+              console.log("byline: ",element.byline);
+              $("#by-line").text(element.byline);
+
+              console.log("url: ",element.link.url);
+              $("#review-link").attr('href',element.link.url);
+              console.log("display title: ",element.display_title);
+            }
+            
+          });
+
+          if (noMatch) {
+            // clear the DOM
+            $("#review").text('');
+            $("#review-link").text('');
+          }
+
+
+      });
+    },
+
+
+    // get movie Video info from TMDB API
     // parameter: movie title
     getTmdbMovieVideo: function(titleId) {
       console.log("in detailPage.getTmdbMovieVideo");
@@ -182,6 +247,7 @@ $(document).ready(function() {
       });  
     },
 
+
     // get movie credits info from TMDB API
     // parameter: movie title
     getTmdbMovieCredits: function(titleId) {
@@ -201,15 +267,32 @@ $(document).ready(function() {
           "data": "{}"
       }
 
-      var castUl = $("#cast-list");
+      // var castUl = $("#cast-list");
+      // var castTable = $("#cast-table");
+      var castTable = $("tbody");
+
+            // <div  id="cast" class="col-12 all-n">
+            // <table  class="all-n">
+            //   <caption><h4>CAST</h4></caption>
+            //   <tr>
+            //     <th>CHARACTER</th>
+            //     <th>ACTOR/ACTRESS</th>
+            //   </tr>
+            //   <tr>
+            //     <td>the wife</td>
+            //     <td>Jane Smith</td>
+            //   </tr>
+            //  </table> 
 
       $.ajax(settings).done(function (response) {
           console.log(response);
           response.cast.forEach(element => {
               console.log("cast character: ",element.character);
-              console.log("cast name: ",element.name);
-              var newLi = $('<li>' + element.character + '  - (' + element.name + ')' + '</li>');
-              castUl.append(newLi);
+              console.log("cast name: ",element.name);'>/'
+              var newTr = $('<tr><td>' + element.character + '</td><td>' + element.name + '</td></tr>');
+              castTable.append(newTr);
+              // var newLi = $('<li>' + element.character + '  - (' + element.name + ')' + '</li>');
+              // castUl.append(newLi);
           });
       });  
     },
@@ -245,6 +328,7 @@ $(document).ready(function() {
             console.log("related movie title: ", element.title);
             console.log("related movie overview: ",element.overview);
             console.log("poster_path: ",element.poster_path);
+
 
             if (i === 1) {
               var imageURL = "https://image.tmdb.org/t/p/w500" + element.poster_path;
@@ -396,45 +480,6 @@ $(document).ready(function() {
     },
 
 
-
-
-
-  //    // Returns trending movies
-  //    for(var i = 0; i < response.results.length; i++) {
-  //     var tempDiv = $("<div>");
-  //     tempDiv.addClass("trending-div");
-
-  //     var tempImage = $("<img>");
-  //     var imageURL = "https://image.tmdb.org/t/p/w500" + response.results[i].poster_path;
-  //     tempImage.attr("src", imageURL);
-  //     tempImage.attr('data-movie-id', response.results[i].id);
-  //     tempImage.addClass("trending-poster");
-      
-      
-  //     var tempTitle = $("<h3>");
-      
-  //     // Some of the returned data does not have "original_title" data, some
-  //     // of them had "original_name" instead.
-  //     if(response.results[i].original_title !== undefined) {
-  //       tempTitle.text(response.results[i].original_title);
-  //       tempImage.attr('data-movie-title',response.results[i].original_title);
-  //     } else {
-  //       tempTitle.text(response.results[i].original_name);
-  //       tempImage.attr('data-movie-title',response.results[i].original_name);
-  //     }
-      
-      
-  //     tempDiv.append(tempImage).append(tempTitle);
-      
-  //     $("#trending-placehold").append(tempDiv);
-  // }
-
-
-
-
-
-
-
     // get related movie rating (pg, pg-13, etc.) from OMDB API
     // parameter: movie id
     getOmdbMovieRating: function(title) {
@@ -444,6 +489,9 @@ $(document).ready(function() {
       // construct our URL
       var queryURL = "https://www.omdbapi.com/?t=" + title + "&apikey=trilogy";
 
+      console.log("OMDB URL: ", queryURL);
+      
+
       // make API call
       $.ajax({
         url: queryURL,
@@ -451,7 +499,7 @@ $(document).ready(function() {
       }).then(function(response) {
         console.log(response);
         console.log("rated: ", response.Rated);
-        $("#rated").text("Rated: " + response.Rated);
+        $("#rated-text").text("Rated: " + response.Rated);
       });
     },
 
@@ -471,8 +519,8 @@ $(document).ready(function() {
 
       console.log("url :", url);
       
-      // console.log("rapid api host is: ", detailPage.utellyHost);
-      // console.log("rapid api key is: ",detailPage.utellyKey);
+      console.log("rapid api host is: ", detailPage.utellyHost);
+      console.log("rapid api key is: ",detailPage.utellyKey);
       
       // this.streaming = [];
 
@@ -483,8 +531,10 @@ $(document).ready(function() {
       const options = {
       method: 'GET',
       headers: {
-          "X-RapidAPI-Host": this.utellyHost,
-          "X-RapidAPI-Key": this.utellyKey
+          // "X-RapidAPI-Host": 'utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com',
+          // "X-RapidAPI-Key": '80549481bdmsha65d8ad2b7edcfap1d5cc3jsncf554c0fbd38'
+          "X-RapidAPI-Host": detailPage.utellyHost,
+          "X-RapidAPI-Key": detailPage.utellyKey
           },
       };
       
@@ -530,7 +580,7 @@ $(document).ready(function() {
           }); // end of results forEach
 
         console.log("streaming array = ", streaming.join(', '));
-        $("#temp-streaming").text('Streaming on: ' + streaming.join(', '));
+        $("#streaming-text").text(streaming.join(', '));
 
       }); // end of the ajax call
 
@@ -551,12 +601,12 @@ $(document).ready(function() {
       console.log("title to check for in watch list is: ",detailPage.movieTitle);
       
       if (manageWatchList.watchListMovieTitleArray.indexOf(detailPage.movieTitle) === -1) {
-        $("#add-fav-btn").text("Add to Save List");
+        $("#add-fav-btn").text("Add Bookmark");
         $("#add-fav-btn").removeClass('btn-outline-danger');
         $("#add-fav-btn").addClass('btn-outline-success');
       }
       else {
-        $("#add-fav-btn").text("Remove from Save List");
+        $("#add-fav-btn").text("Remove Bookmark");
         $("#add-fav-btn").removeClass('btn-outline-success');
         $("#add-fav-btn").addClass('btn-outline-danger');
       };
@@ -674,7 +724,8 @@ $(document).ready(function() {
 
   // go to detail page on recommended movie click
   // go to detail page on recommended movie click
- $(document).on("click",".poster>img", function() {
+//  $(document).on("click",".poster>img", function() { 
+ $(document).on("click",".carousel-cell>img", function() {
   //$(document).on("click",".carousel-item>img", function() {
     console.log("in carousel-item>img click event");
     // console.log("you pressed " + $(this).data("movie-id"));
@@ -707,7 +758,7 @@ $(document).ready(function() {
       width: '100%', //'640',
       videoId: '', //youTubeVideoId, //'foyufD52aog',
       events: {
-        'onReady': onPlayerReady,
+        'onReady': onPlayerReady,   // MRC - uncomment when done with CSS changes
         'onStateChange': onPlayerStateChange //,
         //'onError': onError
       }
@@ -718,8 +769,8 @@ $(document).ready(function() {
     function onPlayerReady(event) {
 
       event.target.loadVideoById(youTubeVideoId);
-      event.target.setVolume(40);
-      event.target.playVideo();
+      event.target.setVolume(10);
+      event.target.playVideo();    // MRC - uncomment when done with CSS changes
       isTrailerPlaying = true;
       // event.target.playVideoAt(0);
       // event.loadPlaylist(youTubeVideoId);
@@ -736,7 +787,7 @@ $(document).ready(function() {
     var done = false;
     function onPlayerStateChange(event) {
       if (event.data == YT.PlayerState.ENDED) {
-        event.target.playVideo();
+        event.target.playVideo(); // MRC - uncomment when done with CSS changes
         isTrailerPlaying = true;
       }
     }
@@ -768,7 +819,7 @@ $(document).ready(function() {
               if (!isTrailerPlaying) {
                 //un-pause trailer
                 isTrailerPlaying = true;
-                player.playVideo();
+                player.playVideo();  // MRC - uncomment when done with CSS changes
               }
       }
     }
@@ -782,17 +833,6 @@ $(document).ready(function() {
     player.pauseVideo();
   });
 
-  // // not working - need more research
-  // // start trailer up again if user return to web page
-  // const windowHasFocus = function () {
-  //   window.addEventListener("focus", function(event) 
-  //   { 
-  //      isTrailerPlaying = true;
-  //      player.playVideo();
-  //   }, false);
-
-  // }  
- 
-
+  
  
     

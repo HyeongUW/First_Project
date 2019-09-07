@@ -8,13 +8,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-  <title>movie search-project1</title>
+  <title>Movie Gopher</title>
 
   <!-- Boostrap Stylesheet -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   
   <!-- Our own CSS stylesheet -->
   <link rel="stylesheet" href="assets/css/styles.css" media="screen">
+  <link rel="stylesheet" href="assets/css/search-styles.css" media="screen">
   <link href="https://fonts.googleapis.com/css?family=Carter+One&display=swap" rel="stylesheet">
   
   
@@ -89,12 +90,23 @@
           <div class="form-group">
             <!-- <label for="name" class="col-sm-2 control-label">Name</label> -->
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="search-term" placeholder="Search with Movie Titles...">
+              <input type="text" class="form-control" id="search-term" placeholder="Search the movie you like!">
             </div>
           </div>
 
           <button class="submit-btn btn btn-outline-primary">Submit</button>
 
+          <!-- Advanced Search Option Radio Button  -->
+          <label>
+              <input type="radio" name="advSearchOpt" value="movieTitle" checked/>Movie Title
+          </label>
+          <label>
+              <input type="radio" name="advSearchOpt" value="actor"/>Actor/Actress
+          </label>
+          <!-- <label>
+              <input type="radio" name="advSearchOpt" value="tvshows"/>TV Shows
+          </label> -->
+          <!------------------------------------------->
         </form>
       </div>
     </section>

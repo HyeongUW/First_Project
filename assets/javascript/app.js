@@ -55,9 +55,6 @@ $(document).ready(function() {
   // global variables:
   // ----------------------------------------------------------
 
-  // test variable for call to utelly
-  // var testMovieTitle = "jurassic+park";
-  var testMovieCountry = "us";
   var utellyHost = "";
   var utellyKey = "";
 
@@ -123,61 +120,6 @@ $(document).ready(function() {
     // redirect to the detail page
     redirectToDetailPage();
   });
-
-  // // watch list button event - show modal
-  // // **** this code should be moved to common.js I believe
-  // $("#watch-list-btn").on("click",function() {
-  //   console.log("in global.watch-list-btn click event")
-  //  // show watch list
-  //   $('#my-modal').modal('show');
-  // });
-
-
-  // MOVED TO COMMON.JS
-  // // watch list modal content - Delete click
-  // // finda all checked items; remove them from the arrays; re-build/re-render DOM
-  // // **** this code should be moved to the commmon.js I believe
-  // $(document).on("click", "#delete-watch-items", function() {
-  //   console.log("in global.delete-watch-items click event");
-  //   // find items checked and remove them from the watch arrays
-  //   // remove checked items from the DOM - each item appended to
-  //   // var modalBody =   $("#watch-list-body");
-  //   // the items to remove are of type:
-  //   //  $('<div class="watch-list-item-container"></div>');
-
-  //   $('.watch-list-checkbox:checked').each(function () {
-  //     console.log("this item was checked: ", this.value);
-  //     // next - remove this from the watch arrays :
-  //     // manageWatchList.removeFromWatchList(this.value);
-  //     // if we are on the detail page we might have just removed 
-  //     // that title from the watch list so update the save to watch list button
-  //     // only do if on detail page
-  //     // detailPage.setTextForWatchListButton();
-  //     // now update the DOM by removing this watch list container item 
-  //     // this parent and child look like this:
-  //     // <div class="watch-list-item-container">
-  //     //   <input class="watch-list-checkbox" type="checkbox" name="delete" value="Aladdin">
-  //     // look up how to target its parent and them run a remove method on it
-  //     // something like this:
-  //     // $(this)>parent.remove
-    
-  //   })
-  // });
-
-  // //  watch list modal content - movie title click
-  // // should cause redirect to the detail page
-  //   // **** this code should be moved to the commmon.js I believe
-  // $(document).on("click", ".watch-list-item", function() {
-  //   console.log("in global.watch-list-item click event");
-  //   // console.log("you pressed " + $(this).data("movie-id"));
-  //   // console.log("you pressed " + $(this).data("movie-title"));
-  //   manageSessionStorage.setSessionStorage("movieId",$(this).data("movie-id"));
-  //   manageSessionStorage.setSessionStorage("movieTitle",$(this).data("movie-title"));
-  //   // console.log("saved movie id: ", manageSessionStorage.getSessionStorage("movieId"));
-  //   // console.log("saved movie title: ", manageSessionStorage.getSessionStorage("movieTitle"));
-  //   // redirect to the detail page
-  //   redirectToDetailPage();
-  // });
 
 
   // ----------------------------------------------------------

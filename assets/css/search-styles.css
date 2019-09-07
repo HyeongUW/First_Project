@@ -1,0 +1,102 @@
+
+.search-result-actor {
+    border-radius: 50%;
+    width: 175px;
+    height: 175px;
+    border: 4.75px solid #333333;
+    
+}
+.actor-image-div{
+    margin-top: 2%;
+    margin-left: 2.5%;
+}
+
+.actor-info-div {
+    margin-top: 4%;
+    margin-left: 2.5%;
+}
+
+.actor-info-div h1 {
+    color: aliceblue;
+    font-size: 2em;
+}
+
+.search-result-div {
+    /* width: 98%; */
+    border: 1.75px solid #333333;
+    border-radius: .9em;
+    /* margin-top: 10px; */
+    /* margin-right: 0px;     */
+}
+
+.search-result-div {
+    display: flex;
+    /* justify-content: space-evenly; */
+    margin-bottom: 15px;
+}
+
+#search-result-image, #actor-search-result-image {
+    width: 220px;
+    height: 260px;
+    margin-right: 40px;
+    margin-left: 170px;
+    border-radius:12px;
+
+}
+.search-result-title:hover {
+    cursor: pointer;
+
+}
+
+
+#search-result-image:hover, #actor-search-result-image:hover { 
+    filter:blur(2px) brightness(60%);
+    cursor: pointer;
+
+}
+
+#search-result-data {
+    color: white;
+    width: 415px;
+    margin-top: 50px;
+}
+
+#search-result-data h3, .star-icon{
+    margin-left: 10px; 
+}
+
+.star-icon {
+    width: 30px;
+
+}
+
+#watch-list-btn {
+    margin-top: 21px;
+}
+
+.navbar-brand img {
+    margin-bottom: 20px;
+}
+  
+.poster-div {
+    margin-top: 1.25%;
+    margin-bottom: 1.5%;
+    margin-left: -135px;
+}
+
+#actor-search-result-image {
+    height: 150px;
+    width: 125px;
+    margin-top: 10%;
+}
+
+#actor-search-result-data h1 {
+    
+}
+
+#actor-search-result-data h1, h3{
+    color: whitesmoke;
+    font-size: 1.5em;
+    
+}
+
