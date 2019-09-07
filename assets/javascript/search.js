@@ -188,7 +188,23 @@ function populateActorResult(searchTerm, resultLength) {
             // Actor info div
             var tempActorInfoDiv = $("<div class='actor-info-div'>");
             var tempActorName = $("<h1>").text(response.results[i].name);
-            var tempActorKnownFor = $("<h1>").text(response.results[i].known_for_department);
+            var tempProfession = response.results[i].known_for_department;
+           // $("<h1>").text(response.results[i].known_for_department);
+            
+            // Possibilities Acting, Writing, Directing, Production, Editing
+            if(tempProfession === "Acting") {
+                tempProfession = "Actor";
+            } else if(tempProfession === "Writing") {
+                tempProfession = "Writer";
+            } else if(tempProfession === "Directing") {
+                tempProfession = "Director";
+            } else if(tempProfession === "Production") {
+                tempProfession = "Producer";
+            } else if(tempProfession === "Editing") {
+                tempProfession = "Editor";
+            }
+            var tempActorKnownFor = $("<h1>").text(tempProfession);
+
             var tempActorPopularity = $("<h1>").text(response.results[i].popularity);
             tempActorInfoDiv.append(tempActorName).append(tempActorKnownFor).append(tempActorPopularity);
 
@@ -205,6 +221,7 @@ function populateActorResult(searchTerm, resultLength) {
 
                 var tempImgDiv = $("<div class='poster-div'>");
                 var tempImage = $("<img id='actor-search-result-image'>");
+                tempImage.addClass("actor-movie-poster");
                 var imageURL;
                 if(response.results[i].known_for[j].poster_path === null || response.results[i].known_for[j].poster_path === undefined) {
                     imageURL = "./assets/images/no-image-available-icon-6.jpg"

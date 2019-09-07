@@ -16,11 +16,11 @@ main {
   padding: 0 !important;
 }
 .navbar-light .navbar-nav .nav-link {
-  color: white;
+  color: #808080;
   margin-top: 10px;
   margin-right: 20px;
 }
-.container{ 
+.container{
 
 width: 100%;
 /* max-width: 960px; */
@@ -273,10 +273,10 @@ nav {
 }
 
 .nav-link:hover{
-  border: 1px solid white;
+  border: 1px solid #808080;
   border-radius: 5px;
   padding: 0;
-  color:white !important;
+  color:#808080 !important;
 }
 /* ---------------------------------------------------------------------- */
 /* Maybe we do not need this part  August 10, Merging Request*/
@@ -302,4 +302,49 @@ nav {
 }
 /* ---------------------------------------------------------- */
 
+.search-result-div {
+  display: flex;
+  /* justify-content: space-evenly; */
+  margin-bottom: 15px;
+}
+
+#search-result-image {
+  width: 220px;
+  height: 260px;
+  margin-right: 40px;
+  margin-left: 170px;
+  border-radius:12px;
+  
+}
+
+.search-result-title {
+  width: 600px;
+}
+#search-result-image:hover { 
+  filter:blur(2px) brightness(60%);
+  
+}
+
+#search-result-data {
+  color: white;
+  width: 415px;
+  margin-top: 50px;
+}
+
+#search-result-data h3, .star-icon{
+  margin-left: 10px; 
+}
+
+.star-icon {
+  width: 30px;
+  
+}
+
+#watch-list-btn {
+  margin-top: 21px;
+}
+
+.navbar-brand img {
+  margin-bottom: 20px;
+}
 

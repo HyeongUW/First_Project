@@ -43,6 +43,10 @@
     border-radius:12px;
 
 }
+.search-result-title:hover {
+    cursor: pointer;
+
+}
 
 
 #search-result-image:hover, #actor-search-result-image:hover { 
@@ -88,12 +92,6 @@
 
 #actor-search-result-data h1 {
     
-    /* width: 10em; 
-    overflow: hidden; 
-    white-space: nowrap; 
-    text-overflow: ellipsis; */
-    
-    /* word-wrap: break-word; */
 }
 
 #actor-search-result-data h1, h3{
@@ -101,3 +99,4 @@
     font-size: 1.5em;
     
 }
+
