@@ -15,33 +15,32 @@ https://vkcgithub2019.github.io/First_Project/
 
 ## Use Example:
 
-### ![use-example](./assets/images/use-example.gif)
+### ![use-example](./assets/images/demo.gif)
 
 
 ## Screen Captures:
 
 
-* Landing page:
-  ![landing-page](assets/images/wireframe_trend01.png)
-
-* Search page:
-  
-  ![search-1-new](assets/images/search-1-new.png)
-  
-  
-  
-* Detail page:
-  ![detail-page](assets/images/detail-1-new.png)
+* Home page - trending movies
+  ![landing-page](assets/images/scrn-landing.png)
 
   
   
-*  Detail page continued:
-  ![detail-page](assets/images/detail-2-new.png)
+* Detail page - trailer section
+  ![detail-page](assets/images/scrn-detail-upper.png)
+  
+  
+  
+* Detail page - information section
+  ![detail-page](assets/images/scrn-detail-lower.png)
 
-  
-  
-* Save list Modal:
-  ![detail-page](assets/images/wireframe_savelist01.png)
+- Search page - movie search![search-1-new](assets/images/scrn-search-movie.png)
+
+- Search page - actor/actress search![search-1-new](assets/images/scrn-search-actor.png)	
+
+
+* Bookmarks Modal:
+  ![detail-page](assets/images/scrn-watchlist.png)
 
 
 ## Getting Started
@@ -59,7 +58,7 @@ https://vkcgithub2019.github.io/First_Project/
 * open in browser 
     1. scroll thru trending movie posters and click on title poster to jump to detail page
     2. click on nav link to search page
-        1. enter search criteria and hit search button
+        1. enter search criteria (movie or actor/actress) and hit search button
         2. scroll thru search results and click title to jumpt to detail page
     3. When on detail page carousel of recommended movies is shown at bottom of page - click on
        title to reload detail page with that movie
@@ -76,10 +75,12 @@ For further development details see [UseCases and Psuedo Code](UseCases-PsuedoCo
 ## Enhancements
 
 * list of possible enhancements
-    1. improved detail page layout
-    2. improved typography
-    3. make Save List modal available on Search and Detail pages
-    4. section with movie reviews (New York Time api)
+    - [x] improved detail page layout
+    - [x] improved typography
+    - [x] actor/actress search
+    - [x] section with movie reviews (New York Time api)
+    - [ ] responsiveness
+    - [ ] make Save List modal available on Search and Detail pages
     
 ## Authors
 
@@ -90,8 +91,11 @@ For further development details see [UseCases and Psuedo Code](UseCases-PsuedoCo
 
 ## Version History
 
-* 0.1
-    * Initial Release
+* 0.1  Initial Release
+
+* 1.0  Improved detail page, improved typography, actor/actress search,
+
+    ​       New York Times synopsis / link to review
 
 ## License
 
